@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Footer from '../components/Footer'
 
 export default function login_page() {
     return (
@@ -25,18 +26,22 @@ export default function login_page() {
             <h3 className="text-2xl font-bold text-center">Login to your account</h3>
             <form action="">
                 <div className="mt-4">
+
                   <div>
                     <label className="block" for="email">Email</label>
                     <input type="text" placeholder="Email" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"/>
                   </div>
+
                   <div className="mt-4">
                       <label className="block">Password</label>
                       <input type="password" placeholder="Password" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"/>
                   </div>
+
                   <div className="flex items-baseline justify-between">
                       <button className="px-6 py-2 mt-4 text-black bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Login</button>
                       <a href="#" className="text-sm text-black hover:underline">Forgot password?</a>
-                  </div>        
+                  </div>  
+                        
                 </div>
     
               </form>    
@@ -45,15 +50,7 @@ export default function login_page() {
 
 
         {/* FOOTER */}
-        <div className="flex absolute bottom-0 justify-center text-center align-center h-10 w-full bg-white border-t-2 border-dark_grey pt-1.5">
-          <span><span className="text-light_blue">Created by </span> Mayssam Kalajo, Grace Rabano, Christian Ayala, and Wahab Javed</span>
-        </div>
-
-
-
-      <div className="h-screen bg-light_blue">
-
-      </div>
+        <Footer/>
 
       </div>
       

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Footer from '../components/Footer'
 
 export default function register_page() {
     return (
@@ -53,15 +54,7 @@ export default function register_page() {
 
 
         {/* FOOTER */}
-        <div className="flex absolute bottom-0 justify-center text-center align-center h-10 w-full bg-white border-t-2 border-dark_grey pt-1.5">
-          <span><span className="text-light_blue">Created by </span> Mayssam Kalajo, Grace Rabano, Christian Ayala, and Wahab Javed</span>
-        </div>
-
-
-
-      <div className="h-screen bg-light_blue">
-
-      </div>
+        <Footer/>
 
       </div>
       
