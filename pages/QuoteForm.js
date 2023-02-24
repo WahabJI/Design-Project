@@ -56,6 +56,7 @@ export default function fuel_quote_form() {
                         <label className="block">Zip Code</label>
                         <input type="text" placeholder="Zip Code" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"/>
                     </div>
+                    
                     <div className="mt-4">
                         <label className="block">Delivery Date</label>
                         <input datetimepicker datepicker-format="mm/dd/yyyy" type="date" placeholder="Select a Date" className="peer w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 placeholder:text-gray-500"/>
