@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Footer from '../components/Footer'
 
-export default function login_page() {
+export default function register_page() {
     return (
       <div className="bg-grey">
         {/* TOP BAR */}
@@ -14,7 +14,7 @@ export default function login_page() {
               <span>HOME</span>
             </li>
             <li className="flex mr-4 items-center">
-            <Link href="/register_page"><span>REGISTER</span></Link>
+              <Link href="/LoginPage"><span>LOGIN</span></Link>
             </li>
           </ul>
         </nav>
@@ -37,11 +37,15 @@ export default function login_page() {
                       <input type="password" placeholder="Password" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"/>
                   </div>
 
+                  <div className="mt-4">
+                      <label className="block">Confirm Password</label>
+                      <input type="password" placeholder="Confirm Password" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"/>
+                  </div>
+
                   <div className="flex items-baseline justify-between">
-                      <button className="px-6 py-2 mt-4 text-black bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Login</button>
+                      <button className="px-6 py-2 mt-4 text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Login</button>
                       <a href="#" className="text-sm text-black hover:underline">Forgot password?</a>
-                  </div>  
-                        
+                  </div>        
                 </div>
     
               </form>    
