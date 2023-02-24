@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 // need to fix sticky navbar and footer (make not sticky)
 export default function quote_history() {
     return (
@@ -10,16 +12,16 @@ export default function quote_history() {
             </div>
             <ul className="ml-auto left-0 right-0 top-full inline-flex">
                 <li className="flex mr-4 items-center">
-                <span>HOME</span>
+                    <Link href="LoggedInHomePage"><span>HOME</span></Link>
                 </li>
                 <li className="flex mr-4 items-center">
-                <span>HISTORY</span>
+                    <Link href="/QuoteHistory"><span>HISTORY</span></Link>
                 </li>
                 <li className="flex mr-4 items-center">
-                <span>PROFILE</span>
+                    <span>PROFILE</span>
                 </li>
                 <li className="flex mr-4 items-center">
-                <span>LOGOUT</span>
+                    <Link href="/HomePage"><span>LOGOUT</span></Link>
                 </li>
             </ul>
             </nav>
