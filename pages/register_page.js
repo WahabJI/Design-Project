@@ -43,7 +43,7 @@ export default function register_page() {
                   </div>
 
                   <div className="flex items-baseline justify-between">
-                      <button className="px-6 py-2 mt-4 text-black bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Login</button>
+                      <button className="px-6 py-2 mt-4 text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Login</button>
                       <a href="#" className="text-sm text-black hover:underline">Forgot password?</a>
                   </div>        
                 </div>
