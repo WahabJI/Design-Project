@@ -11,7 +11,7 @@ export default function HomePage() {
           </div>
           <ul className="ml-auto left-0 right-0 top-full inline-flex">
             <li className="flex mr-4 items-center">
-              <span>LOGIN</span>
+               <Link href="/LoginPage"><span>LOGIN</span></Link>
             </li>
             <li className="flex mr-4 items-center">
                 <Link href="/RegisterPage"><span>REGISTER</span></Link>

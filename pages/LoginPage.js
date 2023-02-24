@@ -11,10 +11,10 @@ export default function login_page() {
           </div>
           <ul className="ml-auto left-0 right-0 top-full inline-flex">
             <li className="flex mr-4 items-center">
-              <span>HOME</span>
+              <Link href="/HomePage"><span>HOME</span></Link>
             </li>
             <li className="flex mr-4 items-center">
-            <Link href="/RegisterPage"><span>REGISTER</span></Link>
+              <Link href="/RegisterPage"><span>REGISTER</span></Link>
             </li>
           </ul>
         </nav>
