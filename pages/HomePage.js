@@ -14,7 +14,7 @@ export default function HomePage() {
               <span>LOGIN</span>
             </li>
             <li className="flex mr-4 items-center">
-                <Link href="/register_page"><span>REGISTER</span></Link>
+                <Link href="/RegisterPage"><span>REGISTER</span></Link>
             </li>
           </ul>
         </nav>
