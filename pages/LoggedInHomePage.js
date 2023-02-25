@@ -27,7 +27,7 @@ export default function HomePage() {
 
 
         {/* LOGIN FORM */}
-        <div className="flex flex-col py-24 justify-between h-screen bg-gray-100">
+        <div className="flex flex-col py-16 justify-between h-screen bg-gray-100">
           <div className="px-8 py-6 text-left w-5/6 bg-white shadow-lg m-auto">
             <h3 className="text-2xl font-bold">YOUR LAST QUOTE</h3>
             <div className="flex flex-row">
