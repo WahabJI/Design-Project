@@ -5,17 +5,17 @@ export default function fuel_quote_form() {
                 {/* TOP BAR */}
                 <nav className="flex w-full items-center font-bold text-4xl text-beige bg-light_blue h-14">
                     <div className="ml-4">
-                        Profile
+                        FUEL QUOTER
                     </div>
                     <ul className="ml-auto left-0 right-0 top-full inline-flex">
                         <li className="flex mr-4 items-center">
                             <span>HOME</span>
                         </li>
                         <li className="flex mr-4 items-center">
-                            <span>HISTORY</span>
+                            <span>QUOTE</span>
                         </li>
                         <li className="flex mr-4 items-center">
-                            <span>Fuel Quote</span>
+                            <span>HISTORY</span>
                         </li>
                         <li className="flex mr-4 items-center">
                             <span>LOGOUT</span>
@@ -44,7 +44,7 @@ export default function fuel_quote_form() {
                                 <input type="text" placeholder="Address 1" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
                             </div>
                             <div className="mt-3">
-                                <label className="block">Address 2</label>
+                                <label className="block">Address 2 (optional)</label>
                                 <input type="text" placeholder="Address 2" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
                             </div>
                             <div className="mt-3">
@@ -62,7 +62,7 @@ export default function fuel_quote_form() {
 
 
                             <div class="md:flex items-center justify-center mt-6 mx-auto">
-                                <button className="block w-1/2 py-2 mt-4 mx-auto text-black bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Update</button>
+                                <button className="block w-1/2 py-2 mt-4 mx-auto text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Update</button>
                             </div>
 
 
