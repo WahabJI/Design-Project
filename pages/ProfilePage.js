@@ -35,31 +35,31 @@ export default function profile_page() {
                         <div className="mt-3">
                             <div>
                                 <label className="block" for="First Name">First Name</label>
-                                <input type="text" placeholder="First Name" className="w-full px-5 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                                <input minLength="40" type="text" placeholder="First Name" className="w-full px-5 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" requried/>
                             </div>
                             <div className="mt-3">
                                 <label className="block">Last Name</label>
-                                <input type="text" placeholder="Last Name" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                                <input minLength="40" type="text" placeholder="Last Name" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
                             </div>
                             <div className="mt-3">
                                 <label className="block">Address 1</label>
-                                <input type="text" placeholder="Address 1" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                                <input minLength="100" type="text" placeholder="Address 1" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 required" required/>
                             </div>
                             <div className="mt-3">
                                 <label className="block">Address 2 (optional)</label>
-                                <input type="text" placeholder="Address 2" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                                <input minLength="100" type="text" placeholder="Address 2" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
                             </div>
                             <div className="mt-3">
                                 <label className="block">City</label>
-                                <input type="text" placeholder="City" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                                <input minLength="100" type="text" placeholder="City" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
                             </div>
                             <div className="mt-3">
                                 <label className="block">State</label>
-                                <input type="text" placeholder="State" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                                <input type="text" placeholder="State" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
                             </div>
                             <div className="mt-3">
                                 <label className="block">Zip Code</label>
-                                <input type="text" placeholder="Zip Code" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                                <input minLength="5" maxLength="9" type="text" placeholder="Zip Code" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
                             </div>
 
 
