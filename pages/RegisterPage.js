@@ -11,7 +11,7 @@ export default function register_page() {
           </div>
           <ul className="ml-auto left-0 right-0 top-full inline-flex">
             <li className="flex mr-4 items-center">
-              <span>HOME</span>
+              <Link href="/HomePage"><span>HOME</span></Link>
             </li>
             <li className="flex mr-4 items-center">
               <Link href="/LoginPage"><span>LOGIN</span></Link>
@@ -47,7 +47,6 @@ export default function register_page() {
                       <a href="#" className="text-sm text-black hover:underline">Forgot password?</a>
                   </div>        
                 </div>
-    
               </form>    
           </div>
         </div>
