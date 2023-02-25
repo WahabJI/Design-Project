@@ -1,9 +1,11 @@
 import Link from 'next/link';
 
 // need to fix sticky navbar and footer (make not sticky)
+import Link from 'next/link';
+import Footer from '../components/Footer'
 export default function fuel_quote_form() {
     return (
-        <div className="flex flex-col h-screen justify-between">
+        <div className="flex flex-col min-h-screen justify-between">
         <header>
             {/* TOP BAR */}
             <nav className="flex w-full items-center font-bold text-4xl text-beige bg-light_blue h-14">
@@ -12,13 +14,14 @@ export default function fuel_quote_form() {
             </div>
             <ul className="ml-auto left-0 right-0 top-full inline-flex">
                 <li className="flex mr-4 items-center">
-                    <Link href="/LoggedInHomePage"><span>HOME</span></Link>
+                <span>HOME</span>
                 </li>
                 <li className="flex mr-4 items-center">
+                <Link href="/QuoteHistory"><span>HISTORY</span></Link>
                     <Link href="/QuoteHistory"><span>HISTORY</span></Link>
                 </li>
                 <li className="flex mr-4 items-center">
-                    <span>PROFILE</span>
+                <Link href="/ProfilePage"><span>PROFILE</span></Link>
                 </li>
                 <li className="flex mr-4 items-center">
                     <Link href="/HomePage"><span>LOGOUT</span></Link>
@@ -29,7 +32,7 @@ export default function fuel_quote_form() {
 
 
         {/* QUOTE FORM */}
-        <main className="flex-1 overflow-y-auto bg-gray-100 p-8">
+        <main className="flex-1 h-screen overflow-y-auto bg-gray-100 p-8">
             <div className="flex-initial w-96  px-8 py-6 bg-white shadow-lg mx-auto my-auto">
                 <h3 className="text-2xl font-bold text-center">Fuel Quote</h3>
                 <form action="">
@@ -82,7 +85,7 @@ export default function fuel_quote_form() {
 
                     <div class="flex flex-col rounded-md shadow-smmd:flex items-center justify-center mt-6 mx-auto">
                         <button className="block w-1/2 py-2 mt-4 mx-auto text-light_blue border border-light_blue rounded-lg hover:outline-double" disabled >Get Quote</button>
-                        <button className="block w-1/2 py-2 mt-4 mx-auto text-black bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Submit</button>
+                        <button className="block w-1/2 py-2 mt-4 mx-auto text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Submit</button>
                     </div>
 
 
@@ -98,9 +101,7 @@ export default function fuel_quote_form() {
 
         {/* FOOTER */}
         {/* add conditional button stuff later */}
-        <footer className="justify-center text-center align-center h-10 w-full bg-white border-t-2 border-dark_grey pt-1.5">
-          <span><span className="text-light_blue">Created by </span> Mayssam Kalajo, Grace Rabano, Christian Ayala, and Wahab Javed</span>
-        </footer>
+        <Footer/>
 
       </div>
       
