@@ -26,3 +26,4 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
+Figma Design: https://www.figma.com/file/BQEd4BGkhqg7g0CLiNRufx/Fuel-Quote-Website?node-id=5%3A141&t=zVJFQCWofTf1NA3H-0
