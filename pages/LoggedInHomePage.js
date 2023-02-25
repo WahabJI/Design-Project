@@ -17,7 +17,7 @@ export default function HomePage() {
               <Link href="/QuoteHistory"><span>HISTORY</span></Link>
             </li>
             <li className="flex mr-4 items-center">
-              <span>PROFILE</span>
+              <Link href="/ProfilePage"><span>PROFILE</span></Link>
             </li>
             <li className="flex mr-4 items-center">
               <Link href="/HomePage"><span>LOGOUT</span></Link>
