@@ -62,7 +62,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className>
-                <button className="px-6 py-2 mt-4 text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">View Full<br></br>Quote History</button>
+                <Link href="/QuoteHistory"><button className="px-6 py-2 mt-4 text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">View Full<br></br>Quote History</button></Link>
               </div>
             </div>
           </div>
@@ -84,7 +84,7 @@ export default function HomePage() {
                   <div className="text-black inline-block pl-24">Houston, TX, 77034</div>
                 </div>
                 <div className="flex flex-row justify-center">
-                  <button className="px-6 py-2 mt-4 text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">View / Edit Profile</button>
+                  <Link href="/ProfilePage"><button className="px-6 py-2 mt-4 text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">View / Edit Profile</button></Link>
                 </div>
             </div>
             <div className="px-8 py-6 text-left w-3/5 bg-white shadow-lg m-auto">
@@ -96,7 +96,7 @@ export default function HomePage() {
                     proident, sunt in culpa qui officia deserunt.
                 </div>
                 <div className="flex flex-row space-x-10 justify-center">
-                  <button className="px-6 py-2 mt-4 text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Go to Fuel Quote Form</button>
+                  <Link href="/QuoteForm"><button className="px-6 py-2 mt-4 text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Go to Fuel Quote Form</button></Link>
                 </div>
             </div>
           </div>

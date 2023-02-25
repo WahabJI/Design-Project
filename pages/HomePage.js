@@ -27,8 +27,8 @@ export default function HomePage() {
                 <div className="mt-4">
                   <div>Click one of the <div className="text-light_blue inline-block">buttons</div> below to continue</div>
                   <div className="flex items-baseline space-x-8">
-                      <button className="px-6 py-2 mt-4 text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Login</button>
-                      <button className="px-6 py-2 mt-4 text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Register</button>
+                      <Link href="/LoginPage"><button className="px-6 py-2 mt-4 text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Login</button></Link>
+                      <Link href="RegisterPage"><button className="px-6 py-2 mt-4 text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Register</button></Link>
                   </div>  
                 </div>  
           </div>
