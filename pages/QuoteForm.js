@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 // need to fix sticky navbar and footer (make not sticky)
 import Link from 'next/link';
 import Footer from '../components/Footer'
@@ -20,7 +18,7 @@ export default function fuel_quote_form() {
                     <Link href="/QuoteHistory"><span>HISTORY</span></Link>
                 </li>
                 <li className="flex mr-4 items-center">
-                <Link href="/ProfilePage"><span>PROFILE</span></Link>
+                    <Link href="/ProfilePage"><span>PROFILE</span></Link>
                 </li>
                 <li className="flex mr-4 items-center">
                     <Link href="/HomePage"><span>LOGOUT</span></Link>

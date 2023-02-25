@@ -27,8 +27,8 @@ export default function HomePage() {
                 <div className="mt-4">
                   <div>Click one of the <div className="text-light_blue inline-block">buttons</div> below to continue</div>
                   <div className="flex items-baseline space-x-8">
-                      <button className="px-6 py-2 mt-4 text-black bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Login</button>
-                      <button className="px-6 py-2 mt-4 text-black bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Register</button>
+                      <button className="px-6 py-2 mt-4 text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Login</button>
+                      <button className="px-6 py-2 mt-4 text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Register</button>
                   </div>  
                 </div>  
           </div>
@@ -39,7 +39,8 @@ export default function HomePage() {
                         ut labore et dolore magna aliqua. Ut enim ad minim quis nostrud exercitation <div className="text-light_blue inline-block">ullamco</div> laboris 
                         nisi ut aliquip ex ea commodo consequat. Duis aute <div className="text-light_blue inline-block">irure</div> dolor in reprehenderit in voluptate 
                         velit <div className="text-light_blue inline-block">esse</div> dolore eu fugiat nulla pariatur. Excepteur sint occaecat <div className="text-light_blue inline-block">cupidatat</div> non 
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </div>
                 </div>  
           </div>
         </div>
