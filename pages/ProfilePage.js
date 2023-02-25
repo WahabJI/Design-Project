@@ -1,4 +1,6 @@
-export default function fuel_quote_form() {
+import Link from 'next/link';
+import Footer from '../components/Footer'
+export default function profile_page() {
     return (
         <div className="flex flex-col h-screen justify-between">
             <header>
@@ -8,18 +10,18 @@ export default function fuel_quote_form() {
                         FUEL QUOTER
                     </div>
                     <ul className="ml-auto left-0 right-0 top-full inline-flex">
-                        <li className="flex mr-4 items-center">
-                            <span>HOME</span>
-                        </li>
-                        <li className="flex mr-4 items-center">
-                            <span>QUOTE</span>
-                        </li>
-                        <li className="flex mr-4 items-center">
-                            <span>HISTORY</span>
-                        </li>
-                        <li className="flex mr-4 items-center">
-                            <span>LOGOUT</span>
-                        </li>
+                    <li className="flex mr-4 items-center">
+                    <Link href="/"><span>HOME</span></Link>
+                    </li>
+                    <li className="flex mr-4 items-center">
+                    <Link href="/QuoteForm"><span>QUOTE</span></Link>
+                    </li>
+                    <li className="flex mr-4 items-center">
+                    <Link href="/QuoteHistory"><span>HISTORY</span></Link>
+                    </li>
+                    <li className="flex mr-4 items-center">
+                    <Link href="/"><span>LOGOUT</span></Link>
+                    </li>
                     </ul>
                 </nav>
             </header>
@@ -77,9 +79,7 @@ export default function fuel_quote_form() {
 
 
             {/* FOOTER */}
-            <footer className="justify-center text-center align-center h-10 w-full bg-white border-t-2 border-dark_grey pt-1.5">
-                <span><span className="text-light_blue">Created by </span> Mayssam Kalajo, Grace Rabano, Christian Ayala, and Wahab Javed</span>
-            </footer>
+            <Footer />
 
         </div>
 

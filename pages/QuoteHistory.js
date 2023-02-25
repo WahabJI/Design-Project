@@ -1,4 +1,6 @@
 // need to fix sticky navbar and footer (make not sticky)
+import Link from 'next/link';
+import Footer from '../components/Footer'
 export default function quote_history() {
     return (
         <div className="flex flex-col h-screen justify-between">
@@ -10,16 +12,16 @@ export default function quote_history() {
             </div>
             <ul className="ml-auto left-0 right-0 top-full inline-flex">
                 <li className="flex mr-4 items-center">
-                <span>HOME</span>
+                <Link href="/"><span>HOME</span></Link>
                 </li>
                 <li className="flex mr-4 items-center">
-                <span>HISTORY</span>
+                <Link href="/QuoteForm"><span>QUOTE</span></Link>
                 </li>
                 <li className="flex mr-4 items-center">
-                <span>PROFILE</span>
+                <Link href="/ProfilePage"><span>PROFILE</span></Link>
                 </li>
                 <li className="flex mr-4 items-center">
-                <span>LOGOUT</span>
+                <Link href="/"><span>LOGOUT</span></Link>
                 </li>
             </ul>
             </nav>
@@ -231,9 +233,7 @@ export default function quote_history() {
 
         {/* FOOTER */}
         {/* add conditional button stuff later */}
-        <footer className="justify-center text-center align-center h-10 w-full bg-white border-t-2 border-dark_grey pt-1.5">
-          <span><span className="text-light_blue">Created by </span> Mayssam Kalajo, Grace Rabano, Christian Ayala, and Wahab Javed</span>
-        </footer>
+        <Footer />
 
       </div>
       
