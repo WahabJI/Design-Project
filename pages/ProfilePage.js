@@ -35,23 +35,23 @@ export default function profile_page() {
                         <div className="mt-3">
                             <div>
                                 <label className="block" for="First Name">First Name</label>
-                                <input minLength="40" type="text" placeholder="First Name" className="w-full px-5 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" requried/>
+                                <input minLength="40" type="text" placeholder="First Name" maxLength="50" required className="w-full px-5 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" requried/>
                             </div>
                             <div className="mt-3">
                                 <label className="block">Last Name</label>
-                                <input minLength="40" type="text" placeholder="Last Name" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
+                                <input minLength="40" type="text" placeholder="Last Name" maxLength="50" required className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
                             </div>
                             <div className="mt-3">
                                 <label className="block">Address 1</label>
-                                <input minLength="100" type="text" placeholder="Address 1" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 required" required/>
+                                <input minLength="100" type="text" placeholder="Address 1" maxLength="100" required className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 required" required/>
                             </div>
                             <div className="mt-3">
                                 <label className="block">Address 2 (optional)</label>
-                                <input minLength="100" type="text" placeholder="Address 2" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
+                                <input minLength="100" type="text" placeholder="Address 2" maxLength="100" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
                             </div>
                             <div className="mt-3">
                                 <label className="block">City</label>
-                                <input minLength="100" type="text" placeholder="City" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
+                                <input minLength="100" type="text" placeholder="City" maxLength="100" required className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
                             </div>
                             <div className="mt-3">
                                 <label className="block">State</label>
@@ -59,7 +59,7 @@ export default function profile_page() {
                             </div>
                             <div className="mt-3">
                                 <label className="block">Zip Code</label>
-                                <input minLength="5" maxLength="9" type="text" placeholder="Zip Code" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
+                                <input type="text" placeholder="Zip Code" minLength="5" maxLength="9" required className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
                             </div>
 
 
