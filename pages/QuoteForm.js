@@ -36,7 +36,7 @@ export default function fuel_quote_form() {
                     <div className="mt-4">
                     <div>
                         <label className="block" for="Gallons">Gallons Requesting</label>
-                        <input type="text" placeholder="Gallons" className="w-full px-5 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"/>
+                        <input type="number" placeholder="Gallons" required className="w-full px-5 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"/>
                     </div>
                     <div className="mt-4">
                         <label className="block">Address 1</label>
@@ -67,7 +67,7 @@ export default function fuel_quote_form() {
                         <label className="block">Price/Gallon</label>
                         <div className= "flex">
                             <span class="inline-flex items-center px-4 py-2 mt-1 border rounded-l-md focus:outline-none focus:ring-1 focus:ring-blue-600"> $ </span>
-                            <input type="text" placeholder="0.00" className="w-full px-4 py-2 mt-1 border rounded-r-md  focus:outline-none focus:ring-1 focus:ring-blue-600" disabled/>
+                            <input type="number" placeholder="0.00" className="w-full px-4 py-2 mt-1 border rounded-r-md  focus:outline-none focus:ring-1 focus:ring-blue-600" disabled/>
                         </div>                  
                     </div>
                     <div className= "mt-3">
@@ -75,7 +75,7 @@ export default function fuel_quote_form() {
                         <div className= "flex">
                             <span class="inline-flex items-center px-4 py-2 mt-1 border border-r-none rounded-l-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                                 $ </span>
-                            <input type="text" placeholder="0.00" className="w-full px-4 py-2 mt-1 border rounded-r-md  focus:outline-none focus:ring-1 focus:ring-blue-600" disabled/>
+                            <input type="number" placeholder="0.00" className="w-full px-4 py-2 mt-1 border rounded-r-md  focus:outline-none focus:ring-1 focus:ring-blue-600" disabled/>
                         </div>
                     </div>
 
