@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Footer from '../components/Footer'
+import {HandleSignOut} from '../components/SignOut'
 
 export default function HomePage() {
     return (
@@ -20,7 +21,7 @@ export default function HomePage() {
               <Link href="/ProfilePage"><span>PROFILE</span></Link>
             </li>
             <li className="flex mr-4 items-center">
-              <Link href="/HomePage"><span>LOGOUT</span></Link>
+              <button onClick={HandleSignOut}>LOGOUT</button>
             </li>
           </ul>
         </nav>
