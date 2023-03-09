@@ -12,6 +12,7 @@
     "@next/font": "13.1.6",
     "devextreme": "^22.2.4",
     "devextreme-react": "^22.2.4",
+    "formik": "^2.2.9",
     "jquery": "^3.6.3",
     "next": "^13.1.6",
     "next-auth": "^4.20.1",
