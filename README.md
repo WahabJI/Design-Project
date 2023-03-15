@@ -18,6 +18,14 @@ yarn dev
 pnpm dev
 ```
 
+To test the code you can use the following commands:
+
+```bash
+npm test
+# or
+npm test -- --coverage
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 Figma Design: https://www.figma.com/file/BQEd4BGkhqg7g0CLiNRufx/Fuel-Quote-Website?node-id=5%3A141&t=zVJFQCWofTf1NA3H-0
