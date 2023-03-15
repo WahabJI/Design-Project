@@ -1,3 +1,4 @@
+import React from 'react';
 import Link from 'next/link';
 import Footer from '../components/Footer'
 import { useSession, signIn, signOut } from 'next-auth/react'
@@ -61,7 +62,7 @@ export default function login_page() {
                 <div className="mt-4">
 
                   <div>
-                    <label className="block" for="email">Email</label>
+                    <label className="block" htmlFor="email">Email</label>
                     <input id="email" name="email" type="text" placeholder="Email" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" {...formik.getFieldProps('email')}/>
                   </div>
 
