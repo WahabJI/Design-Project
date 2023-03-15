@@ -63,11 +63,11 @@ export default function login_page() {
 
                   <div>
                     <label className="block" htmlFor="email">Email</label>
-                    <input id="email" name="email" type="text" placeholder="Email" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" {...formik.getFieldProps('email')}/>
+                    <input id="email" name="email" type="text" placeholder="Email Address" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" {...formik.getFieldProps('email')}/>
                   </div>
 
                   <div className="mt-4">
-                      <label className="block">Password</label>
+                      <label className="block" htmlFor="password">Password</label>
                       <input id="password" name="password" type="password" placeholder="Password" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" {...formik.getFieldProps('password')}/>
                   </div>
 
