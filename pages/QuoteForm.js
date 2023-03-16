@@ -80,7 +80,7 @@ export default function fuel_quote_form() {
                             </div>
                         </div>
 
-                        {/* rightt */}
+                        {/* right */}
                         <div className="w-full p-8 lg:w-2/5">
                             <div className="py-2">
                                 <label className="block   font-bold">Gallons Requesting</label>
