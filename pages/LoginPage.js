@@ -27,10 +27,10 @@ export default function login_page() {
         callbackUrl: 'http://localhost:3000'
       })
 
-      if(status.ok){
+      if(status && status.ok){
         router.push(status.url)
       }
-      if(!status.ok){
+      else{
         alert("Invalid email or password")
       }
       console.log(values)

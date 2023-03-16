@@ -1,11 +1,16 @@
 // Import required packages and modules
 import React from 'react';
 import LoginPage from './LoginPage.js';
-import { render, screen, fireEvent, act } from '@testing-library/react';
-
+import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/router";
 // Mock the router
-jest.mock('next/router', () => require('next-router-mock'));
-
+jest.mock('next/router', () => ({
+    useRouter: jest.fn()
+  }));
+jest.mock("next-auth/react", () => ({
+    signIn: jest.fn(),
+  }));
 // Create test case using describe and it statements
 describe('LoginPage', () => {
     //test to check if the login page renders correctly
@@ -28,5 +33,41 @@ describe('LoginPage', () => {
 
     expect(emailInput.value).toBe('wahab.javed@live.com');
     expect(passwordInput.value).toBe('password');
-});
+    });
+    // testing google sign in?
+    it("calls signIn with the correct parameters when the Google sign-in button is clicked", () => {
+        const { getByText } = render(<LoginPage />);
+    
+        fireEvent.click(getByText("Sign in with Google"));
+    
+        expect(signIn).toHaveBeenCalledWith("google", {
+          callbackUrl: "http://localhost:3000",
+        });
+      });
+
+      it("calls signIn with the correct parameters when the form is submitted with valid credentials", async () => {
+        const { getByLabelText, getByText } = render(<LoginPage />);
+    
+        fireEvent.change(getByLabelText("Email"), {
+          target: { value: "wahab.javed@live.com" },
+        });
+        fireEvent.change(getByLabelText("Password"), {
+          target: { value: "password" },
+        });
+        fireEvent.click(getByText("Login"));
+    
+        await waitFor(() => expect(signIn).toHaveBeenCalledWith("credentials", {
+          email: "wahab.javed@live.com",
+          password: "password",
+          callbackUrl: "http://localhost:3000",
+        }));
+
+        const mockRouter = {
+            push: jest.fn() // the component uses `router.push` only
+        }
+        console.log(mockRouter.push);
+        expect(mockRouter.push).toHaveBeenCalledWith("Http://localhost:3000");
+      });
+
+      
 });
