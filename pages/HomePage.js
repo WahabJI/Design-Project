@@ -1,23 +1,31 @@
 import Link from 'next/link';
 import Footer from '../components/Footer'
+import localFont from '@next/font/local'
+
+const barlow = localFont({
+  src: "../public/fonts/Barlow-Regular.ttf",
+  weight: '200'
+})
 
 export default function HomePage() {
     return (
-      <div className="bg-grey">
+      <div className={barlow.className}>
         {/* TOP BAR */}
-        <nav className="flex absolute w-full items-center font-bold text-4xl text-beige bg-light_blue h-14">
-          <div className="ml-4">
-            FUEL QUOTER
-          </div>
-          <ul className="ml-auto left-0 right-0 top-full inline-flex">
-            <li className="flex mr-4 items-center">
-               <Link href="/LoginPage"><span>LOGIN</span></Link>
-            </li>
-            <li className="flex mr-4 items-center">
-                <Link href="/RegisterPage"><span>REGISTER</span></Link>
-            </li>
-          </ul>
-        </nav>
+        <header>
+          <nav className="flex absolute w-full items-center font-bold text-4xl text-beige bg-light_blue h-14">
+            <div className="ml-4">
+              FUEL QUOTER
+            </div>
+            <ul className="ml-auto left-0 right-0 top-full inline-flex">
+              <li className="flex mr-4 items-center">
+                <Link href="/LoginPage"><span>LOGIN</span></Link>
+              </li>
+              <li className="flex mr-4 items-center">
+                  <Link href="/RegisterPage"><span>REGISTER</span></Link>
+              </li>
+            </ul>
+          </nav>
+        </header>
 
 
         {/* LOGIN FORM */}

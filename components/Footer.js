@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import React from 'react';
 import PropTypes from 'prop-types';
-import localFont from '@next/font/local';
+import localFont from '@next/font/local'
 
 const barlow = localFont({
   src: "../public/fonts/Barlow-Regular.ttf",
-  weight: '400'
+  weight: '200'
 })
 
 export default function Nav_bar(props){
@@ -15,7 +15,7 @@ export default function Nav_bar(props){
           <span><span className="text-light_blue">Created by </span> Mayssam Kalajo, Grace Rabano, Christian Ayala, and Wahab Javed</span>
         </div>
       </div>
-        );
+    );
 
     
 

@@ -1,9 +1,16 @@
 import Link from 'next/link';
 import Footer from '../components/Footer'
+import localFont from '@next/font/local'
+
+const barlow = localFont({
+  src: "../public/fonts/Barlow-Regular.ttf",
+  weight: '200'
+})
 
 export default function login_page() {
     return (
-      <div className="bg-grey">
+      <div className={barlow.className}>
+        <div className="flex flex-col min-h-screen bg-gray-100">
         {/* TOP BAR */}
         <nav className="flex absolute w-full items-center font-bold text-4xl text-beige bg-light_blue h-14">
           <div className="ml-4">
@@ -21,7 +28,7 @@ export default function login_page() {
 
 
         {/* LOGIN FORM */}
-        <div className="flex h-screen bg-gray-100">
+        <div className="flex min-h-screen">
           <div className="px-8 py-6 text-left bg-white shadow-lg m-auto">
             <h3 className="text-2xl font-bold text-center">Login to your account</h3>
             <form action="">
@@ -46,13 +53,14 @@ export default function login_page() {
     
               </form>    
           </div>
+          </div>
         </div>
-
 
         {/* FOOTER */}
         <Footer/>
 
       </div>
+
       
 
 

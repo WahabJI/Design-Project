@@ -1,9 +1,15 @@
 import Link from 'next/link';
 import Footer from '../components/Footer'
+import localFont from '@next/font/local'
+
+const barlow = localFont({
+  src: "../public/fonts/Barlow-Regular.ttf",
+  weight: '200'
+})
 
 export default function HomePage() {
     return (
-      <div className="bg-grey">
+      <div className={barlow.className}>
         {/* TOP BAR */}
         <nav className="flex absolute w-full items-center font-bold text-4xl text-beige bg-light_blue h-14">
           <div className="ml-4">
@@ -66,8 +72,9 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+
           <div className="flex flex-row">
-            <div className="pl-8 py-6 text-left w-1/4 bg-white shadow-lg m-auto">
+            <div className="pl-8 py-6 text-left w-1/4 bg-white shadow-lg mx-auto">
               <h3 className="text-2xl font-bold">PROFILE OVERVIEW</h3>
                 <div className="mt-4 flex flex-row space-x-12">
                   <div className="text-light_blue">Name:</div>
@@ -83,10 +90,11 @@ export default function HomePage() {
                 <div className="flex flex-row space-x-10">
                   <div className="text-black inline-block pl-24">Houston, TX, 77034</div>
                 </div>
-                <div className="flex flex-row justify-center">
+                <div className="flex-grow flex justify-center items-center">
                   <Link href="/ProfilePage"><button className="px-6 py-2 mt-4 text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">View / Edit Profile</button></Link>
                 </div>
             </div>
+
             <div className="px-8 py-6 text-left w-3/5 bg-white shadow-lg m-auto">
               <h3 className="text-2xl font-bold">WHAT IS THE FUEL QUOTER?</h3>
                 <div className="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <div className="text-light_blue inline-block">eiusmod</div> tempor incididunt 
