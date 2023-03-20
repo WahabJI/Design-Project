@@ -1,9 +1,17 @@
 // need to fix sticky navbar and footer (make not sticky)
 import Link from 'next/link';
 import Footer from '../components/Footer'
+import localFont from '@next/font/local'
+
+const barlow = localFont({
+    src: "../public/fonts/Barlow-Regular.ttf",
+    weight: '200'
+})
+
 export default function quote_history() {
     return (
-        <div className="flex flex-col h-screen justify-between">
+        <div className={barlow.className}>
+        <div className= "flex flex-col h-screen justify-between">
         <header>
             {/* TOP BAR */}
             <nav className="flex w-full items-center font-bold text-4xl text-beige bg-light_blue h-14">
@@ -33,7 +41,7 @@ export default function quote_history() {
             <div className="px-4 py-6 bg-white shadow-lg mx-auto my-auto sm:rounded-sm">
                 <h3 className="text-2xl font-bold text-center">Fuel Quote History</h3>
                 
-                <div className="relative overflow-x-auto shadow-md sm:rounded-sm mt-6">
+                <div className="relative overflow-x-auto mt-6 px-4">
                 <table className="table-auto w-full text-sm text-left">
                     <thead className="text-xs text-gray-700 uppercase bg-dark_grey">
                         <tr>
@@ -235,6 +243,7 @@ export default function quote_history() {
         {/* add conditional button stuff later */}
         <Footer />
 
+      </div>
       </div>
       
 

@@ -1,9 +1,15 @@
 import Link from 'next/link';
 import Footer from '../components/Footer'
+import localFont from '@next/font/local'
+
+const barlow = localFont({
+    src: "../public/fonts/Barlow-Regular.ttf",
+    weight: '200'
+})
 
 export default function register_page() {
     return (
-      <div className="bg-grey">
+      <div className={barlow.className}>
         {/* TOP BAR */}
         <nav className="flex absolute w-full items-center font-bold text-4xl text-beige bg-light_blue h-14">
           <div className="ml-4">
