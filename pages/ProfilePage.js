@@ -1,8 +1,16 @@
 import Link from 'next/link';
 import Footer from '../components/Footer'
+import localFont from '@next/font/local'
+
+const barlow = localFont({
+    src: "../public/fonts/Barlow-Regular.ttf",
+    weight: '200'
+})
+
 export default function profile_page() {
     return (
-        <div className="flex flex-col h-screen justify-between">
+        <div className={barlow.className}>
+        <div className="flex flex-col min-h-screen justify-between">
             <header>
                 {/* TOP BAR */}
                 <nav className="flex w-full items-center font-bold text-4xl text-beige bg-light_blue h-14">
@@ -35,15 +43,15 @@ export default function profile_page() {
                         <div className="mt-3">
                             <div>
                                 <label className="block" for="First Name">First Name</label>
-                                <input minLength="40" type="text" placeholder="First Name" maxLength="50" required className="w-full px-5 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" requried/>
+                                <input minLength="40" type="text" placeholder="First Name" maxLength="50"  className="w-full px-5 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" requried/>
                             </div>
                             <div className="mt-3">
                                 <label className="block">Last Name</label>
-                                <input minLength="40" type="text" placeholder="Last Name" maxLength="50" required className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                                <input minLength="40" type="text" placeholder="Last Name" maxLength="50"  className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
                             </div>
                             <div className="mt-3">
                                 <label className="block">Address 1</label>
-                                <input minLength="100" type="text" placeholder="Address 1" maxLength="100" required className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 required" />
+                                <input minLength="100" type="text" placeholder="Address 1" maxLength="100"  className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 required" required/>
                             </div>
                             <div className="mt-3">
                                 <label className="block">Address 2 (optional)</label>
@@ -51,7 +59,7 @@ export default function profile_page() {
                             </div>
                             <div className="mt-3">
                                 <label className="block">City</label>
-                                <input minLength="100" type="text" placeholder="City" maxLength="100" required className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                                <input minLength="100" type="text" placeholder="City" maxLength="100" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
                             </div>
                             <div className="mt-3">
                                 <label className="block">State</label>
@@ -59,7 +67,7 @@ export default function profile_page() {
                             </div>
                             <div className="mt-3">
                                 <label className="block">Zip Code</label>
-                                <input type="text" placeholder="Zip Code" minLength="5" maxLength="9" required className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                                <input type="text" placeholder="Zip Code" minLength="5" maxLength="9" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
                             </div>
 
 
@@ -82,7 +90,7 @@ export default function profile_page() {
             <Footer />
 
         </div>
-
+        </div>
 
 
     );

@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
@@ -9,6 +11,11 @@ module.exports = {
 
   ],
   theme: {
+    //  WHY WONT THIS WORK
+    // fontFamily: {
+    //   barlow: ['Barlow', 'sans-serif'],
+    // },
+
     extend: {
       colors: {
         'light_blue':'#3CBAB2',
@@ -21,8 +28,7 @@ module.exports = {
         'blue': '#0000FF',
         'dark_grey': '#DEDEDE',
       },
-    },
-    fontFamily: {},
+    }
   },
   plugins: [],
 }
