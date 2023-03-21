@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Footer from '../components/Footer'
 import {HandleSignOut} from '../components/SignOut'
-import localFont from '@next/font/local'
+import localFont from "next/font/local"
 
 const barlow = localFont({
   src: "../public/fonts/Barlow-Regular.ttf",

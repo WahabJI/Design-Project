@@ -4,6 +4,14 @@ import LoginPage from './LoginPage.js';
 import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
+//mock next/font/local
+jest.mock('next/font/local', () => ({
+  __esModule: true,
+  default: jest.fn(() => 'mocked font'),
+  localFont: jest.fn(() => 'mocked font')
+}));
+
+
 // Mock the router
 jest.mock('next/router', () => ({
     useRouter: jest.fn()

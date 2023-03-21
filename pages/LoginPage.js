@@ -5,7 +5,7 @@ import { useSession, signIn, signOut } from 'next-auth/react'
 import { redirect } from 'next/dist/server/api-utils';
 import { useRouter } from 'next/router';
 import {useFormik} from 'formik';
-import localFont from '@next/font/local'
+import localFont from "next/font/local"
 
 const barlow = localFont({
   src: "../public/fonts/Barlow-Regular.ttf",
@@ -33,7 +33,7 @@ export default function login_page() {
         callbackUrl: 'http://localhost:3000'
       })
 
-      if(status && status.ok){
+      if(status.ok){
         router.push(status.url)
       }
       else{
@@ -100,7 +100,7 @@ export default function login_page() {
                   Sign in with Google
                 </button>
               </div> 
-                
+
             </div>
           </div>
         </div>

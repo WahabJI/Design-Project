@@ -17,12 +17,12 @@ export default NextAuth({
 
         //check if user exists, this will be possible if we fetch the email/password object from the database and compare to what we have within the credentials object.
         //this would be something like result = user from database where email = credentials.email
-        let result = {
-          email: "wahab.javed@live.com",
-          password: "password"
+        
+        const result = {
+          email: 'test@test.com',
+          password: 'test'
         }
         //check if password and email are correct
-
         if (credentials.email != result.email || credentials.password != result.password) {
           throw new Error('Invalid email or password')
         }
