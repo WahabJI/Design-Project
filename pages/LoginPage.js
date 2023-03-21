@@ -30,7 +30,7 @@ export default function login_page() {
       const status = await signIn('credentials', {
         email: values.email,
         password: values.password,
-        callbackUrl: 'http://localhost:3000'
+        callbackUrl: '/'
       })
 
       if(status.ok){
@@ -39,7 +39,6 @@ export default function login_page() {
       else{
         alert("Invalid email or password")
       }
-      console.log(values)
     }
 
     return (
@@ -109,9 +108,5 @@ export default function login_page() {
         <Footer/>
 
       </div>
-
-      
-
-
     );
   }

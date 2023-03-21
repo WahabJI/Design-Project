@@ -10,25 +10,23 @@ jest.mock('next/font/local', () => ({
   default: jest.fn(() => 'mocked font'),
   localFont: jest.fn(() => 'mocked font')
 }));
-
-
 // Mock the router
 jest.mock('next/router', () => ({
     useRouter: jest.fn()
   }));
 jest.mock("next-auth/react", () => ({
-    signIn: jest.fn(),
+    signIn: jest.fn()
   }));
 // Create test case using describe and it statements
 describe('LoginPage', () => {
     //test to check if the login page renders correctly
     it('should render correctly', () => {
-        render(<LoginPage />)
+      render(<LoginPage/>);
     });
 
     //test to check whether the input fields take input properly
     it('should take input correctly', () => {
-    render(<LoginPage />);
+    render(<LoginPage/>);
     const emailInput = screen.getAllByPlaceholderText('Email Address')[0];
     const passwordInput = screen.getAllByPlaceholderText('Password')[0];
     expect(emailInput.value).toBe('');
@@ -57,25 +55,19 @@ describe('LoginPage', () => {
         const { getByLabelText, getByText } = render(<LoginPage />);
     
         fireEvent.change(getByLabelText("Email"), {
-          target: { value: "wahab.javed@live.com" },
+          target: { value: "test@test.com" },
         });
         fireEvent.change(getByLabelText("Password"), {
-          target: { value: "password" },
+          target: { value: "test" },
         });
         fireEvent.click(getByText("Login"));
     
         await waitFor(() => expect(signIn).toHaveBeenCalledWith("credentials", {
-          email: "wahab.javed@live.com",
-          password: "password",
-          callbackUrl: "http://localhost:3000",
+          email: "test@test.com",
+          password: "test",
+          callbackUrl: "/",
         }));
 
-        const mockRouter = {
-            push: jest.fn() // the component uses `router.push` only
-        }
-        console.log(mockRouter.push);
-        expect(mockRouter.push).toHaveBeenCalledWith("Http://localhost:3000");
       });
-
       
 });
