@@ -11,7 +11,7 @@ export default function HomePage() {
     return (
       <div className={barlow.className}>
         {/* TOP BAR */}
-        <header>
+        <header >
           <nav className="flex absolute w-full items-center font-bold text-4xl text-beige bg-light_blue h-14">
             <div className="ml-4">
               FUEL QUOTER
