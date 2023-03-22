@@ -40,6 +40,7 @@ describe('LoginPage', () => {
     expect(emailInput.value).toBe('wahab.javed@live.com');
     expect(passwordInput.value).toBe('password');
     });
+    
     // testing google sign in?
     it("calls signIn with the correct parameters when the Google sign-in button is clicked", () => {
         const { getByText } = render(<LoginPage />);

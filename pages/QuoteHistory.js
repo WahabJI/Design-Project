@@ -239,8 +239,8 @@ export default function quote_history() {
                                 $280.00
                             </td>
                         </tr>
-                            {quoteHistory.map((quote, index) => (
-                                <tr key="index" className="bg-white border-b border-dark_grey">
+                            {quoteHistory.map((quote, ) => (
+                                <tr className="bg-white border-b border-dark_grey">
                                 <td className="border px-4 py-2">{quote.date}</td>
                                 <td className="border px-4 py-2">{quote.gallons}</td>
                                 <td className="border px-4 py-2">{quote.pricePerGallon}</td>
