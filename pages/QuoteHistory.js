@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import Footer from '../components/Footer'
 import localFont from "next/font/local"
+import {useState, useEffect} from 'react'
 
 const barlow = localFont({
     src: "../public/fonts/Barlow-Regular.ttf",
@@ -9,6 +10,16 @@ const barlow = localFont({
 })
 
 export default function quote_history() {
+    const [quoteHistory, setQuoteHistory] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/api/getQuoteHistory')
+        .then(res => res.json())
+        .then(data => {
+            setQuoteHistory(data);
+        })
+    }, [])
+
     return (
         <div className={barlow.className}>
         <div className= "flex flex-col h-screen justify-between">
@@ -228,6 +239,14 @@ export default function quote_history() {
                                 $280.00
                             </td>
                         </tr>
+                            {quoteHistory.map((quote, index) => (
+                                <tr key="index" className="bg-white border-b border-dark_grey">
+                                <td className="border px-4 py-2">{quote.date}</td>
+                                <td className="border px-4 py-2">{quote.gallons}</td>
+                                <td className="border px-4 py-2">{quote.pricePerGallon}</td>
+                                <td className="border px-4 py-2">{quote.totalCost}</td>
+                                </tr>
+                            ))}
                     </tbody>
                 </table>
                 </div>
