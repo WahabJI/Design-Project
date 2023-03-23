@@ -14,20 +14,20 @@ export default function profile_page() {
             <header>
                 {/* TOP BAR */}
                 <nav className="flex w-full items-center font-bold text-4xl text-beige bg-light_blue h-14">
-                    <div className="ml-4">
+                    <div className="ml-6">
                         FUEL QUOTER
                     </div>
                     <ul className="ml-auto left-0 right-0 top-full inline-flex">
-                    <li className="flex mr-4 items-center">
+                    <li className="flex mr-6 items-center">
                     <Link href="/LoggedInHomePage"><span>HOME</span></Link>
                     </li>
-                    <li className="flex mr-4 items-center">
+                    <li className="flex mr-6 items-center">
                     <Link href="/QuoteForm"><span>QUOTE</span></Link>
                     </li>
-                    <li className="flex mr-4 items-center">
+                    <li className="flex mr-6 items-center">
                     <Link href="/QuoteHistory"><span>HISTORY</span></Link>
                     </li>
-                    <li className="flex mr-4 items-center">
+                    <li className="flex mr-6 items-center">
                     <Link href="/"><span>LOGOUT</span></Link>
                     </li>
                     </ul>
@@ -43,7 +43,7 @@ export default function profile_page() {
                         <div className="mt-3">
                             <div>
                                 <label className="block" for="First Name">First Name</label>
-                                <input minLength="40" type="text" placeholder="First Name" maxLength="50"  className="w-full px-5 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" requried/>
+                                <input minLength="40" type="text" placeholder="First Name" maxLength="50"  className="w-full px-5 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
                             </div>
                             <div className="mt-3">
                                 <label className="block">Last Name</label>

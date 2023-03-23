@@ -22,20 +22,20 @@ export default function HomePage() {
       <div className={barlow.className}>
         {/* TOP BAR */}
         <nav className="flex absolute w-full items-center font-bold text-4xl text-beige bg-light_blue h-14">
-          <div className="ml-4">
+          <div className="ml-6">
             FUEL QUOTER
           </div>
           <ul className="ml-auto left-0 right-0 top-full inline-flex">
-            <li className="flex mr-4 items-center">
+            <li className="flex mr-6 items-center">
               <Link href="/QuoteForm"><span>QUOTE</span></Link>
             </li>
-            <li className="flex mr-4 items-center">
+            <li className="flex mr-6 items-center">
               <Link href="/QuoteHistory"><span>HISTORY</span></Link>
             </li>
-            <li className="flex mr-4 items-center">
+            <li className="flex mr-6 items-center">
               <Link href="/ProfilePage"><span>PROFILE</span></Link>
             </li>
-            <li className="flex mr-4 items-center">
+            <li className="flex mr-6 items-center">
               <button onClick={HandleSignOut}>LOGOUT</button>
             </li>
           </ul>

@@ -32,16 +32,16 @@ export default function quote_history() {
                 FUEL QUOTER
             </div>
             <ul className="ml-auto left-0 right-0 top-full inline-flex">
-                <li className="flex mr-4 items-center">
+                <li className="flex mr-6 items-center">
                     <Link href="/LoggedInHomePage"><span>HOME</span></Link>
                 </li>
-                <li className="flex mr-4 items-center">
+                <li className="flex mr-6 items-center">
                 <Link href="/QuoteForm"><span>QUOTE</span></Link>
                 </li>
-                <li className="flex mr-4 items-center">
+                <li className="flex mr-6 items-center">
                 <Link href="/ProfilePage"><span>PROFILE</span></Link>
                 </li>
-                <li className="flex mr-4 items-center">
+                <li className="flex mr-6 items-center">
                     <Link href="/HomePage"><span>LOGOUT</span></Link>
                 </li>
             </ul>
@@ -55,8 +55,8 @@ export default function quote_history() {
                 <h3 className="text-2xl font-bold text-center">Fuel Quote History</h3>
                 
                 <div className="relative max-w-5xl overflow-x-auto mt-6 px-4">
-                <table className="table-auto w-full text-sm text-center">
-                    <thead className="text-xs uppercase bg-dark_grey">
+                <table className="table-auto w-full text-center">
+                    <thead className="text uppercase bg-dark_grey">
                         <tr className='border border-dark_grey'>
                             <th scope="col" className=" px-4 py-2">
                                 Delivery Date
