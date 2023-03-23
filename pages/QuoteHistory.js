@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Footer from '../components/Footer'
 import localFont from "next/font/local"
 import {useState, useEffect} from 'react'
-
+import React from 'react';
 const barlow = localFont({
     src: "../public/fonts/Barlow-Regular.ttf",
     weight: '200'

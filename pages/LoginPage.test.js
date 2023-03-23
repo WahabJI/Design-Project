@@ -20,12 +20,13 @@ jest.mock("next-auth/react", () => ({
 // Create test case using describe and it statements
 describe('LoginPage', () => {
     //test to check if the login page renders correctly
-    it('should render correctly', () => {
+    it('should render correctly', async () => {
       render(<LoginPage/>);
+      await waitFor(() => screen.getByText('Login to your account'));
     });
 
     //test to check whether the input fields take input properly
-    it('should take input correctly', () => {
+    it('should take input correctly', async () => {
     render(<LoginPage/>);
     const emailInput = screen.getAllByPlaceholderText('Email Address')[0];
     const passwordInput = screen.getAllByPlaceholderText('Password')[0];
@@ -36,11 +37,10 @@ describe('LoginPage', () => {
         fireEvent.change(emailInput, { target: { value: 'wahab.javed@live.com' } });
         fireEvent.change(passwordInput, { target: { value: 'password' } });
     });
-
-    expect(emailInput.value).toBe('wahab.javed@live.com');
-    expect(passwordInput.value).toBe('password');
+    await waitFor(() =>{expect(emailInput.value).toBe('wahab.javed@live.com')});
+    await waitFor(() =>{expect(passwordInput.value).toBe('password')});
     });
-    
+
     // testing google sign in?
     it("calls signIn with the correct parameters when the Google sign-in button is clicked", () => {
         const { getByText } = render(<LoginPage />);
@@ -54,7 +54,7 @@ describe('LoginPage', () => {
 
       it("calls signIn with the correct parameters when the form is submitted with valid credentials", async () => {
         const { getByLabelText, getByText } = render(<LoginPage />);
-    
+
         fireEvent.change(getByLabelText("Email"), {
           target: { value: "test@test.com" },
         });
@@ -63,12 +63,12 @@ describe('LoginPage', () => {
         });
         fireEvent.click(getByText("Login"));
     
-        await waitFor(() => expect(signIn).toHaveBeenCalledWith("credentials", {
+        await waitFor(() => {
+          expect(signIn).toHaveBeenCalledWith("credentials", {
           email: "test@test.com",
           password: "test",
           callbackUrl: "/",
-        }));
-
+        });
+        })
       });
-      
 });

@@ -1287,9 +1287,14 @@
   "resolved" "https://registry.npmjs.org/@next/env/-/env-13.2.4.tgz"
   "version" "13.2.4"
 
-"@next/swc-win32-x64-msvc@13.2.4":
-  "integrity" "sha512-0MffFmyv7tBLlji01qc0IaPP/LVExzvj7/R5x1Jph1bTAIj4Vu81yFQWHHQAP6r4ff9Ukj1mBK6MDNVXm7Tcvw=="
-  "resolved" "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-13.2.4.tgz"
+"@next/swc-linux-x64-gnu@13.2.4":
+  "integrity" "sha512-Ngxh51zGSlYJ4EfpKG4LI6WfquulNdtmHg1yuOYlaAr33KyPJp4HeN/tivBnAHcZkoNy0hh/SbwDyCnz5PFJQQ=="
+  "resolved" "https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-13.2.4.tgz"
+  "version" "13.2.4"
+
+"@next/swc-linux-x64-musl@13.2.4":
+  "integrity" "sha512-gOvwIYoSxd+j14LOcvJr+ekd9fwYT1RyMAHOp7znA10+l40wkFiMONPLWiZuHxfRk+Dy7YdNdDh3ImumvL6VwA=="
+  "resolved" "https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-13.2.4.tgz"
   "version" "13.2.4"
 
 "@nodelib/fs.scandir@2.1.5":
@@ -1337,9 +1342,14 @@
   dependencies:
     "@sinonjs/commons" "^2.0.0"
 
-"@swc/core-win32-x64-msvc@1.3.41":
-  "integrity" "sha512-Mfp8qD1hNwWWRy0ISdwQJu1g0UYoVTtuQlO0z3aGbXqL51ew9e56+8j3M1U9i95lXFyWkARgjDCcKkQi+WezyA=="
-  "resolved" "https://registry.npmjs.org/@swc/core-win32-x64-msvc/-/core-win32-x64-msvc-1.3.41.tgz"
+"@swc/core-linux-x64-gnu@1.3.41":
+  "integrity" "sha512-h4sv1sCfZQgRIwmykz8WPqVpbvHb13Qm3SsrbOudhAp2MuzpWzsgMP5hAEpdCP/nWreiCz3aoM6L8JeakRDq0g=="
+  "resolved" "https://registry.npmjs.org/@swc/core-linux-x64-gnu/-/core-linux-x64-gnu-1.3.41.tgz"
+  "version" "1.3.41"
+
+"@swc/core-linux-x64-musl@1.3.41":
+  "integrity" "sha512-Z7c26i38378d0NT/dcz8qPSAXm41lqhNzykdhKhI+95mA9m4pskP18T/0I45rmyx1ywifypu+Ip+SXmKeVSPgQ=="
+  "resolved" "https://registry.npmjs.org/@swc/core-linux-x64-musl/-/core-linux-x64-musl-1.3.41.tgz"
   "version" "1.3.41"
 
 "@swc/core@*", "@swc/core@^1.0.46", "@swc/core@^1.3.41":
@@ -2037,6 +2047,13 @@
   "integrity" "sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ=="
   "resolved" "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.3.tgz"
   "version" "1.0.3"
+
+"cross-fetch@^3.0.4":
+  "integrity" "sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw=="
+  "resolved" "https://registry.npmjs.org/cross-fetch/-/cross-fetch-3.1.5.tgz"
+  "version" "3.1.5"
+  dependencies:
+    "node-fetch" "2.6.7"
 
 "cross-spawn@^7.0.3":
   "integrity" "sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w=="
@@ -3103,6 +3120,14 @@
     "jest-mock" "^29.5.0"
     "jest-util" "^29.5.0"
 
+"jest-fetch-mock@^3.0.3":
+  "integrity" "sha512-Ux1nWprtLrdrH4XwE7O7InRY6psIi3GOsqNESJgMJ+M5cv4A8Lh7SN9d2V2kKRZ8ebAfcd1LNyZguAOb6JiDqw=="
+  "resolved" "https://registry.npmjs.org/jest-fetch-mock/-/jest-fetch-mock-3.0.3.tgz"
+  "version" "3.0.3"
+  dependencies:
+    "cross-fetch" "^3.0.4"
+    "promise-polyfill" "^8.1.3"
+
 "jest-get-type@^29.4.3":
   "integrity" "sha512-J5Xez4nRRMjk8emnTpWrlkyb9pfRQQanDrvWHhsR1+VUfbwxi30eVcZFlcdGInRibU4G5LwHXpI7IRHU0CY+gg=="
   "resolved" "https://registry.npmjs.org/jest-get-type/-/jest-get-type-29.4.3.tgz"
@@ -3658,6 +3683,13 @@
     "@next/swc-win32-ia32-msvc" "13.2.4"
     "@next/swc-win32-x64-msvc" "13.2.4"
 
+"node-fetch@2.6.7":
+  "integrity" "sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ=="
+  "resolved" "https://registry.npmjs.org/node-fetch/-/node-fetch-2.6.7.tgz"
+  "version" "2.6.7"
+  dependencies:
+    "whatwg-url" "^5.0.0"
+
 "node-int64@^0.4.0":
   "integrity" "sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw=="
   "resolved" "https://registry.npmjs.org/node-int64/-/node-int64-0.4.0.tgz"
@@ -3995,6 +4027,11 @@
   "integrity" "sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag=="
   "resolved" "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz"
   "version" "2.0.1"
+
+"promise-polyfill@^8.1.3":
+  "integrity" "sha512-H5oELycFml5yto/atYqmjyigJoAo3+OXwolYiH7OfQuYlAqhxNvTfiNMbV9hsC6Yp83yE5r2KTVmtrG6R9i6Pg=="
+  "resolved" "https://registry.npmjs.org/promise-polyfill/-/promise-polyfill-8.3.0.tgz"
+  "version" "8.3.0"
 
 "prompts@^2.0.1":
   "integrity" "sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q=="
@@ -4533,6 +4570,11 @@
   dependencies:
     "punycode" "^2.1.1"
 
+"tr46@~0.0.3":
+  "integrity" "sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw=="
+  "resolved" "https://registry.npmjs.org/tr46/-/tr46-0.0.3.tgz"
+  "version" "0.0.3"
+
 "tslib@^1.10.0":
   "integrity" "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
   "resolved" "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
@@ -4654,6 +4696,11 @@
   dependencies:
     "makeerror" "1.0.12"
 
+"webidl-conversions@^3.0.0":
+  "integrity" "sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ=="
+  "resolved" "https://registry.npmjs.org/webidl-conversions/-/webidl-conversions-3.0.1.tgz"
+  "version" "3.0.1"
+
 "webidl-conversions@^7.0.0":
   "integrity" "sha512-VwddBukDzu71offAQR975unBIGqfKZpM+8ZX6ySk8nYhVoo5CYaZyzt3YBvYtRtO+aoGlqxPg/B87NGVZ/fu6g=="
   "resolved" "https://registry.npmjs.org/webidl-conversions/-/webidl-conversions-7.0.0.tgz"
@@ -4678,6 +4725,14 @@
   dependencies:
     "tr46" "^3.0.0"
     "webidl-conversions" "^7.0.0"
+
+"whatwg-url@^5.0.0":
+  "integrity" "sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw=="
+  "resolved" "https://registry.npmjs.org/whatwg-url/-/whatwg-url-5.0.0.tgz"
+  "version" "5.0.0"
+  dependencies:
+    "tr46" "~0.0.3"
+    "webidl-conversions" "^3.0.0"
 
 "which-boxed-primitive@^1.0.2":
   "integrity" "sha512-bwZdv0AKLpplFY2KZRX6TvyuN7ojjr7lwkg6ml0roIy9YeuSr7JS372qlNW18UQYzgYK9ziGcerWqZOmEn9VNg=="
