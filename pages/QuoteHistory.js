@@ -50,7 +50,7 @@ export default function quote_history() {
 
 
         {/* QUOTE FORM */}
-        <main className="flex h-screen overflow-y-auto bg-gray-100">
+        <main className="flex-grow flex justify-center py-10 bg-gray-100">
             <div className="px-4 py-6 bg-white max-w-[80%] shadow-lg mx-auto my-auto sm:rounded-sm">
                 <h3 className="text-2xl font-bold text-center">Fuel Quote History</h3>
                 
@@ -114,6 +114,7 @@ export default function quote_history() {
 
         {/* FOOTER */}
         {/* add conditional button stuff later */}
+        
         <Footer />
 
       </div>

@@ -20,6 +20,7 @@ export default function HomePage() {
     }, [])
     return (
       <div className={barlow.className}>
+        <div className= "flex flex-col h-screen justify-between bg-gray-100">
         {/* TOP BAR */}
         <nav className="flex absolute w-full items-center font-bold text-4xl text-beige bg-light_blue h-14">
           <div className="ml-6">
@@ -124,6 +125,7 @@ export default function HomePage() {
         {/* FOOTER */}
         <Footer/>
 
+      </div>
       </div>
     );
   }

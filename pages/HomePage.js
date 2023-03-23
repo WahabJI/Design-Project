@@ -10,6 +10,7 @@ const barlow = localFont({
 export default function HomePage() {
     return (
       <div className={barlow.className}>
+        <div className= "flex flex-col h-screen justify-between bg-gray-100">
         {/* TOP BAR */}
         <header >
           <nav className="flex absolute w-full items-center font-bold text-4xl text-beige bg-light_blue h-14">
@@ -29,7 +30,7 @@ export default function HomePage() {
 
 
         {/* LOGIN FORM */}
-        <div className="flex flex-col py-16 justify-between h-screen bg-gray-100">
+        <div className="flex flex-col py-16 justify-between bg-gray-100">
           <div className="px-8 py-6 text-left w-5/6 bg-white shadow-lg m-auto">
             <h3 className="text-2xl font-bold">WELCOME!</h3>
                 <div className="mt-4">
@@ -57,6 +58,7 @@ export default function HomePage() {
         {/* FOOTER */}
         <Footer/>
 
+      </div>
       </div>
     );
   }
