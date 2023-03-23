@@ -15,14 +15,14 @@ export default function HomePage() {
         fetch('http://localhost:3000/api/getQuoteHistory')
         .then(res => res.json())
         .then(data => {
-            setQuoteHistory(data[data.length - 1]);
+            setQuoteHistory(data[0]);
         })
     }, [])
     return (
       <div className={barlow.className}>
         <div className= "flex flex-col h-screen justify-between bg-gray-100">
         {/* TOP BAR */}
-        <nav className="flex absolute w-full items-center font-bold text-4xl text-beige bg-light_blue h-14">
+        <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-14">
           <div className="ml-6">
             FUEL QUOTER
           </div>

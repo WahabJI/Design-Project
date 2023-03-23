@@ -13,7 +13,7 @@ export default function profile_page() {
         <div className= "flex flex-col h-screen justify-between bg-gray-100">
             <header>
                 {/* TOP BAR */}
-                <nav className="flex w-full items-center font-bold text-4xl text-beige bg-light_blue h-14">
+                <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-14">
                     <div className="ml-6">
                         FUEL QUOTER
                     </div>

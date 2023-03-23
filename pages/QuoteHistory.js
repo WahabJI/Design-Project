@@ -24,11 +24,11 @@ export default function quote_history() {
 
     return (
         <div className={barlow.className}>
-        <div className= "flex flex-col h-screen justify-between">
+        <div className= "flex flex-col min-h-screen justify-between">
         <header>
             {/* TOP BAR */}
-            <nav className="flex w-full items-center font-bold text-4xl text-beige bg-light_blue h-14">
-            <div className="ml-4">
+            <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-14">
+            <div className="ml-6">
                 FUEL QUOTER
             </div>
             <ul className="ml-auto left-0 right-0 top-full inline-flex">

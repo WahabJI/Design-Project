@@ -10,10 +10,10 @@ const barlow = localFont({
 export default function HomePage() {
     return (
       <div className={barlow.className}>
-        <div className= "flex flex-col h-screen justify-between bg-gray-100">
+        <div className= "flex flex-col min-h-screen justify-between bg-gray-100">
         {/* TOP BAR */}
         <header >
-          <nav className="flex absolute w-full items-center font-bold text-4xl text-beige bg-light_blue h-14">
+          <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-14">
             <div className="ml-6">
               FUEL QUOTER
             </div>

@@ -11,7 +11,7 @@ const barlow = localFont({
 export default function Nav_bar(){
     return (
       <div className={barlow.className}>
-        <div className="justify-center text-center align-center h-10 w-full bg-white border-t-2 border-dark_grey pt-1.5">
+        <div className="relative justify-center text-center align-center h-10 w-full bg-white border-t-2 shadow-md border-dark_grey pt-1.5">
           <span><span className="text-light_blue">Created by </span> Mayssam Kalajo, Grace Rabano, Christian Ayala, and Wahab Javed</span>
         </div>
       </div>
