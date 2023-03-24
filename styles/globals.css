@@ -9,10 +9,17 @@
 } */
 
 ::-webkit-scrollbar{
-    width:10px;
-    height:10px;
+    width:12px;
+}
+
+::-webkit-scrollbar-track{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.4); 
 }
 
 ::-webkit-scrollbar-thumb{
     background-color: rgba(60,186,178, 55%);
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 3px gray-100; 
+    
 }

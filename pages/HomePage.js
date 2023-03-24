@@ -10,17 +10,18 @@ const barlow = localFont({
 export default function HomePage() {
     return (
       <div className={barlow.className}>
+        <div className= "flex flex-col min-h-screen justify-between bg-gray-100">
         {/* TOP BAR */}
-        <header>
-          <nav className="flex absolute w-full items-center font-bold text-4xl text-beige bg-light_blue h-14">
-            <div className="ml-4">
+        <header >
+          <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-14">
+            <div className="ml-6">
               FUEL QUOTER
             </div>
             <ul className="ml-auto left-0 right-0 top-full inline-flex">
-              <li className="flex mr-4 items-center">
+              <li className="flex mr-6 items-center">
                 <Link href="/LoginPage"><span>LOGIN</span></Link>
               </li>
-              <li className="flex mr-4 items-center">
+              <li className="flex mr-6 items-center">
                   <Link href="/RegisterPage"><span>REGISTER</span></Link>
               </li>
             </ul>
@@ -29,8 +30,8 @@ export default function HomePage() {
 
 
         {/* LOGIN FORM */}
-        <div className="flex flex-col py-16 justify-between h-screen bg-gray-100">
-          <div className="px-8 py-6 text-left w-5/6 bg-white shadow-lg m-auto">
+        <div className="flex flex-col py-16 justify-between bg-gray-100">
+          <div className="px-8 py-6 text-left w-5/6 bg-white shadow-lg m-auto mb-16">
             <h3 className="text-2xl font-bold">WELCOME!</h3>
                 <div className="mt-4">
                   <div>Click one of the <div className="text-light_blue inline-block">buttons</div> below to continue</div>
@@ -57,6 +58,7 @@ export default function HomePage() {
         {/* FOOTER */}
         <Footer/>
 
+      </div>
       </div>
     );
   }

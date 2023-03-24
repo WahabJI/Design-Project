@@ -2,31 +2,41 @@ import Link from 'next/link';
 import Footer from '../components/Footer'
 import {HandleSignOut} from '../components/SignOut'
 import localFont from "next/font/local"
-
+import {useState, useEffect} from 'react'
 const barlow = localFont({
   src: "../public/fonts/Barlow-Regular.ttf",
   weight: '200'
 })
 
 export default function HomePage() {
+      const [quoteHistory, setQuoteHistory] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/api/getQuoteHistory')
+        .then(res => res.json())
+        .then(data => {
+            setQuoteHistory(data[0]);
+        })
+    }, [])
     return (
       <div className={barlow.className}>
+        <div className= "flex flex-col h-screen justify-between bg-gray-100">
         {/* TOP BAR */}
-        <nav className="flex absolute w-full items-center font-bold text-4xl text-beige bg-light_blue h-14">
-          <div className="ml-4">
+        <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-14">
+          <div className="ml-6">
             FUEL QUOTER
           </div>
           <ul className="ml-auto left-0 right-0 top-full inline-flex">
-            <li className="flex mr-4 items-center">
+            <li className="flex mr-6 items-center">
               <Link href="/QuoteForm"><span>QUOTE</span></Link>
             </li>
-            <li className="flex mr-4 items-center">
+            <li className="flex mr-6 items-center">
               <Link href="/QuoteHistory"><span>HISTORY</span></Link>
             </li>
-            <li className="flex mr-4 items-center">
+            <li className="flex mr-6 items-center">
               <Link href="/ProfilePage"><span>PROFILE</span></Link>
             </li>
-            <li className="flex mr-4 items-center">
+            <li className="flex mr-6 items-center">
               <button onClick={HandleSignOut}>LOGOUT</button>
             </li>
           </ul>
@@ -41,31 +51,31 @@ export default function HomePage() {
               <div>
                 <div className="mt-4 flex flex-row space-x-4">
                     <div className="text-light_blue">Gallons Requested:</div>
-                    <div className="text-black inline-block">50</div>
+                    <div className="text-black inline-block">{quoteHistory.gallons}</div>
                   </div>
                   <div className="flex flex-row space-x-14">
                     <div className="text-light_blue">Amount Paid:</div>
-                    <div className="text-black inline-block">$2,945.00</div>
+                    <div className="text-black inline-block">{quoteHistory.totalCost}</div>
                   </div>
                   <div className="flex flex-row space-x-10">
                     <div className="text-light_blue">Date Delivered:</div>
-                    <div className="text-black inline-block">February 16, 2023</div>
+                    <div className="text-black inline-block">{quoteHistory.date}</div>
                   </div>
               </div>
               <div className="pl-24 pr-10">
                 <div className="mt-4 flex flex-row space-x-4">
                   <div className="text-light_blue">Price / Gallon:</div>
-                  <div className="text-black inline-block">$0.25</div>
+                  <div className="text-black inline-block">{quoteHistory.pricePerGallon}</div>
                 </div>
                 <div className="flex flex-row space-x-8">
                   <div className="text-light_blue">Address:</div>
-                  <div className="text-black inline-block px-5">5098 Jacksonville Rd</div>
+                  <div className="text-black inline-block px-5">{quoteHistory.address_1}</div>
                 </div>
                 <div className="flex flex-row space-x-10">
-                  <div className="text-black inline-block px-28">Apartment 1960</div>
+                  <div className="text-black inline-block px-28">{quoteHistory.address_2}</div>
                 </div>
                 <div className="flex flex-row space-x-10">
-                  <div className="text-black inline-block px-28">Houston, TX, 77034</div>
+                  <div className="text-black inline-block px-28">{quoteHistory.city + ", " + quoteHistory.state + ", " + quoteHistory.zipCode}</div>
                 </div>
               </div>
               <div className>
@@ -115,6 +125,7 @@ export default function HomePage() {
         {/* FOOTER */}
         <Footer/>
 
+      </div>
       </div>
     );
   }
