@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Footer from '../components/Footer'
 import localFont from "next/font/local"
+import {useState, useEffect} from 'react'
 
 const barlow = localFont({
     src: "../public/fonts/Barlow-Regular.ttf",
@@ -8,6 +9,16 @@ const barlow = localFont({
 })
 
 export default function profile_page() {
+    const [profilePage, setProfilePage] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/api/getProfilePage')
+        .then(res => res.json())
+        .then(data => {
+            setProfilePage(data);
+        })
+    }, [])
+
     return (
         <div className={barlow.className}>
         <div className= "flex flex-col h-screen justify-between bg-gray-100">
@@ -43,31 +54,31 @@ export default function profile_page() {
                         <div className="mt-3">
                             <div>
                                 <label className="block" for="First Name">First Name</label>
-                                <input minLength="40" type="text" placeholder="First Name" maxLength="50"  className="w-full px-5 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
+                                <input minLength="40" type="text" value={profilePage.firstName} placeholder="First Name" maxLength="50"  className="w-full px-5 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
                             </div>
                             <div className="mt-3">
                                 <label className="block">Last Name</label>
-                                <input minLength="40" type="text" placeholder="Last Name" maxLength="50"  className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
+                                <input minLength="40" type="text" value={profilePage.lastName} placeholder="Last Name" maxLength="50"  className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
                             </div>
                             <div className="mt-3">
                                 <label className="block">Address 1</label>
-                                <input minLength="100" type="text" placeholder="Address 1" maxLength="100"  className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 required" required/>
+                                <input minLength="100" type="text" value={profilePage.address1} placeholder="Address 1" maxLength="100"  className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 required" required/>
                             </div>
                             <div className="mt-3">
                                 <label className="block">Address 2 (optional)</label>
-                                <input minLength="100" type="text" placeholder="Address 2" maxLength="100" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
+                                <input minLength="100" type="text" value={profilePage.address2} placeholder="Address 2" maxLength="100" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
                             </div>
                             <div className="mt-3">
                                 <label className="block">City</label>
-                                <input minLength="100" type="text" placeholder="City" maxLength="100" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
+                                <input minLength="100" type="text" value={profilePage.city} placeholder="City" maxLength="100" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
                             </div>
                             <div className="mt-3">
                                 <label className="block">State</label>
-                                <input type="text" placeholder="State" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
+                                <input type="text" placeholder="State" value={profilePage.state} className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
                             </div>
                             <div className="mt-3">
                                 <label className="block">Zip Code</label>
-                                <input type="text" placeholder="Zip Code" minLength="5" maxLength="9" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
+                                <input type="text" placeholder="Zip Code" minLength="5" maxLength="9" value={profilePage.zipCode} className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
                             </div>
 
 
