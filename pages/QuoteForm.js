@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import Footer from '../components/Footer'
 import localFont from "next/font/local"
+import {useState , useEffect} from 'react'
 
 const barlow = localFont({
     src: "../public/fonts/Barlow-Regular.ttf",
@@ -9,6 +10,16 @@ const barlow = localFont({
 })
   
 export default function fuel_quote_form() {
+    const [userData, setUserData] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:3000/api/getProfilePage', {
+            method: "GET"
+            })
+            .then(res => res.json())
+            .then(data => {
+                setUserData(data);
+            })
+    }, [])
     return (
         <div className={barlow.className}>
         <div className="flex flex-col min-h-screen bg-gray-100">
@@ -52,25 +63,25 @@ export default function fuel_quote_form() {
                             
                             <div>
                                 <label className="block font-bold">Address 1</label>
-                                <input disabled type="text" placeholder="Address from Profile" className="w-full px-4 py-2 mt-1 border rounded-md" />
+                                <input disabled type="text" value={userData.address1} placeholder="Address 1" className="w-full px-4 py-2 mt-1 border rounded-md" />
                             </div>
                             <div className="mt-4">
                                 <label className="block font-bold mt-4">Address 2</label>
-                                <input disabled type="text" placeholder="Address from Profile" className="w-full px-4 py-2 mt-1 border rounded-md" />
+                                <input disabled type="text" value={userData.address2} placeholder="Address 2 (optional)" className="w-full px-4 py-2 mt-1 border rounded-md" />
                             </div>
                             <div className="mt-4">
                                 <div className="flex flex-col sm:flex-row">
                                     <div className="relative flex-initial sm:w-1/2">
                                         <label className="block font-bold">City</label>
-                                        <input disabled type="text" placeholder="City" name="billing-address" className="w-full px-4 py-2 mt-1 border rounded-md" />
+                                        <input disabled type="text" value={userData.city} placeholder="City" name="billing-address" className="w-full px-4 py-2 mt-1 border rounded-md" />
                                     </div>
                                     <div className="relative flex-initial sm:w-1/4 mx-1">
                                         <label className="block font-bold">State</label>
-                                        <input disabled type="text" placeholder="State" name="billing-state" className="w-full px-4 py-2 mt-1 border rounded-md"/>
+                                        <input disabled type="text" value={userData.state} placeholder="State" name="billing-state" className="w-full px-4 py-2 mt-1 border rounded-md"/>
                                     </div>
                                     <div className="relative flex-initial sm:w-1/4">
                                         <label className="block font-bold ">Zip</label>
-                                        <input disabled type="text" placeholder="ZIP" name="billing-zip" className="w-full px-4 py-2 mt-1 border rounded-md" />
+                                        <input disabled type="text" value={userData.zipCode} placeholder="ZIP" name="billing-zip" className="w-full px-4 py-2 mt-1 border rounded-md" />
                                     </div>
                                 </div>
                                 <span className="text-sm mt-1 justify-center"> 
@@ -83,7 +94,7 @@ export default function fuel_quote_form() {
                         <div className="w-full px-4 lg:w-2/5">
                             <div className='mb-4'>
                                 <label className="block font-bold">Gallons Requesting</label>
-                                <input type="text" placeholder="0.00" className="w-full px-4 py-2 mt-1 border rounded-md" />
+                                <input type="text" placeholder="0.00" className="w-full px-4 py-2 mt-1 border rounded-md" required/>
                             </div>
                             <button className="block w-1/2 py-2 mt-4 mx-auto text-light_blue border border-light_blue rounded-lg hover:outline-double">
                                 Get Quote
