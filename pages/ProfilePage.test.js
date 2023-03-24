@@ -1,5 +1,5 @@
 import ProfilePage from "./ProfilePage.js";
-import { fireEvent, render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, act, screen, fireEvent, waitFor } from '@testing-library/react';
 import React from 'react';
 import fetchMock from "jest-fetch-mock";
 
@@ -49,13 +49,15 @@ describe('ProfilePage', () => {
 
 
         //simulate typing in the input for all onChange functions
-        fireEvent.change(firstNameInput, { target: { value: 'Joe' } });
-        fireEvent.change(lastNameInput, { target: { value: 'Shmoe' } });
-        fireEvent.change(address1Input, { target: { value: '5098 Jacksonville Rd' } });
-        fireEvent.change(address2Input, { target: { value: 'Apartment 1960' } });
-        fireEvent.change(cityInput, { target: { value: 'Houston' } });
-        fireEvent.change(stateInput, { target: { value: 'TX' } });
-        fireEvent.change(zipInput, { target: { value: '77034' } });
+        act(() => {
+            fireEvent.change(firstNameInput, { target: { value: 'Joe' } });
+            fireEvent.change(lastNameInput, { target: { value: 'Shmoe' } });
+            fireEvent.change(address1Input, { target: { value: '5098 Jacksonville Rd' } });
+            fireEvent.change(address2Input, { target: { value: 'Apartment 1960' } });
+            fireEvent.change(cityInput, { target: { value: 'Houston' } });
+            fireEvent.change(stateInput, { target: { value: 'TX' } });
+            fireEvent.change(zipInput, { target: { value: '77034' } });
+        });
 
         //expect the values to be changed with what we said above
         await waitFor(() => expect(firstNameInput.value).toBe('Joe'));
@@ -86,10 +88,11 @@ describe('ProfilePage', () => {
             firstName: "Joe", lastName: "Shmoe", address1: "5098 Jacksonville Rd",
             address2: "Apartment 1960", city: "Houston", state: "TX", zipCode: "77034"
         }));
+
         const onClickButton = jest.fn();
         render(<button onClick={onClickButton} />);
-        const button = screen.getByRole("button");
-        fireEvent.click(button);
+        const updateButton = screen.getByTestId('update-button');
+        fireEvent.click(updateButton);
         expect(onClickButton).toHaveBeenCalled();
     })
 })
