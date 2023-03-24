@@ -31,7 +31,7 @@ export default function HomePage() {
 
         {/* LOGIN FORM */}
         <div className="flex flex-col py-16 justify-between bg-gray-100">
-          <div className="px-8 py-6 text-left w-5/6 bg-white shadow-lg m-auto">
+          <div className="px-8 py-6 text-left w-5/6 bg-white shadow-lg m-auto mb-16">
             <h3 className="text-2xl font-bold">WELCOME!</h3>
                 <div className="mt-4">
                   <div>Click one of the <div className="text-light_blue inline-block">buttons</div> below to continue</div>
