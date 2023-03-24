@@ -53,7 +53,7 @@ export default function profile_page() {
                     <form action="">
                         <div className="mt-3">
                             <div>
-                                <label className="block" for="First Name">First Name</label>
+                                <label className="block" htmlFor="First Name">First Name</label>
                                 <input minLength="40" type="text" value={profilePage.firstName} placeholder="First Name" maxLength="50"  className="w-full px-5 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
                             </div>
                             <div className="mt-3">
@@ -82,7 +82,7 @@ export default function profile_page() {
                             </div>
 
 
-                            <div class="md:flex items-center justify-center mt-6 mx-auto">
+                            <div className="md:flex items-center justify-center mt-6 mx-auto">
                                 <button className="block w-1/2 py-2 mt-4 mx-auto text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Update</button>
                             </div>
 
