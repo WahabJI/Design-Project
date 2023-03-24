@@ -85,8 +85,7 @@ export default function profile_page() {
                         </ul>
                     </nav>
                 </header>
-
-
+                
                 {/* QUOTE FORM */}
                 <main className="flex-grow flex justify-center py-10 bg-gray-100">
                     <div className="flex-initial w-96  px-8 py-6 bg-white shadow-lg mx-auto my-auto">
@@ -123,21 +122,13 @@ export default function profile_page() {
                                     <input type="text" placeholder="Zip Code" minLength="5" maxLength="9" value={zip} className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" onChange={(e) => setZip(e.target.value)} required />
                                 </div>
 
-
                                 <div className="md:flex items-center justify-center mt-6 mx-auto">
                                     <button type="submit" className="block w-1/2 py-2 mt-4 mx-auto text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Update</button>
                                 </div>
-
-
-
-
                             </div>
-
-
                         </form>
                     </div>
                 </main>
-
 
                 {/* FOOTER */}
                 <Footer />
