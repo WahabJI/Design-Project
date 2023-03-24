@@ -45,7 +45,7 @@ describe('ProfilePage', () => {
 })
 
 describe('ProfilePage', () => {
-    it('should render correctly', async () => {
+    it('handleSubmit should work properly', async () => {
         fetch.mockResponseOnce(JSON.stringify({
             firstName: "Joe", lastName: "Shmoe", address1: "5098 Jacksonville Rd",
             address2: "Apartment 1960", city: "Houston", state: "TX", zipCode: "77034"
