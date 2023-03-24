@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Footer from '../components/Footer'
 import localFont from "next/font/local"
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 
 const barlow = localFont({
     src: "../public/fonts/Barlow-Regular.ttf",
@@ -12,95 +12,97 @@ export default function profile_page() {
     const [profilePage, setProfilePage] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/getProfilePage')
-        .then(res => res.json())
-        .then(data => {
-            setProfilePage(data);
+        fetch('http://localhost:3000/api/getProfilePage', {
+            method: "GET"
         })
+            .then(res => res.json())
+            .then(data => {
+                setProfilePage(data);
+            })
     }, [])
 
     return (
         <div className={barlow.className}>
-        <div className= "flex flex-col h-screen justify-between bg-gray-100">
-            <header>
-                {/* TOP BAR */}
-                <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-14">
-                    <div className="ml-6">
-                        FUEL QUOTER
-                    </div>
-                    <ul className="ml-auto left-0 right-0 top-full inline-flex">
-                    <li className="flex mr-6 items-center">
-                    <Link href="/LoggedInHomePage"><span>HOME</span></Link>
-                    </li>
-                    <li className="flex mr-6 items-center">
-                    <Link href="/QuoteForm"><span>QUOTE</span></Link>
-                    </li>
-                    <li className="flex mr-6 items-center">
-                    <Link href="/QuoteHistory"><span>HISTORY</span></Link>
-                    </li>
-                    <li className="flex mr-6 items-center">
-                    <Link href="/"><span>LOGOUT</span></Link>
-                    </li>
-                    </ul>
-                </nav>
-            </header>
-
-
-            {/* QUOTE FORM */}
-            <main className="flex-grow flex justify-center py-10 bg-gray-100">
-                <div className="flex-initial w-96  px-8 py-6 bg-white shadow-lg mx-auto my-auto">
-                    <h3 className="text-2xl font-bold text-center">Profile</h3>
-                    <form action="">
-                        <div className="mt-3">
-                            <div>
-                                <label className="block" htmlFor="First Name">First Name</label>
-                                <input minLength="40" type="text" value={profilePage.firstName} placeholder="First Name" maxLength="50"  className="w-full px-5 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
-                            </div>
-                            <div className="mt-3">
-                                <label className="block">Last Name</label>
-                                <input minLength="40" type="text" value={profilePage.lastName} placeholder="Last Name" maxLength="50"  className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
-                            </div>
-                            <div className="mt-3">
-                                <label className="block">Address 1</label>
-                                <input minLength="100" type="text" value={profilePage.address1} placeholder="Address 1" maxLength="100"  className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 required" required/>
-                            </div>
-                            <div className="mt-3">
-                                <label className="block">Address 2 (optional)</label>
-                                <input minLength="100" type="text" value={profilePage.address2} placeholder="Address 2" maxLength="100" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
-                            </div>
-                            <div className="mt-3">
-                                <label className="block">City</label>
-                                <input minLength="100" type="text" value={profilePage.city} placeholder="City" maxLength="100" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
-                            </div>
-                            <div className="mt-3">
-                                <label className="block">State</label>
-                                <input type="text" placeholder="State" value={profilePage.state} className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
-                            </div>
-                            <div className="mt-3">
-                                <label className="block">Zip Code</label>
-                                <input type="text" placeholder="Zip Code" minLength="5" maxLength="9" value={profilePage.zipCode} className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required/>
-                            </div>
-
-
-                            <div className="md:flex items-center justify-center mt-6 mx-auto">
-                                <button className="block w-1/2 py-2 mt-4 mx-auto text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Update</button>
-                            </div>
-
-
-
-
+            <div className="flex flex-col h-screen justify-between bg-gray-100">
+                <header>
+                    {/* TOP BAR */}
+                    <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-14">
+                        <div className="ml-6">
+                            FUEL QUOTER
                         </div>
+                        <ul className="ml-auto left-0 right-0 top-full inline-flex">
+                            <li className="flex mr-6 items-center">
+                                <Link href="/LoggedInHomePage"><span>HOME</span></Link>
+                            </li>
+                            <li className="flex mr-6 items-center">
+                                <Link href="/QuoteForm"><span>QUOTE</span></Link>
+                            </li>
+                            <li className="flex mr-6 items-center">
+                                <Link href="/QuoteHistory"><span>HISTORY</span></Link>
+                            </li>
+                            <li className="flex mr-6 items-center">
+                                <Link href="/"><span>LOGOUT</span></Link>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
 
 
-                    </form>
-                </div>
-            </main>
+                {/* QUOTE FORM */}
+                <main className="flex-grow flex justify-center py-10 bg-gray-100">
+                    <div className="flex-initial w-96  px-8 py-6 bg-white shadow-lg mx-auto my-auto">
+                        <h3 className="text-2xl font-bold text-center">Profile</h3>
+                        <form action="">
+                            <div className="mt-3">
+                                <div>
+                                    <label className="block" htmlFor="First Name">First Name</label>
+                                    <input minLength="40" type="text" value={profilePage.firstName} placeholder="First Name" maxLength="50" className="w-full px-5 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required />
+                                </div>
+                                <div className="mt-3">
+                                    <label className="block">Last Name</label>
+                                    <input minLength="40" type="text" value={profilePage.lastName} placeholder="Last Name" maxLength="50" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required />
+                                </div>
+                                <div className="mt-3">
+                                    <label className="block">Address 1</label>
+                                    <input minLength="100" type="text" value={profilePage.address1} placeholder="Address 1" maxLength="100" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 required" required />
+                                </div>
+                                <div className="mt-3">
+                                    <label className="block">Address 2 (optional)</label>
+                                    <input minLength="100" type="text" value={profilePage.address2} placeholder="Address 2" maxLength="100" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required />
+                                </div>
+                                <div className="mt-3">
+                                    <label className="block">City</label>
+                                    <input minLength="100" type="text" value={profilePage.city} placeholder="City" maxLength="100" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required />
+                                </div>
+                                <div className="mt-3">
+                                    <label className="block">State</label>
+                                    <input type="text" placeholder="State" value={profilePage.state} className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required />
+                                </div>
+                                <div className="mt-3">
+                                    <label className="block">Zip Code</label>
+                                    <input type="text" placeholder="Zip Code" minLength="5" maxLength="9" value={profilePage.zipCode} className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" required />
+                                </div>
 
 
-            {/* FOOTER */}
-            <Footer />
+                                <div className="md:flex items-center justify-center mt-6 mx-auto">
+                                    <button className="block w-1/2 py-2 mt-4 mx-auto text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Update</button>
+                                </div>
 
-        </div>
+
+
+
+                            </div>
+
+
+                        </form>
+                    </div>
+                </main>
+
+
+                {/* FOOTER */}
+                <Footer />
+
+            </div>
         </div>
 
 
