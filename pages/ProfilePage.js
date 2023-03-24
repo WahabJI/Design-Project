@@ -85,7 +85,7 @@ export default function profile_page() {
 
 
                                 <div className="md:flex items-center justify-center mt-6 mx-auto">
-                                    <button className="block w-1/2 py-2 mt-4 mx-auto text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Update</button>
+                                    <button type="submit" onSubmit={handleSubmit} className="block w-1/2 py-2 mt-4 mx-auto text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Update</button>
                                 </div>
 
 
