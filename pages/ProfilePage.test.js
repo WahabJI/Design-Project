@@ -1,8 +1,9 @@
 import ProfilePage from "./ProfilePage.js";
-import { fireEvent, getByPlaceholderText, render, screen, waitFor } from '@testing-library/react';
+import { getByPlaceholderText, render, act, screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import fetchMock from "jest-fetch-mock";
+
 fetchMock.enableMocks();
 beforeEach(() => {
     fetch.resetMocks();
@@ -51,13 +52,15 @@ describe('ProfilePage', () => {
 
 
         //simulate typing in the input for all onChange functions
-        fireEvent.change(firstNameInput, { target: { value: 'Joe' } });
-        fireEvent.change(lastNameInput, { target: { value: 'Shmoe' } });
-        fireEvent.change(address1Input, { target: { value: '5098 Jacksonville Rd' } });
-        fireEvent.change(address2Input, { target: { value: 'Apartment 1960' } });
-        fireEvent.change(cityInput, { target: { value: 'Houston' } });
-        fireEvent.change(stateInput, { target: { value: 'TX' } });
-        fireEvent.change(zipInput, { target: { value: '77034' } });
+        act(() => {
+            fireEvent.change(firstNameInput, { target: { value: 'Joe' } });
+            fireEvent.change(lastNameInput, { target: { value: 'Shmoe' } });
+            fireEvent.change(address1Input, { target: { value: '5098 Jacksonville Rd' } });
+            fireEvent.change(address2Input, { target: { value: 'Apartment 1960' } });
+            fireEvent.change(cityInput, { target: { value: 'Houston' } });
+            fireEvent.change(stateInput, { target: { value: 'TX' } });
+            fireEvent.change(zipInput, { target: { value: '77034' } });
+        });
 
         //expect the values to be changed with what we said above
         await waitFor(() => expect(firstNameInput.value).toBe('Joe'));
@@ -68,5 +71,16 @@ describe('ProfilePage', () => {
         await waitFor(() => expect(stateInput.value).toBe('TX'));
         await waitFor(() => expect(zipInput.value).toBe('77034'));
 
+    })
+})
+
+describe('ProfilePage', () => {
+    it('should render correctly', async () => {
+        fetch.mockResponseOnce(JSON.stringify({
+            firstName: "Joe", lastName: "Shmoe", address1: "5098 Jacksonville Rd",
+            address2: "Apartment 1960", city: "Houston", state: "TX", zipCode: "77034"
+        }));
+        render(<ProfilePage/>);
+        await waitFor(() => screen.getByText('Profile'));
     })
 })
