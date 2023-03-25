@@ -11,6 +11,7 @@ const barlow = localFont({
   
 export default function fuel_quote_form() {
     const [userData, setUserData] = useState([]);
+    const [gallonsRequested, setGallonsRequested] = useState('');
     useEffect(() => {
         fetch('http://localhost:3000/api/getProfilePage', {
             method: "GET"
@@ -20,6 +21,18 @@ export default function fuel_quote_form() {
                 setUserData(data);
             })
     }, [])
+
+    const handleSubmit = (e) => {
+        console.log("submitting")
+        e.preventDefault();
+        //call some function or backend API route to calculate the price
+        //then set the price to the state
+        //make sure to also display the price on the frontend
+        //and to enable the submit button
+
+        //remove the disabled attribute from the order now button
+        document.getElementById("quotePriceButton").disabled = false;
+    }
     return (
         <div className={barlow.className}>
         <div className="flex flex-col min-h-screen bg-gray-100">
@@ -92,22 +105,26 @@ export default function fuel_quote_form() {
 
                         {/* right */}
                         <div className="w-full px-4 lg:w-2/5">
+                        <form onSubmit={handleSubmit}>
                             <div className='mb-4'>
                                 <label className="block font-bold">Gallons Requesting</label>
-                                <input type="text" placeholder="0.00" className="w-full px-4 py-2 mt-1 border rounded-md" required/>
+                                <input onChange={(e) =>setGallonsRequested(e.target.value) } value={gallonsRequested} type="number" step="0.01" placeholder="0.00" className="w-full px-4 py-2 mt-1 border rounded-md" required/>
                             </div>
-                            <button className="block w-1/2 py-2 mt-4 mx-auto text-light_blue border border-light_blue rounded-lg hover:outline-double">
+                        
+                            <button type="submit" className="block w-1/2 py-2 mt-4 mx-auto text-light_blue border border-light_blue rounded-lg hover:outline-double">
                                 Get Quote
                             </button>
+                        </form>
+
                             {/* will enable this text box once user has requested a quote */}
                             <div className="mt-4 py-2">
                                 <label className="block font-bold">Suggested Quote</label>
                                 <div className="flex">
                                     <span className="inline-flex items-center px-4 py-2 mt-1 border-r-none border rounded-l-md"> $ </span>
-                                    <input type="number" placeholder="0.00" className="w-full px-4 py-2 mt-1 border rounded-r-md" disabled/>
+                                    <input id="quotePrice" type="number" placeholder="0.00" className="w-full px-4 py-2 mt-1 border rounded-r-md" disabled/>
                                 </div>
                             </div>
-                            <button className="block w-1/2 py-2 mt-2 mb-4 mx-auto bg-light_blue rounded-lg text-beige hover:bg-light_blue/75 hover:text-beige" disabled>
+                            <button onClick={href="/"} id="quotePriceButton" className="block w-1/2 py-2 mt-2 mb-4 mx-auto bg-light_blue rounded-lg text-beige hover:bg-light_blue/75 hover:text-beige" disabled>
                                 Order Now
                             </button>
                             
