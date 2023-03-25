@@ -16,6 +16,10 @@ export default function getProfilePage(req, res) {
         // const { firstName, lastName, address1, address2, city, state, zipCode } = req.body;
         //we should technically now be checking our connection to some database and then updating the user's data
         // but for now we'll just log the data to the console to see the changes as the data in the backend is not persistent
+        if(req.body.firstName == null || req.body.lastName == null || req.body.address1 == null || req.body.address2 == null || req.body.city == null || req.body.state == null || req.body.zipCode == null || req.body.firstName.length == 0 || req.body.lastName.length == 0 || req.body.address1.length == 0 || req.body.address2.length == 0 || req.body.city.length == 0 || req.body.state.length == 0 || req.body.zipCode.length == 0){
+            throw new Error("Please fill out all fields")
+        } 
+
         console.log(req.body)
         res.status(200).json({message: "Profile Updated"})
     }

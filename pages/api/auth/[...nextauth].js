@@ -22,6 +22,11 @@ export default NextAuth({
           email: 'test@test.com',
           password: 'test'
         }
+        //check validations
+        if(credentials.email == null || credentials.password == null){
+          throw new Error('Please enter an email and password')
+        }
+
         //check if password and email are correct
         if (credentials.email != result.email || credentials.password != result.password) {
           throw new Error('Invalid email or password')
