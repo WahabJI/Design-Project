@@ -1,5 +1,6 @@
 import ProfilePage from "./ProfilePage.js";
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, getByPlaceholderText, render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 import fetchMock from "jest-fetch-mock";
 fetchMock.enableMocks();
@@ -14,6 +15,7 @@ jest.mock('next/font/local', () => ({
 }));
   // Mock the router
   jest.mock('next/router', () => ({
+    __esModule: true,
     useRouter: jest.fn()
 }));
 jest.mock("next-auth/react", () => ({
@@ -28,6 +30,7 @@ describe('ProfilePage', () => {
         }));
         render(<ProfilePage/>);
         await waitFor(() => screen.getByText('Profile'));
+        await waitFor(() => expect(fetch).toHaveBeenCalledTimes(1));
     })
 
     //add a test case to test all the onChange functions
