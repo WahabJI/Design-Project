@@ -44,7 +44,7 @@ export default function fuel_quote_form() {
                 </div>
                 <ul className="ml-auto left-0 right-0 top-full inline-flex">
                     <li className="flex mr-6 items-center">
-                        <Link href="/LoggedInHomePage"><span>HOME</span></Link>
+                        <Link href="/"><span>HOME</span></Link>
                     </li>
                     <li className="flex mr-6 items-center">
                         <Link href="/QuoteHistory"><span>HISTORY</span></Link>
