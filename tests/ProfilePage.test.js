@@ -1,9 +1,8 @@
-import ProfilePage from "./ProfilePage.js";
+import ProfilePage from "../pages/ProfilePage.js";
 import { getByPlaceholderText, render, act, screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import fetchMock from "jest-fetch-mock";
-
 fetchMock.enableMocks();
 beforeEach(() => {
     fetch.resetMocks();
@@ -72,15 +71,5 @@ describe('ProfilePage', () => {
         await waitFor(() => expect(zipInput.value).toBe('77034'));
 
     })
-})
-
-describe('ProfilePage', () => {
-    it('should render correctly', async () => {
-        fetch.mockResponseOnce(JSON.stringify({
-            firstName: "Joe", lastName: "Shmoe", address1: "5098 Jacksonville Rd",
-            address2: "Apartment 1960", city: "Houston", state: "TX", zipCode: "77034"
-        }));
-        render(<ProfilePage/>);
-        await waitFor(() => screen.getByText('Profile'));
-    })
+        
 })

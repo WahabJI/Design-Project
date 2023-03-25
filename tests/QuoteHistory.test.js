@@ -1,4 +1,4 @@
-import QuoteHistory from "./QuoteHistory.js";
+import QuoteHistory from "../pages/QuoteHistory.js"
 import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
 import { useRouter } from "next/router";
 import React from 'react';

@@ -1,6 +1,6 @@
 // Import required packages and modules
 import React from 'react';
-import LoginPage from './LoginPage.js';
+import LoginPage from '../pages/LoginPage.js';
 import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
