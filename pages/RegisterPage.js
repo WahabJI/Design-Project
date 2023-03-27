@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Footer from '../components/Footer'
 import localFont from "next/font/local"
+import { useState, useEffect } from 'react'
 
 const barlow = localFont({
     src: "../public/fonts/Barlow-Regular.ttf",
@@ -8,6 +9,31 @@ const barlow = localFont({
 })
 
 export default function register_page() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+
+    const handleSubmit = (e) => {
+        console.log("submitting")
+        e.preventDefault();
+        fetch('http://localhost:3000/api/auth/register', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+                confirmPassword: confirmPassword
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.message);
+                router.push("/")
+            })
+    }
+
     return (
       <div className={barlow.className}>
         {/* TOP BAR */}
@@ -30,26 +56,26 @@ export default function register_page() {
         <div className="flex h-screen bg-gray-100">
           <div className="px-8 py-6 text-left bg-white shadow-lg m-auto">
             <h3 className="text-2xl font-bold text-center">Login to your account</h3>
-            <form action="">
+            <form onSubmit={handleSubmit}>
                 <div className="mt-4">
 
                   <div>
-                    <label className="block" for="email">Email</label>
-                    <input type="text" placeholder="Email" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"/>
+                    <label className="block" htmlFor="email">Email</label>
+                    <input value={email} onChange={(e) => setEmail(e.target.value)} id="email" type="text" placeholder="Email" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"/>
                   </div>
 
                   <div className="mt-4">
-                      <label className="block">Password</label>
-                      <input type="password" placeholder="Password" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"/>
+                      <label className="block" htmlFor="password">Password</label>
+                      <input value={password} onChange={(e) => setPassword(e.target.value)} id="password" type="password" placeholder="Password" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"/>
                   </div>
 
                   <div className="mt-4">
-                      <label className="block">Confirm Password</label>
-                      <input type="password" placeholder="Confirm Password" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"/>
+                      <label className="block" htmlFor="confirmPassword">Confirm Password</label>
+                      <input value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} id="confirmPassword" type="password" placeholder="Confirm Password" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"/>
                   </div>
 
                   <div className="flex items-baseline justify-between">
-                      <button className="px-6 py-2 mt-4 text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Login</button>
+                      <button type="submit" className="px-6 py-2 mt-4 text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">Register</button>
                       <a href="#" className="text-sm text-black hover:underline">Forgot password?</a>
                   </div>        
                 </div>
