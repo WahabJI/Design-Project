@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import Footer from '../components/Footer'
 import { useSession, signIn, signOut } from 'next-auth/react'
-import {useFormik} from 'formik';
 import localFont from "next/font/local"
 import { useState, useEffect } from 'react'
 

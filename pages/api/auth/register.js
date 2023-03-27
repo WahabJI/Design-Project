@@ -13,6 +13,7 @@ export default async function handler(req, res) {
         const {email, password, confirmedPassword} = req.body;
         //CHECK IF DATA IS VALID
 
+
         //check for duplicate users
         const check = await userSchema.findOne({email: email});
         if(check){
@@ -23,7 +24,8 @@ export default async function handler(req, res) {
         const hashedPassword = await hash(password, 12);
         const add = await userSchema.create({
             email: email,
-            password: hashedPassword
+            password: hashedPassword,
+            profileSet: false
         })
         res.status(200).json({message: "User created", user: add})
     }   

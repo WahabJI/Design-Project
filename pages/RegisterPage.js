@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Footer from '../components/Footer'
 import localFont from "next/font/local"
 import { useState, useEffect } from 'react'
-import router from 'next/router'
 import { signIn } from 'next-auth/react';
 const barlow = localFont({
     src: "../public/fonts/Barlow-Regular.ttf",
@@ -63,7 +62,7 @@ export default function register_page() {
           msg.textContent = "Password cannot be empty"
           return
         }
-
+        
         console.log("submitting")
         const data = await fetch('http://localhost:3000/api/auth/register', {
             method: "POST",
