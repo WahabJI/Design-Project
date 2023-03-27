@@ -90,15 +90,12 @@ export default function register_page() {
         }
         const res = await data.json();
         console.log(res.message)
-        const status = await signIn('credentials', {
-          redirect: false,
+        const status1 = await signIn('credentials', {
           email: email,
-          password: password
+          password: password,
+          callbackUrl: '/ProfilePage'
         })
-        if(status.ok){
-          router.push('/')
-        }
-          
+        console.log(status1)
     }
 
     return (
