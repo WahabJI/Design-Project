@@ -29,7 +29,7 @@ export default function register_page() {
         {/* LOGIN FORM */}
         <div className="flex h-screen bg-gray-100">
           <div className="px-8 py-6 text-left bg-white shadow-lg m-auto">
-            <h3 className="text-2xl font-bold text-center">Login to your account</h3>
+            <h3 className="text-2xl font-bold text-center">Create your account!</h3>
             <form action="">
                 <div className="mt-4">
 

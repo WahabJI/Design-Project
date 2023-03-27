@@ -12,6 +12,7 @@ const barlow = localFont({
 export default function fuel_quote_form() {
     const [userData, setUserData] = useState([]);
     const [gallonsRequested, setGallonsRequested] = useState('');
+    const [deliveryDate, setDeliveryDate] = useState('');
     useEffect(() => {
         fetch('http://localhost:3000/api/getProfilePage', {
             method: "GET"
@@ -107,8 +108,11 @@ export default function fuel_quote_form() {
                         <div className="w-full px-4 lg:w-2/5">
                         <form onSubmit={handleSubmit}>
                             <div className='mb-4'>
-                                <label className="block font-bold">Gallons Requesting</label>
-                                <input onChange={(e) =>setGallonsRequested(e.target.value) } value={gallonsRequested} type="number" step="0.01" placeholder="0.00" className="w-full px-4 py-2 mt-1 border rounded-md" required/>
+                                <label className='"block font-bold'>Delivery Date</label>
+                                <input type="date" value={deliveryDate} onChange={(e) => setDeliveryDate(e.target.value)} className="w-full px-4 py-2 mt-1 border rounded-md" required/>
+
+                                <label className="mt-4 block font-bold">Gallons Requesting</label>
+                                <input type="number" value={gallonsRequested} onChange={(e) => setGallonsRequested(e.target.value)} step="0.01" placeholder="0.00" className="w-full px-4 py-2 mt-1 border rounded-md" required/>
                             </div>
                         
                             <button type="submit" className="block w-1/2 py-2 mt-4 mx-auto text-light_blue border border-light_blue rounded-lg hover:outline-double">
@@ -124,7 +128,7 @@ export default function fuel_quote_form() {
                                     <input id="quotePrice" type="number" placeholder="0.00" className="w-full px-4 py-2 mt-1 border rounded-r-md" disabled/>
                                 </div>
                             </div>
-                            <button onClick={href="/"} id="quotePriceButton" className="block w-1/2 py-2 mt-2 mb-4 mx-auto bg-light_blue rounded-lg text-beige hover:bg-light_blue/75 hover:text-beige" disabled>
+                            <button id="quotePriceButton" className="block w-1/2 py-2 mt-2 mb-4 mx-auto bg-light_blue rounded-lg text-beige hover:bg-light_blue/75 hover:text-beige" disabled>
                                 Order Now
                             </button>
                             
