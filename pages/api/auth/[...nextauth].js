@@ -14,7 +14,7 @@ export default NextAuth({
       name: 'Credentials',
       async authorize(credentials, req) {
         //check connection to database
-
+        connectMongo().catch(err => console.log(err));
         //check if user exists, this will be possible if we fetch the email/password object from the database and compare to what we have within the credentials object.
         //this would be something like result = user from database where email = credentials.email
         

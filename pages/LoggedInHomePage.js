@@ -30,8 +30,6 @@ export default function HomePage() {
                 setUserData(data);
             })
     }, [])
-
-
     return (
       <div className={barlow.className}>
         <div className= "flex flex-col h-screen justify-between bg-gray-100">

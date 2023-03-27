@@ -36,6 +36,7 @@ export default function profile_page() {
     }, [])
     
     const handleSubmit = (e) => {
+        //ADD VALIDATION
         console.log("submitting")
         e.preventDefault();
         fetch('http://localhost:3000/api/getProfilePage', {
