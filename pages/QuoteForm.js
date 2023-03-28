@@ -33,6 +33,7 @@ export default function fuel_quote_form() {
 
         //remove the disabled attribute from the order now button
         document.getElementById("quotePriceButton").disabled = false;
+        document.getElementById("quotePrice").value = Math.floor(Math.random()*1000 + 100)
     }
     return (
         <div className={barlow.className}>
