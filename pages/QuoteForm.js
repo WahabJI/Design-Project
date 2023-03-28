@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Footer from '../components/Footer'
 import localFont from "next/font/local"
 import {useState , useEffect} from 'react'
+import {useSession} from 'next-auth/react'
 
 const barlow = localFont({
     src: "../public/fonts/Barlow-Regular.ttf",
@@ -10,6 +11,7 @@ const barlow = localFont({
 })
   
 export default function fuel_quote_form() {
+    const { data: session } = useSession()
     const [userData, setUserData] = useState([]);
     const [gallonsRequested, setGallonsRequested] = useState('');
     const [deliveryDate, setDeliveryDate] = useState('');
@@ -23,17 +25,67 @@ export default function fuel_quote_form() {
             })
     }, [])
 
-    const handleSubmit = (e) => {
-        console.log("submitting")
+    const handleSubmitQuote = async (e) => {
         e.preventDefault();
-        //call some function or backend API route to calculate the price
-        //then set the price to the state
-        //make sure to also display the price on the frontend
-        //and to enable the submit button
+        const currentDate = new Date();
+        const deliveryDateConverted = new Date(deliveryDate);
+
+        //make sure to remove any old borders and error messages
+        const errorMsg = document.getElementById("errorMiddle");
+        const deliveryDateBox = document.getElementById("deliveryDate");
+        errorMsg.innerHTML = "";
+        deliveryDateBox.style.border = "";
+
+        //VALIDATIONS
+        if(deliveryDate.length != 0){
+            if(deliveryDateConverted < currentDate){
+                const errorMsg = document.getElementById("errorMiddle");
+                const deliveryDateBox = document.getElementById("deliveryDate");
+                errorMsg.innerHTML = "Please enter a valid date";
+                deliveryDateBox.style.border = "2px solid red";
+                return;
+            }
+        }
+        else{
+            const errorMsg = document.getElementById("errorMiddle");
+            const deliveryDateBox = document.getElementById("deliveryDate");
+            errorMsg.innerHTML = "Date cannot be empty";
+            deliveryDateBox.style.border = "2px solid red";
+            return;
+        }
+        if(gallonsRequested.length == 0){
+            const errorMsg = document.getElementById("errorMiddle");
+            const gallonsRequestedBox = document.getElementById("gallonsRequested");
+            errorMsg.innerHTML = "Gallons requested cannot be empty";
+            gallonsRequestedBox.style.border = "2px solid red";
+            return;
+        }
+        
+        console.log("calculating quote");
+
+        //the above should be replaced with the following
+        //send data to backend using a get request and query parameters
+        const response = await fetch(`http://localhost:3000/api/PricingModule?gallonsRequested=${gallonsRequested}&deliveryDate=${deliveryDate}`,{
+            method: "GET"
+        });
+        const data = await response.json();
+        console.log(data);
+        //set the pricePerGallon and totalAmountDue to the data that was returned from the backend
+        document.getElementById("pricePerGallon").value = data.pricePerGallon.toFixed(2);
+        document.getElementById("totalPrice").value = data.totalAmountDue.toFixed(2);
 
         //remove the disabled attribute from the order now button
         document.getElementById("quotePriceButton").disabled = false;
-        document.getElementById("quotePrice").value = Math.floor(Math.random()*1000 + 100)
+    }
+
+    const handleSubmitOrder = async (e) => {
+        e.preventDefault();
+        console.log("submitting order");
+        //use POST to send data to the backend to store as a quote in the database (within quote history)
+
+        
+
+
     }
     return (
         <div className={barlow.className}>
@@ -112,15 +164,17 @@ export default function fuel_quote_form() {
 
                         {/* middle */}
                         <div className="w-full px-4 lg:w-1/4 justify-center">
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmitQuote}>
                             <div className='mb-4'>
                                 <label className='"block font-bold'>Delivery Date</label>
-                                <input type="date" value={deliveryDate} onChange={(e) => setDeliveryDate(e.target.value)} className="w-full px-4 py-2.5 mt-1 border rounded-md" required/>
+                                <input id="deliveryDate" type="date" value={deliveryDate} onChange={(e) => setDeliveryDate(e.target.value)} className="w-full px-4 py-2.5 mt-1 border rounded-md" required/>
 
                                 <label className="mt-4 block font-bold">Gallons Requesting</label>
-                                <input type="number" value={gallonsRequested} onChange={(e) => setGallonsRequested(e.target.value)} step="0.01" placeholder="0.00" className="w-full px-4 py-2.5 mt-1 border rounded-md" required/>
+                                <input id="gallonsRequested" type="number" value={gallonsRequested} onChange={(e) => setGallonsRequested(e.target.value)} step="0.01" placeholder="0.00" className="w-full px-4 py-2.5 mt-1 border rounded-md" required/>
                             </div>
-                        
+                            <div>
+                                <span id="errorMiddle" className="text-red"></span>
+                            </div>
                             <button type="submit" className="block w-1/2 py-2.5 mt-4 mx-auto text-light_blue border border-light_blue rounded-lg hover:outline-double">
                                 Get Quote
                             </button>
@@ -130,7 +184,7 @@ export default function fuel_quote_form() {
                         {/* right */}
                         <div className="w-full px-4 lg:w-1/4 justify-center">
                             {/* will enable this text box once user has requested a quote */}
-                        <form>
+                        <form onSubmit={handleSubmitOrder}>
                             <div className="mb-4">
                                 <label className="block font-bold">Price Per Gallon</label>
                                 <div className="flex">
@@ -139,10 +193,10 @@ export default function fuel_quote_form() {
                                 </div>
                             </div>
                             <div className='mt-4'>
-                                <label className="block mt-4 font-bold">Suggested Quote</label>
+                                <label className="block mt-4 font-bold">Total Cost</label>
                                 <div className="flex">
                                     <span className="inline-flex items-center px-4 py-2.5 mt-1 border-r-none border rounded-l-md"> $ </span>
-                                    <input id="quotePrice" type="number" placeholder="0.00" className="w-full px-4 py-2.5 mt-1 border rounded-r-md" disabled/>
+                                    <input id="totalPrice" type="number" placeholder="0.00" className="w-full px-4 py-2.5 mt-1 border rounded-r-md" disabled/>
                                 </div>
                             </div>
                             <button id="quotePriceButton" className="block w-1/2 py-2.5 mt-4 mx-auto bg-light_blue rounded-lg text-beige hover:bg-light_blue/75 hover:text-beige" disabled>
