@@ -4,7 +4,7 @@ import Footer from '../components/Footer'
 import localFont from "next/font/local"
 import {useState , useEffect} from 'react'
 import {useSession} from 'next-auth/react'
-
+import router from 'next/router'
 const barlow = localFont({
     src: "../public/fonts/Barlow-Regular.ttf",
     weight: '200'
@@ -82,11 +82,27 @@ export default function fuel_quote_form() {
         e.preventDefault();
         console.log("submitting order");
         //use POST to send data to the backend to store as a quote in the database (within quote history)
-
-        
+        const response = await fetch(`http://localhost:3000/api/QuoteHistory`,{
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: session.user.email,
+                gallonsRequested: gallonsRequested,
+                deliveryDate: deliveryDate,
+                pricePerGallon: document.getElementById("pricePerGallon").value,
+                totalPrice: document.getElementById("totalPrice").value
+            })
+        });
+        const data = await response.json();
+        console.log(data);
+        //redirect to home page
+        router.push("/");
 
 
     }
+    
     return (
         <div className={barlow.className}>
         <div className="flex flex-col min-h-screen bg-gray-100">

@@ -1,4 +1,5 @@
 import connectMongo from "../../database/conn.js";
+import History from "../../model/historySchema";
 import userSchema from "../../model/schema";
 
 export default async function handler(req, res) {
@@ -20,6 +21,61 @@ export default async function handler(req, res) {
         //use the email to find the user in the database and grab all the other data from the database
         //then create a new entry to the quote history collection in the database
         //figure out how Im going to store the quote history in the database for later use on the quoteHistory page.
+
+        const { email, deliveryDate, gallonsRequested, pricePerGallon, totalAmountDue } = req.body;
+
+        //connect to the database
+        connectMongo().catch(err => console.log(err));
+
+        //find the user in the user database and retrieve the user's address and other information
+        //replace this later with the profile page schema
+        const user = await userSchema.findOne({
+            email: email
+        })
+        if(!user){
+            return res.status(404).json({message: "User not found"})
+        }
+
+        //find the user in the database
+        const result = await History.findOne({
+            email: email
+        })
+        if(!result){
+            // create a new entry into the collection
+            History.create({
+                email: email,
+                quoteHistory: [{
+                    deliveryDate: deliveryDate,
+                    address1: "5098 Jacksonville Rd",
+                    address2: "Apartment 1960",
+                    city: "Houston",
+                    state: "TX",
+                    zip: "77034",
+                    gallonsRequested: gallonsRequested,
+                    pricePerGallon: pricePerGallon,
+                    totalAmountDue: totalAmountDue
+                }]
+            })
+
+        }
+        else{
+            //update the entry in the collection
+            History1.findOneAndUpdate(
+                { email },
+                { $push: { quoteHistory: newQuoteData } },
+                { new: true },
+                (err, doc) => {
+                  if (err) {
+                    console.log("Error updating quote history:", err);
+                    // Handle the error as needed
+                  } else {
+                    console.log("Updated quote history for user:", doc);
+                    // Handle the updated document as needed
+                  }
+                }
+              );
+        }
+
 
     }
     else{
