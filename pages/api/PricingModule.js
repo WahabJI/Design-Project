@@ -24,6 +24,20 @@ export default async function handler(req, res) {
 
         const { email, deliveryDate, gallonsRequested, pricePerGallon, totalAmountDue } = req.body;
 
+        //create the newQuote data object
+        const newQuoteData = {
+            deliveryDate: deliveryDate,
+            address1: "5098 Jacksonville Rd",
+            address2: "Apartment 1960",
+            city: "Houston",
+            state: "TX",
+            zipCode: "77034",
+            gallonsRequested: gallonsRequested,
+            pricePerGallon: pricePerGallon,
+            totalAmountDue: totalAmountDue
+        }
+        console.log(totalAmountDue)
+
         //connect to the database
         connectMongo().catch(err => console.log(err));
 
@@ -42,38 +56,29 @@ export default async function handler(req, res) {
         })
         if(!result){
             // create a new entry into the collection
-            History.create({
+            await History.create({
                 email: email,
-                quoteHistory: [{
-                    deliveryDate: deliveryDate,
-                    address1: "5098 Jacksonville Rd",
-                    address2: "Apartment 1960",
-                    city: "Houston",
-                    state: "TX",
-                    zip: "77034",
-                    gallonsRequested: gallonsRequested,
-                    pricePerGallon: pricePerGallon,
-                    totalAmountDue: totalAmountDue
-                }]
+                //add the quote history array with the new quote data that is turned into JSON
+                quoteHistory: newQuoteData
             })
-
+            res.status(200).json({message: "Quote history created"})
         }
         else{
             //update the entry in the collection
-            History1.findOneAndUpdate(
-                { email },
-                { $push: { quoteHistory: newQuoteData } },
-                { new: true },
-                (err, doc) => {
-                  if (err) {
-                    console.log("Error updating quote history:", err);
-                    // Handle the error as needed
-                  } else {
-                    console.log("Updated quote history for user:", doc);
-                    // Handle the updated document as needed
-                  }
-                }
-              );
+
+            await History.findOneAndUpdate(
+                { email: email },
+                { $push : { quoteHistory: newQuoteData } },
+                { new: true }
+              )
+              .exec()
+            .then((updatedHistory) => {
+            res.status(200).json({ message: "Quote history updated" });
+            })
+            .catch((err) => {
+            console.error(err);
+            res.status(500).json({ message: "Server error" });
+            });
         }
 
 

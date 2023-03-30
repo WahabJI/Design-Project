@@ -82,7 +82,7 @@ export default function fuel_quote_form() {
         e.preventDefault();
         console.log("submitting order");
         //use POST to send data to the backend to store as a quote in the database (within quote history)
-        const response = await fetch(`http://localhost:3000/api/QuoteHistory`,{
+        const response = await fetch(`http://localhost:3000/api/PricingModule`,{
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -92,7 +92,7 @@ export default function fuel_quote_form() {
                 gallonsRequested: gallonsRequested,
                 deliveryDate: deliveryDate,
                 pricePerGallon: document.getElementById("pricePerGallon").value,
-                totalPrice: document.getElementById("totalPrice").value
+                totalAmountDue: document.getElementById("totalPrice").value
             })
         });
         const data = await response.json();
