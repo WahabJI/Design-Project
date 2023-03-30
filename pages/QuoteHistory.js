@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import localFont from "next/font/local"
 import {useState, useEffect} from 'react'
 import React from 'react';
+import {useSession} from 'next-auth/react'
 const barlow = localFont({
     src: "../public/fonts/Barlow-Regular.ttf",
     weight: '200'
@@ -13,6 +14,7 @@ const barlow = localFont({
 
 export default function quote_history() {
     const [quoteHistory, setQuoteHistory] = useState([]);
+    const {data: session} = useSession();
 
     useEffect(() => {
         fetch('http://localhost:3000/api/getQuoteHistory')
