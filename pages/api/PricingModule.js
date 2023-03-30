@@ -36,7 +36,6 @@ export default async function handler(req, res) {
             pricePerGallon: pricePerGallon,
             totalAmountDue: totalAmountDue
         }
-        console.log(totalAmountDue)
 
         //connect to the database
         connectMongo().catch(err => console.log(err));

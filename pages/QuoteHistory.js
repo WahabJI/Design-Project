@@ -92,15 +92,15 @@ export default function quote_history() {
                     <tbody>
                         {quoteHistory.map((quote, ) => (
                             <tr className="flex-grow bg-white">
-                                <td className="border px-4 py-2">{quote.date}</td>
-                                <td className="border px-4 py-2">{quote.address_1}</td>
-                                <td className="border px-4 py-2">{quote.address_2}</td>
+                                <td className="border px-4 py-2">{quote.deliveryDate}</td>
+                                <td className="border px-4 py-2">{quote.address1}</td>
+                                <td className="border px-4 py-2">{quote.address2}</td>
                                 <td className="border px-4 py-2">{quote.city}</td>
                                 <td className="border px-4 py-2">{quote.state}</td>
                                 <td className="border px-4 py-2">{quote.zipCode}</td>
-                                <td className="border px-4 py-2">{quote.gallons.toFixed(2)}</td>
+                                <td className="border px-4 py-2">{quote.gallonsRequested.toFixed(2)}</td>
                                 <td className="border px-4 py-2">${quote.pricePerGallon.toFixed(2)}</td>
-                                <td className="border px-4 py-2">${quote.totalCost.toFixed(2)}</td>
+                                <td className="border px-4 py-2">${quote.totalAmountDue.toFixed(2)}</td>
                             </tr>
                         ))}
                     </tbody>
