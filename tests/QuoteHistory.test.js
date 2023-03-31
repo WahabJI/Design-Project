@@ -17,8 +17,14 @@ jest.mock('next/font/local', () => ({
 jest.mock('next/router', () => ({
     useRouter: jest.fn()
 }));
+const mockSession = {
+  user: { email: "test@test.com" }
+}
 jest.mock("next-auth/react", () => ({
-    signIn: jest.fn()
+    signIn: jest.fn(),
+    useSession: jest.fn(() => {
+      return {data: mockSession, status: "Authenticated"}
+    }),
 }));
 
 describe('QuoteHistory', () => {
