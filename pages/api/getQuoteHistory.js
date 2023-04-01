@@ -5,7 +5,7 @@ import { getSession } from "next-auth/react";
 export default async function getQuoteHistory(req, res) {
     const session = await getSession({ req });
     //conn to database
-    connectMongo().catch(err => console.log(err));
+    await connectMongo().catch(err => console.log(err));
     //find user data
     const result = await History.findOne({
         email: session.user.email,
