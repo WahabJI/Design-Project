@@ -10,7 +10,7 @@ export default async function getQuoteHistory(req, res) {
     const result = await History.findOne({
         email: session.user.email,
     })
-    console.log(result.quoteHistory)
+    // console.log(result.quoteHistory)
     //respond sending data to frontend
     res.status(200).json(result.quoteHistory)
 }
