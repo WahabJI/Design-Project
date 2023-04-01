@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Footer from '../components/Footer'
 import localFont from "next/font/local"
+import {useSession} from 'next-auth/react'
 import router from 'next/router'
 import { useState, useEffect } from 'react'
 import React from 'react';
@@ -10,7 +11,7 @@ const barlow = localFont({
 })
 
 export default function profile_page() {
-    const [profilePage, setProfilePage] = useState([]);
+    const { data : session } = useSession();
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [address1, setAddress1] = useState('');
@@ -35,11 +36,11 @@ export default function profile_page() {
             })
     }, [])
     
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         //ADD VALIDATION
         console.log("submitting")
         e.preventDefault();
-        fetch('http://localhost:3000/api/getProfilePage', {
+        const data = await fetch('http://localhost:3000/api/getProfilePage', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -51,7 +52,7 @@ export default function profile_page() {
                 address2: address2,
                 city: city,
                 state: state,
-                zipCode: zip
+                zip: zip
             })
         })
             .then(res => res.json())
