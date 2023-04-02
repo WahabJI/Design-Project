@@ -30,7 +30,7 @@ export default function HomePage() {
                 setUserData(data);
             })
     }, [])
-    console.log(session)
+    // console.log(session)
     return (
       <div className={barlow.className}>
         <div className= "flex flex-col h-screen justify-between bg-gray-100">
@@ -64,15 +64,15 @@ export default function HomePage() {
               <div>
                 <div className="mt-4 flex flex-row space-x-4">
                     <div className="text-light_blue">Gallons Requested:</div>
-                    <div className="text-black inline-block">{quoteHistory.gallons}</div>
+                    <div className="text-black inline-block">{quoteHistory.gallonsRequested}</div>
                   </div>
                   <div className="flex flex-row space-x-14">
                     <div className="text-light_blue">Amount Paid:</div>
-                    <div className="text-black inline-block">{quoteHistory.totalCost}</div>
+                    <div className="text-black inline-block">{quoteHistory.totalAmountDue}</div>
                   </div>
                   <div className="flex flex-row space-x-10">
                     <div className="text-light_blue">Date Delivered:</div>
-                    <div className="text-black inline-block">{quoteHistory.date}</div>
+                    <div className="text-black inline-block">{quoteHistory.deliveryDate}</div>
                   </div>
               </div>
               <div className="pl-24 pr-10">
@@ -82,10 +82,10 @@ export default function HomePage() {
                 </div>
                 <div className="flex flex-row space-x-8">
                   <div className="text-light_blue">Address:</div>
-                  <div className="text-black inline-block px-5">{quoteHistory.address_1}</div>
+                  <div className="text-black inline-block px-5">{quoteHistory.address1}</div>
                 </div>
                 <div className="flex flex-row space-x-10">
-                  <div className="text-black inline-block px-28">{quoteHistory.address_2}</div>
+                  <div className="text-black inline-block px-28">{quoteHistory.address2}</div>
                 </div>
                 <div className="flex flex-row space-x-10">
                   <div className="text-black inline-block px-28">{quoteHistory.city + ", " + quoteHistory.state + ", " + quoteHistory.zipCode}</div>

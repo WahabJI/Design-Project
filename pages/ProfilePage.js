@@ -18,20 +18,24 @@ export default function profile_page() {
     const [address2, setAddress2] = useState('');
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
-    const [zip, setZip] = useState('');
+    const [zipCode, setZip] = useState('');
     useEffect(() => {
         fetch('http://localhost:3000/api/getProfilePage', {
             method: "GET"
         })
             .then(res => res.json())
             .then(data => {
-                setFirstName(data.firstName);
-                setLastName(data.lastName);
-                setAddress1(data.address1);
-                setAddress2(data.address2);
-                setCity(data.city);
-                setState(data.state);
-                setZip(data.zipCode);
+                console.log("data in the front end")
+                console.log(data)
+                if(data !== null){
+                    setFirstName(data.firstName);
+                    setLastName(data.lastName);
+                    setAddress1(data.address1);
+                    setAddress2(data.address2);
+                    setCity(data.city);
+                    setState(data.state);
+                    setZip(data.zipCode);
+                }
             })
     }, [])
     
@@ -51,7 +55,7 @@ export default function profile_page() {
                 address2: address2,
                 city: city,
                 state: state,
-                zip: zip
+                zipCode: zipCode
             })
         })
             .then(res => res.json())
@@ -120,7 +124,7 @@ export default function profile_page() {
                                 </div>
                                 <div className="mt-3">
                                     <label className="block">Zip Code</label>
-                                    <input type="text" placeholder="Zip Code" minLength="5" maxLength="9" value={zip} className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" onChange={(e) => setZip(e.target.value)} required />
+                                    <input type="text" placeholder="Zip Code" minLength="5" maxLength="9" value={zipCode} className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" onChange={(e) => setZip(e.target.value)} required />
                                 </div>
 
                                 <div className="md:flex items-center justify-center mt-6 mx-auto">

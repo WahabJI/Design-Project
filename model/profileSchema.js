@@ -9,7 +9,7 @@ const profileSchema = new Schema({
     address2: String,
     city: String,
     state: String,
-    zip: String,
+    zipCode: String,
 })
 
 const Profile = models.Profile || model('Profile', profileSchema);
