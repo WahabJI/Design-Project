@@ -1,6 +1,7 @@
 import connectMongo from "../../database/conn.js";
 import History from "../../model/historySchema";
 import userSchema from "../../model/schema";
+import Profile from "../../model/profileSchema.js";
 
 export default async function handler(req, res) {
     if(req.method === "GET"){
@@ -22,16 +23,33 @@ export default async function handler(req, res) {
         //then create a new entry to the quote history collection in the database
         //figure out how Im going to store the quote history in the database for later use on the quoteHistory page.
 
+        // grab data from the request body
         const { email, deliveryDate, gallonsRequested, pricePerGallon, totalAmountDue } = req.body;
+
+        //check if the user exists in the database
+        const user = await userSchema.findOne({
+            email: email
+        })
+        if(!user){
+            return res.status(404).json({message: "User not found"})
+        }
+
+        //connect to the database
+        connectMongo().catch(err => console.log(err));
+
+        // find the user in the user database and retrieve the user's address and other information
+        const userData = await Profile.findOne({
+            email: email
+        })
 
         //create the newQuote data object
         const newQuoteData = {
             deliveryDate: deliveryDate,
-            address1: "5098 Jacksonville Rd",
-            address2: "Apartment 1960",
-            city: "Houston",
-            state: "TX",
-            zipCode: "77034",
+            address1: userData.address1,
+            address2: userData.address2 || "-",
+            city: userData.city,
+            state: userData.state,
+            zipCode: userData.zipCode,
             gallonsRequested: gallonsRequested,
             pricePerGallon: pricePerGallon,
             totalAmountDue: totalAmountDue
@@ -42,14 +60,9 @@ export default async function handler(req, res) {
 
         //find the user in the user database and retrieve the user's address and other information
         //replace this later with the profile page schema
-        const user = await userSchema.findOne({
-            email: email
-        })
-        if(!user){
-            return res.status(404).json({message: "User not found"})
-        }
+        
 
-        //find the user in the database
+        //find the user in the history database
         const result = await History.findOne({
             email: email
         })
