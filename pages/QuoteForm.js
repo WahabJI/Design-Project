@@ -1,6 +1,7 @@
 // need to fix sticky navbar and footer (make not sticky)
 import Link from "next/link";
 import Footer from "../components/Footer";
+import {HandleSignOut} from '../components/SignOut'
 import localFont from "next/font/local";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
