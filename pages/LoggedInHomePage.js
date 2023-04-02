@@ -4,13 +4,14 @@ import {HandleSignOut} from '../components/SignOut'
 import localFont from "next/font/local"
 import {useState, useEffect} from 'react'
 import { useSession } from 'next-auth/react'
+import router from 'next/router'
 const barlow = localFont({
   src: "../public/fonts/Barlow-Regular.ttf",
   weight: '200'
 })
 
 export default function HomePage() {
-    const {data: session} = useSession();
+    const {data: session, status} = useSession();
     const [quoteHistory, setQuoteHistory] = useState([]);
     const [userData, setUserData] = useState([]);
     useEffect(() => {
@@ -31,6 +32,10 @@ export default function HomePage() {
             })
     }, [])
     // console.log(session)
+    if(typeof window !== "undefined" && status === "unauthenticated") {
+      router.push("/LoginPage")
+      return;
+    }
     return (
       <div className={barlow.className}>
         <div className= "flex flex-col h-screen justify-between bg-gray-100">
@@ -140,5 +145,6 @@ export default function HomePage() {
 
       </div>
       </div>
+      
     );
   }
