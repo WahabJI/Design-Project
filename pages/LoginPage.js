@@ -31,19 +31,21 @@ export default function login_page() {
       <div className={barlow.className}>
         <div className="flex flex-col min-h-screen bg-gray-100">
         {/* TOP BAR */}
-        <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-14">
-          <div className="ml-6">
-            FUEL QUOTER
-          </div>
-          <ul className="ml-auto left-0 right-0 top-full inline-flex">
-            <li className="flex mr-6 items-center">
-              <Link href="/"><span>HOME</span></Link>
-            </li>
-            <li className="flex mr-6 items-center">
-              <Link href="/RegisterPage"><span>REGISTER</span></Link>
-            </li>
-          </ul>
-        </nav>
+        <header>
+          <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-14">
+            <div className="ml-6">
+              <Link href="/"> FUEL QUOTER </Link>
+            </div>
+            <ul className="ml-auto left-0 right-0 top-full inline-flex">
+              <li className="flex mr-6 items-center hover:underline">
+                <Link href="/"> HOME </Link>
+              </li>
+              <li className="flex mr-6 items-center hover:underline">
+                <Link href="/RegisterPage"> REGISTER </Link>
+              </li>
+            </ul>
+          </nav>
+        </header>
 
 
         {/* LOGIN FORM */}
@@ -55,12 +57,16 @@ export default function login_page() {
 
                   <div>
                     <label className="block" htmlFor="email">Email</label>
-                    <input id="email" name="email" type="text" placeholder="Email Address" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <input id="email" name="email" type="text" placeholder="Email Address" 
+                    value={email} onChange={(e) => setEmail(e.target.value)}
+                    className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
                   </div>
 
                   <div className="mt-4">
                       <label className="block" htmlFor="password">Password</label>
-                      <input id="password" name="password" type="password" placeholder="Password" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                      <input id="password" name="password" type="password" placeholder="Password"
+                      value={password} onChange={(e) => setPassword(e.target.value)}
+                      className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"/>
                   </div>
 
                   <div className="flex items-baseline justify-between">
