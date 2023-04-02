@@ -32,19 +32,21 @@ export default function quote_history() {
         <header>
           {/* TOP BAR */}
           <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-14">
-            <div className="ml-6">FUEL QUOTER</div>
+            <div className="ml-6">
+              <Link href="/"> FUEL QUOTER </Link>
+            </div>
             <ul className="ml-auto left-0 right-0 top-full inline-flex">
-              <li className="flex mr-6 items-center">
-                <Link href="/"> <span>HOME</span> </Link>
+              <li className="flex mr-6 items-center hover:underline">
+                <Link href="/"> HOME </Link>
               </li>
-              <li className="flex mr-6 items-center">
-                <Link href="/QuoteForm"> <span>QUOTE</span> </Link>
+              <li className="flex mr-6 items-center hover:underline">
+                <Link href="/QuoteForm"> QUOTE </Link>
               </li>
-              <li className="flex mr-6 items-center">
-                <Link href="/ProfilePage"> <span>PROFILE</span> </Link>
+              <li className="flex mr-6 items-center hover:underline">
+                <Link href="/ProfilePage"> PROFILE </Link>
               </li>
-              <li className="flex mr-6 items-center">
-                <Link href="/HomePage"> <span>LOGOUT</span> </Link>
+              <li className="flex mr-6 items-center hover:underline">
+                <button onClick={HandleSignOut}>LOGOUT</button>
               </li>
             </ul>
           </nav>

@@ -81,20 +81,20 @@ export default function profile_page() {
                     {/* TOP BAR */}
                     <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-14">
                         <div className="ml-6">
-                            FUEL QUOTER
+                          <Link href="/">FUEL QUOTER</Link>
                         </div>
                         <ul className="ml-auto left-0 right-0 top-full inline-flex">
-                            <li className="flex mr-6 items-center">
-                                <Link href="/"><span>HOME</span></Link>
+                            <li className="flex mr-6 items-center hover:underline">
+                                <Link href="/">HOME</Link>
                             </li>
-                            <li className="flex mr-6 items-center">
-                                <Link href="/QuoteForm"><span>QUOTE</span></Link>
+                            <li className="flex mr-6 items-center hover:underline">
+                                <Link href="/QuoteForm">QUOTE</Link>
                             </li>
-                            <li className="flex mr-6 items-center">
-                                <Link href="/QuoteHistory"><span>HISTORY</span></Link>
+                            <li className="flex mr-6 items-center hover:underline">
+                                <Link href="/QuoteHistory">HISTORY</Link>
                             </li>
-                            <li className="flex mr-6 items-center">
-                                <Link href="/"><span>LOGOUT</span></Link>
+                            <li className="flex mr-6 items-center hover:underline">
+                              <button onClick={HandleSignOut}>LOGOUT</button>
                             </li>
                         </ul>
                     </nav>
@@ -108,28 +108,33 @@ export default function profile_page() {
                             <div className="mt-3">
                                 <div>
                                     <label className="block" htmlFor="First Name">First Name</label>
-                                    <input type="text" value={firstName} placeholder="First Name" maxLength="50" className="w-full px-5 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" onChange={(e) => setFirstName(e.target.value)} required />
+                                    <input type="text" value={firstName} placeholder="First Name" maxLength="50" 
+                                    className="w-full px-5 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" onChange={(e) => setFirstName(e.target.value)} required />
                                 </div>
                                 <div className="mt-3">
                                     <label className="block">Last Name</label>
-                                    <input type="text" value={lastName} placeholder="Last Name" maxLength="50" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" onChange={(e) => setLastName(e.target.value)} required />
+                                    <input type="text" value={lastName} placeholder="Last Name" maxLength="50" 
+                                    className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" onChange={(e) => setLastName(e.target.value)} required />
                                 </div>
                                 <div className="mt-3">
                                     <label className="block">Address 1</label>
-                                    <input type="text" value={address1} placeholder="Address 1" maxLength="100" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" onChange={(e) => setAddress1(e.target.value)} required />
+                                    <input type="text" value={address1} placeholder="Address 1" maxLength="100" 
+                                    className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" onChange={(e) => setAddress1(e.target.value)} required />
                                 </div>
                                 <div className="mt-3">
                                     <label className="block">Address 2 (optional)</label>
-                                    <input type="text" value={address2} placeholder="Address 2" maxLength="100" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" onChange={(e) => setAddress2(e.target.value)}/>
+                                    <input type="text" value={address2} placeholder="Address 2" maxLength="100" 
+                                    className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" onChange={(e) => setAddress2(e.target.value)}/>
                                 </div>
                                 <div className="mt-3">
                                     <label className="block">City</label>
-                                    <input type="text" value={city} placeholder="City" maxLength="100" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" onChange={(e) => setCity(e.target.value)} required />
+                                    <input type="text" value={city} placeholder="City" maxLength="100" 
+                                    className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" onChange={(e) => setCity(e.target.value)} required />
                                 </div>
                                 {/* add state in database portion to include dropdown with 2 STATE code that is stored in database */}
                                 <div className="mt-3">
                                     <label className="block">State</label>
-                                    <select required placeholder="ST" value={state} className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" 
+                                    <select required placeholder="State" value={state} className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" 
                                       onChange={(e) => setState(e.target.value)}>
                                       {states.map((state, index) => 
                                         // show both state and abbreviation

@@ -43,20 +43,20 @@ export default function HomePage() {
         <header>
           <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-14">
             <div className="ml-6">
-              FUEL QUOTER
+              <Link href="/"> FUEL QUOTER </Link>
             </div>
             <ul className="ml-auto left-0 right-0 top-full inline-flex">
-              <li className="flex mr-6 items-center">
-                <Link href="/QuoteForm"><span>QUOTE</span></Link>
+              <li className="flex mr-6 items-center hover:underline">
+                <Link href="/QuoteForm"> QUOTE </Link>
               </li>
-              <li className="flex mr-6 items-center">
-                <Link href="/QuoteHistory"><span>HISTORY</span></Link>
+              <li className="flex mr-6 items-center hover:underline">
+                <Link href="/QuoteHistory"> HISTORY </Link>
               </li>
-              <li className="flex mr-6 items-center">
-                <Link href="/ProfilePage"><span>PROFILE</span></Link>
+              <li className="flex mr-6 items-center hover:underline">
+                <Link href="/ProfilePage"> PROFILE </Link>
               </li>
-              <li className="flex mr-6 items-center">
-                <button onClick={HandleSignOut}>LOGOUT</button>
+              <li className="flex mr-6 items-center hover:underline">
+                <button onClick={HandleSignOut}> LOGOUT </button>
               </li>
             </ul>
           </nav>
