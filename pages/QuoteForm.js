@@ -11,7 +11,7 @@ const barlow = localFont({
 })
   
 export default function fuel_quote_form() {
-    const { data: session } = useSession()
+    const { data: session, status } = useSession()
     const [userData, setUserData] = useState([]);
     const [gallonsRequested, setGallonsRequested] = useState('');
     const [deliveryDate, setDeliveryDate] = useState('');
@@ -24,7 +24,10 @@ export default function fuel_quote_form() {
                 setUserData(data);
             })
     }, [])
-
+    if(typeof window !== "undefined" && status === "unauthenticated") {
+        router.push("/LoginPage")
+        return;
+      }
     const handleSubmitQuote = async (e) => {
         e.preventDefault();
         const currentDate = new Date();

@@ -5,6 +5,7 @@ import localFont from "next/font/local"
 import {useState, useEffect} from 'react'
 import React from 'react';
 import {useSession} from 'next-auth/react'
+import router from 'next/router'
 const barlow = localFont({
     src: "../public/fonts/Barlow-Regular.ttf",
     weight: '200'
@@ -14,7 +15,7 @@ const barlow = localFont({
 
 export default function quote_history() {
     const [quoteHistory, setQuoteHistory] = useState([]);
-    const {data: session} = useSession();
+    const {data: session, status} = useSession();
 
     useEffect(() => {
         fetch('http://localhost:3000/api/getQuoteHistory')
@@ -23,7 +24,10 @@ export default function quote_history() {
             setQuoteHistory(data);
         })
     }, [])
-
+    if(typeof window !== "undefined" && status === "unauthenticated") {
+        router.push("/LoginPage")
+        return;
+      }
     return (
         <div className={barlow.className}>
         <div className= "flex flex-col min-h-screen justify-between">

@@ -7,6 +7,11 @@ export default async function getProfilePage(req, res) {
     //conn to database
     await connectMongo().catch(err => console.log(err));
 
+    // If the user is not logged in, we send an unauthorized response
+    if(!session){
+        return res.status(401).json({message: "Unauthorized"})
+    }
+
     //find user data
     const result = await Profile.findOne({
         email: session.user.email,

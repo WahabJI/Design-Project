@@ -11,7 +11,7 @@ const barlow = localFont({
 })
 
 export default function profile_page() {
-    const { data : session } = useSession();
+    const { data : session, status } = useSession();
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [address1, setAddress1] = useState('');
@@ -38,7 +38,10 @@ export default function profile_page() {
                 }
             })
     }, [])
-    
+    if(typeof window !== "undefined" && status === "unauthenticated") {
+        router.push("/LoginPage")
+        return;
+      }
     const handleSubmit = async (e) => {
         //ADD VALIDATION
         console.log("submitting")
