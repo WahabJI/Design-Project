@@ -5,6 +5,12 @@ import {useSession} from 'next-auth/react'
 import router from 'next/router'
 import { useState, useEffect } from 'react'
 import React from 'react';
+
+var UsaStates = require('usa-states').UsaStates;
+var usStates = new UsaStates();
+var states = usStates.arrayOf('names');
+var statesAbbrev = usStates.arrayOf('abbreviations');
+
 const barlow = localFont({
     src: "../public/fonts/Barlow-Regular.ttf",
     weight: '200'
@@ -123,7 +129,13 @@ export default function profile_page() {
                                 {/* add state in database portion to include dropdown with 2 STATE code that is stored in database */}
                                 <div className="mt-3">
                                     <label className="block">State</label>
-                                    <input type="text" placeholder="State" value={state} className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" onChange={(e) => setState(e.target.value)} required />
+                                    <select required placeholder="ST" value={state} className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" 
+                                      onChange={(e) => setState(e.target.value)}>
+                                      {states.map((state, index) => 
+                                        // show both state and abbreviation
+                                        <option key={index} value={statesAbbrev[index]}>{statesAbbrev[index]} - {state} </option>
+                                      )}
+                                    </select>
                                 </div>
                                 <div className="mt-3">
                                     <label className="block">Zip Code</label>
