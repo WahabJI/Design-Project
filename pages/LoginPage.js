@@ -2,10 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import Footer from '../components/Footer'
 import { useSession, signIn, signOut } from 'next-auth/react'
-import { redirect } from 'next/dist/server/api-utils';
-import { useRouter } from 'next/router';
-import {useFormik} from 'formik';
 import localFont from "next/font/local"
+import { useState, useEffect } from 'react'
 
 const barlow = localFont({
   src: "../public/fonts/Barlow-Regular.ttf",
@@ -13,32 +11,20 @@ const barlow = localFont({
 })
 
 export default function login_page() {
-    const formik = useFormik({
-      initialValues:{
-        email: '',
-        password: ''
-      },
-      onSubmit: onSubmit
-      })
-    const router = useRouter();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     async function HandleGoogleSignIn() {
         signIn('google', { callbackUrl: 'http://localhost:3000' })
     }
     
-    async function onSubmit(values){
+    const handleSubmit = async (e) => {
+      e.preventDefault();
       const status = await signIn('credentials', {
-        email: values.email,
-        password: values.password,
+        email: email,
+        password: password,
         callbackUrl: '/'
       })
-
-      if(status.ok){
-        router.push(status.url)
-      }
-      else{
-        alert("Invalid email or password")
-      }
     }
 
     return (
@@ -64,17 +50,17 @@ export default function login_page() {
         <div className="flex min-h-screen">
           <div className="px-8 py-6 text-left bg-white shadow-lg m-auto">
             <h3 className="text-2xl font-bold text-center">Login to your account</h3>
-            <form action="" onSubmit={formik.handleSubmit}>
+            <form action="" onSubmit={handleSubmit}>
                 <div className="mt-4">
 
                   <div>
                     <label className="block" htmlFor="email">Email</label>
-                    <input id="email" name="email" type="text" placeholder="Email Address" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" {...formik.getFieldProps('email')}/>
+                    <input id="email" name="email" type="text" placeholder="Email Address" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" value={email} onChange={(e) => setEmail(e.target.value)}/>
                   </div>
 
                   <div className="mt-4">
                       <label className="block" htmlFor="password">Password</label>
-                      <input id="password" name="password" type="password" placeholder="Password" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" {...formik.getFieldProps('password')}/>
+                      <input id="password" name="password" type="password" placeholder="Password" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" value={password} onChange={(e) => setPassword(e.target.value)}/>
                   </div>
 
                   <div className="flex items-baseline justify-between">

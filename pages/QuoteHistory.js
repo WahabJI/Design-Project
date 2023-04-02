@@ -4,6 +4,8 @@ import Footer from '../components/Footer'
 import localFont from "next/font/local"
 import {useState, useEffect} from 'react'
 import React from 'react';
+import {useSession} from 'next-auth/react'
+import router from 'next/router'
 const barlow = localFont({
     src: "../public/fonts/Barlow-Regular.ttf",
     weight: '200'
@@ -13,6 +15,7 @@ const barlow = localFont({
 
 export default function quote_history() {
     const [quoteHistory, setQuoteHistory] = useState([]);
+    const {data: session, status} = useSession();
 
     useEffect(() => {
         fetch('http://localhost:3000/api/getQuoteHistory')
@@ -21,7 +24,10 @@ export default function quote_history() {
             setQuoteHistory(data);
         })
     }, [])
-
+    if(typeof window !== "undefined" && status === "unauthenticated") {
+        router.push("/LoginPage")
+        return;
+      }
     return (
         <div className={barlow.className}>
         <div className= "flex flex-col min-h-screen justify-between">
@@ -90,15 +96,15 @@ export default function quote_history() {
                     <tbody>
                         {quoteHistory.map((quote, ) => (
                             <tr className="flex-grow bg-white">
-                                <td className="border px-4 py-2">{quote.date}</td>
-                                <td className="border px-4 py-2">{quote.address_1}</td>
-                                <td className="border px-4 py-2">{quote.address_2}</td>
+                                <td className="border px-4 py-2">{quote.deliveryDate}</td>
+                                <td className="border px-4 py-2">{quote.address1}</td>
+                                <td className="border px-4 py-2">{quote.address2}</td>
                                 <td className="border px-4 py-2">{quote.city}</td>
                                 <td className="border px-4 py-2">{quote.state}</td>
                                 <td className="border px-4 py-2">{quote.zipCode}</td>
-                                <td className="border px-4 py-2">{quote.gallons.toFixed(2)}</td>
+                                <td className="border px-4 py-2">{quote.gallonsRequested.toFixed(2)}</td>
                                 <td className="border px-4 py-2">${quote.pricePerGallon.toFixed(2)}</td>
-                                <td className="border px-4 py-2">${quote.totalCost.toFixed(2)}</td>
+                                <td className="border px-4 py-2">${quote.totalAmountDue.toFixed(2)}</td>
                             </tr>
                         ))}
                     </tbody>

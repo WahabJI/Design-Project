@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Footer from '../components/Footer'
 import localFont from "next/font/local"
+import {useSession} from 'next-auth/react'
 import router from 'next/router'
 import { useState, useEffect } from 'react'
 import React from 'react';
@@ -10,35 +11,42 @@ const barlow = localFont({
 })
 
 export default function profile_page() {
-    const [profilePage, setProfilePage] = useState([]);
+    const { data : session, status } = useSession();
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [address1, setAddress1] = useState('');
     const [address2, setAddress2] = useState('');
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
-    const [zip, setZip] = useState('');
+    const [zipCode, setZip] = useState('');
     useEffect(() => {
         fetch('http://localhost:3000/api/getProfilePage', {
             method: "GET"
         })
             .then(res => res.json())
             .then(data => {
-                setProfilePage(data);
-                setFirstName(data.firstName);
-                setLastName(data.lastName);
-                setAddress1(data.address1);
-                setAddress2(data.address2);
-                setCity(data.city);
-                setState(data.state);
-                setZip(data.zipCode);
+                console.log("data in the front end")
+                console.log(data)
+                if(data !== null){
+                    setFirstName(data.firstName);
+                    setLastName(data.lastName);
+                    setAddress1(data.address1);
+                    setAddress2(data.address2);
+                    setCity(data.city);
+                    setState(data.state);
+                    setZip(data.zipCode);
+                }
             })
     }, [])
-    
-    const handleSubmit = (e) => {
+    if(typeof window !== "undefined" && status === "unauthenticated") {
+        router.push("/LoginPage")
+        return;
+      }
+    const handleSubmit = async (e) => {
+        //ADD VALIDATION
         console.log("submitting")
         e.preventDefault();
-        fetch('http://localhost:3000/api/getProfilePage', {
+        const data = await fetch('http://localhost:3000/api/getProfilePage', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -50,7 +58,7 @@ export default function profile_page() {
                 address2: address2,
                 city: city,
                 state: state,
-                zipCode: zip
+                zipCode: zipCode
             })
         })
             .then(res => res.json())
@@ -119,7 +127,7 @@ export default function profile_page() {
                                 </div>
                                 <div className="mt-3">
                                     <label className="block">Zip Code</label>
-                                    <input type="text" placeholder="Zip Code" minLength="5" maxLength="9" value={zip} className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" onChange={(e) => setZip(e.target.value)} required />
+                                    <input type="text" placeholder="Zip Code" minLength="5" maxLength="9" value={zipCode} className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" onChange={(e) => setZip(e.target.value)} required />
                                 </div>
 
                                 <div className="md:flex items-center justify-center mt-6 mx-auto">

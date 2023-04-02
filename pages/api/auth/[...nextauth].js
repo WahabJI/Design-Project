@@ -1,7 +1,9 @@
 import NextAuth from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 import CredentialsProvider from 'next-auth/providers/credentials'
-
+import connectMongo from '../../../database/conn.js'
+import userSchema from '../../../model/schema'
+import { compare } from 'bcryptjs'
 
 export default NextAuth({
   providers: [
@@ -14,27 +16,30 @@ export default NextAuth({
       name: 'Credentials',
       async authorize(credentials, req) {
         //check connection to database
-
+        connectMongo().catch(err => console.log(err));
         //check if user exists, this will be possible if we fetch the email/password object from the database and compare to what we have within the credentials object.
         //this would be something like result = user from database where email = credentials.email
-        
-        const result = {
-          email: 'test@test.com',
-          password: 'test'
+        const result = await userSchema.findOne({
+          email: credentials.email
+        })
+        if(!result){
+          throw new Error('User does not exist')
         }
-        //check validations
-        if(credentials.email == null || credentials.password == null){
-          throw new Error('Please enter an email and password')
+        const passwordMatch = await compare(credentials.password, result.password);
+        console.log(passwordMatch)
+        if(!passwordMatch){
+          throw new Error('Invalid password')
         }
 
         //check if password and email are correct
-        if (credentials.email != result.email || credentials.password != result.password) {
-          throw new Error('Invalid email or password')
+        if (credentials.email !== result.email) {
+          throw new Error('Invalid email')
         }
 
         return result;
 
       }
     }),
-  ]
+  ],
+  secret: process.env.NEXT_AUTH_SECRET,
 })
