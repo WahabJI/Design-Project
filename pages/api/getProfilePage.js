@@ -10,7 +10,6 @@ export default async function getProfilePage(req, res) {
     const result = await Profile.findOne({
         email: session.user.email,
     })
-    console.log(result.profilePage)
     //respond sending data to frontend
-    res.status(200).json(result.profilePage)
+    res.status(200).json(result)
 }

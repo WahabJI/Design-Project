@@ -25,7 +25,6 @@ export default function profile_page() {
         })
             .then(res => res.json())
             .then(data => {
-                setProfilePage(data);
                 setFirstName(data.firstName);
                 setLastName(data.lastName);
                 setAddress1(data.address1);
