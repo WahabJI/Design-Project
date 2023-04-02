@@ -18,6 +18,7 @@ describe('GET /api/getProfilePage', () => {
         // Add some mock quote history data here
 
       };
+      quoteHistory.sort = jest.fn().mockReturnValue(quoteHistory);
       const session = {
         user: {
           email: 'test@example.com',
