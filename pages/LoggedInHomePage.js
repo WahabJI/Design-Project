@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Footer from '../components/Footer'
-import {HandleSignOut} from '../components/SignOut'
 import localFont from "next/font/local"
 import {useState, useEffect} from 'react'
 import { useSession, signOut } from 'next-auth/react'

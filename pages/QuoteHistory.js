@@ -1,11 +1,10 @@
 // need to fix sticky navbar and footer (make not sticky)
 import Link from "next/link";
 import Footer from "../components/Footer";
-import {HandleSignOut} from '../components/SignOut'
 import localFont from "next/font/local";
 import { useState, useEffect } from "react";
 import React from "react";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import router from "next/router";
 const barlow = localFont({
   src: "../public/fonts/Barlow-Regular.ttf",
@@ -47,7 +46,7 @@ export default function quote_history() {
                 <Link href="/ProfilePage"> PROFILE </Link>
               </li>
               <li className="flex mr-6 items-center hover:underline">
-                <button onClick={HandleSignOut}>LOGOUT</button>
+                <button onClick={signOut}>LOGOUT</button>
               </li>
             </ul>
           </nav>

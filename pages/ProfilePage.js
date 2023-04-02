@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import Footer from '../components/Footer'
-import {HandleSignOut} from '../components/SignOut'
 import localFont from "next/font/local"
-import {useSession} from 'next-auth/react'
+import {useSession, signOut} from 'next-auth/react'
 import router from 'next/router'
 import { useState, useEffect } from 'react'
 import React from 'react';
@@ -95,7 +94,7 @@ export default function profile_page() {
                                 <Link href="/QuoteHistory">HISTORY</Link>
                             </li>
                             <li className="flex mr-6 items-center hover:underline">
-                              <button onClick={HandleSignOut}>LOGOUT</button>
+                              <button onClick={signOut}>LOGOUT</button>
                             </li>
                         </ul>
                     </nav>
