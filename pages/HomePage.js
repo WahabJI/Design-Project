@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Head from 'next/head';
 import Footer from '../components/Footer'
 import localFont from "next/font/local"
 import { useSession } from 'next-auth/react';
@@ -11,6 +12,10 @@ export default function HomePage() {
   const { data: session, status } = useSession()
   return (
     <div className={barlow.className}>
+      <Head>
+        <title>Fuel Quoter: Get Your Fuel Fast</title>
+        <link rel="icon" href="/gasPump.ico" />
+      </Head>
       <div className= "flex flex-col min-h-screen justify-between bg-gray-100">
       {/* TOP BAR */}
       <header >

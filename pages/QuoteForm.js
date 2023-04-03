@@ -1,5 +1,6 @@
 // need to fix sticky navbar and footer (make not sticky)
 import Link from "next/link";
+import Head from "next/head";
 import Footer from "../components/Footer";
 import localFont from "next/font/local";
 import { useState, useEffect } from "react";
@@ -114,6 +115,10 @@ export default function fuel_quote_form() {
 
   return (
     <div className={barlow.className}>
+      <Head>
+        <title>Fuel Quoter: Get a Quote</title>
+        <link rel="icon" href="/quote.ico" />
+      </Head>
       <div className="flex flex-col min-h-screen bg-gray-100">
         <header>
           {/* TOP BAR */}
@@ -141,14 +146,14 @@ export default function fuel_quote_form() {
         <main className="flex-grow flex items-center justify-center">
           {/* QUOTE FORM */}
           <div className="flex justify-center items-center">
-            <div className="flex bg-white shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-[80%] flex-col">
+            <div className="flex bg-white shadow-lg overflow-hidden mx-auto max-w-sm py-4 px-4 lg:max-w-[80%] flex-col">
               {/* Title */}
               <div className="flex-col flex w-full py-2.5 px-4 justify-center items-center">
                 <div>
                   <h1 className="font-bold text-2xl mt-4 mb-2 text-center"> Get a Fuel Quote! </h1>
                 </div>
                 <div>
-                  <span className="text-center"> Get a quote by checking your info, filling out the rest of the form, and click
+                  <span className="text-center"> To get a quote, review your info, complete the rest of the form, then click
                     <span className="text-light_blue text-center"> Get Quote </span> below to see your suggested quote on the right.{" "}
                   </span>
                 </div>
@@ -260,7 +265,7 @@ export default function fuel_quote_form() {
                       disabled id="quotePriceButton"
                       className="block w-1/2 py-2 mt-4 mb-4 mx-auto bg-light_blue rounded-md text-center text-beige hover:bg-light_blue/75 hover:text-beige"
                     >
-                      Order Now
+                      Submit
                     </button>
                   </form>
                 </div>

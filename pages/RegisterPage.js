@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Head from "next/head";
 import Footer from "../components/Footer";
 import localFont from "next/font/local";
 import { useState, useEffect } from "react";
@@ -112,6 +113,10 @@ export default function register_page() {
 
   return (
     <div className={barlow.className}>
+      <Head>
+        <title>Fuel Quoter: Create an Account</title>
+        <link rel="icon" href="/register.ico" />
+      </Head>
       <div className="flex flex-col min-h-screen bg-gray-100">
         {/* TOP BAR */}
         <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-14">
