@@ -13,6 +13,30 @@ describe('GET /api/getProfilePage', () => {
       // Clear all mock implementations before each test
       jest.clearAllMocks();
     });
+    // it("should return 500 if database connection fails", async () => {
+    //   const session = {
+    //     user: {
+    //       email: 'test@example.com',
+    //     },
+    //   };
+    //   getSession.mockResolvedValue(session);
+    //   connectMongo.mockRejectedValueOnce(new Error('Database connection failed'));
+    //   const { req, res } = createMocks({
+    //     method: "GET",
+    //   });
+    //   await getQuoteHistory(req, res);
+    //   expect(res._getStatusCode()).toBe(500);
+    //   expect(res._getJSONData()).toStrictEqual({ message: "Unable to connect to database" });
+    // });
+    it("should return 401 if user is not logged in", async () => {
+      getSession.mockReturnValue(null);
+      const { req, res } = createMocks({
+        method: "GET",
+      });
+      await getQuoteHistory(req, res);
+      expect(res._getStatusCode()).toBe(401);
+      expect(res._getJSONData()).toStrictEqual({ message: "Unauthorized" });
+    });
     it('should return 200 OK and make sure that everything is called properly', async () => {
       const quoteHistory = {
         // Add some mock quote history data here
@@ -39,6 +63,33 @@ describe('GET /api/getProfilePage', () => {
         expect(History.findOne).toHaveBeenCalledWith({ email: session.user.email });
         expect(connectMongo).toHaveBeenCalled();
     });
+    it("should sort quote history by delivery date", async () => {
+      const session = {
+        user: {
+          email: 'test@example.com',
+        },
+      };
+      getSession.mockResolvedValue(session);
+      const mockResult = {
+        quoteHistory: [
+          { deliveryDate: new Date("2023-04-02") },
+          { deliveryDate: new Date("2023-04-01") },
+          { deliveryDate: new Date("2023-04-03") },
+        ]
+      };
+      History.findOne.mockResolvedValue(mockResult);
+      const { req, res } = createMocks({
+        method: "GET",
+      });
+      await getQuoteHistory(req, res);
+      expect(res._getStatusCode()).toBe(200);
+      expect(mockResult.quoteHistory).toEqual([
+        { deliveryDate: new Date("2023-04-03") },
+        { deliveryDate: new Date("2023-04-02") },
+        { deliveryDate: new Date("2023-04-01") },
+      ]);
+    });
+    
     });
 
 

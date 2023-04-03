@@ -34,9 +34,6 @@ export default async function handler(req, res) {
             return res.status(404).json({message: "User not found"})
         }
 
-        //connect to the database
-        connectMongo().catch(err => console.log(err));
-
         // find the user in the user database and retrieve the user's address and other information
         const userData = await Profile.findOne({
             email: email
