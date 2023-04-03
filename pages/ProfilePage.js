@@ -31,8 +31,6 @@ export default function profile_page() {
         })
             .then(res => res.json())
             .then(data => {
-                console.log("data in the front end")
-                console.log(data)
                 if(data !== null){
                     setFirstName(data.firstName);
                     setLastName(data.lastName);

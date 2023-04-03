@@ -30,7 +30,7 @@ export default function HomePage() {
                 setUserData(data);
             })
     }, [])
-    // console.log(session)
+    
     if(typeof window !== "undefined" && status === "unauthenticated") {
       router.push("/LoginPage")
       return;

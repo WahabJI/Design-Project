@@ -102,14 +102,12 @@ export default function register_page() {
     }
 
     const res = await data.json();
-    console.log(res.message);
     const status1 = await signIn("credentials", {
       email: email,
       password: password,
       callbackUrl: "/ProfilePage",
     });
 
-    console.log(status1);
   };
 
   return (
