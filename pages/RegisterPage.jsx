@@ -78,7 +78,7 @@ export default function register_page() {
     }
 
     console.log("submitting");
-    const data = await fetch("http://localhost:3000/api/auth/register", {
+    const data = await fetch("http://localhost:3000/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
