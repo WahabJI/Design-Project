@@ -63,8 +63,10 @@ describe("POST request", () => {
             },
         });
 
-        connectMongo.mockResolvedValue(true);
-        
+        User.findOne.mockResolvedValueOnce({
+            email: req.body.email,
+        });
+
         Profile.findOne.mockResolvedValueOnce({
             email: req.body.email,
             firstName: "Test",
@@ -76,16 +78,18 @@ describe("POST request", () => {
             zipCode: "12345",
         });
 
-        History.findOne.mockResolvedValueOnce(null);
+        connectMongo.mockResolvedValue(true);
 
-        User.findOne.mockResolvedValueOnce({
-            email: req.body.email,
-        });
+        History.findOne.mockResolvedValueOnce(null);
+        
         await PricingModule(req, res);
 
         expect(res._getStatusCode()).toBe(200);
         expect(res._getJSONData()).toEqual({
             message: "Quote history created",
         });
+        expect(connectMongo).toHaveBeenCalled();
+        expect(History.findOne).toHaveBeenCalledWith({ email: req.body.email });
+        
     })
 });
