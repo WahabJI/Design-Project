@@ -63,6 +63,8 @@ describe("POST request", () => {
             },
         });
 
+        connectMongo.mockResolvedValue(true);
+        
         Profile.findOne.mockResolvedValueOnce({
             email: req.body.email,
             firstName: "Test",
@@ -79,7 +81,6 @@ describe("POST request", () => {
         User.findOne.mockResolvedValueOnce({
             email: req.body.email,
         });
-        connectMongo.mockResolvedValue(true);
         await PricingModule(req, res);
 
         expect(res._getStatusCode()).toBe(200);
