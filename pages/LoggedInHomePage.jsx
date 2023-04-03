@@ -75,15 +75,15 @@ export default function HomePage() {
               <div>
                 <div className="mt-4 flex flex-row space-x-2">
                     <div className="text-light_blue">Gallons Requested:</div>
-                    <div className="text-black inline-block">{quoteHistory.gallonsRequested || "$ "+(0).toFixed(2)}</div>
+                    <div className="text-black inline-block">{"$ " + quoteHistory.gallonsRequested || "$ "+(0).toFixed(2)}</div>
                   </div>
                   <div className="flex flex-row space-x-11">
                   <div className="text-light_blue">Price / Gallon:</div>
-                  <div className="text-black inline-block">{quoteHistory.pricePerGallon || "$ "+(0).toFixed(2)}</div>
+                  <div className="text-black inline-block">{"$ " + quoteHistory.pricePerGallon || "$ "+(0).toFixed(2)}</div>
                 </div>
                   <div className="flex flex-row space-x-12">
                     <div className="text-light_blue">Amount Paid:</div>
-                    <div className="text-black inline-block">{quoteHistory.totalAmountDue || "$ "+(0).toFixed(2)}</div>
+                    <div className="text-black inline-block">{"$ " + quoteHistory.totalAmountDue || "$ "+(0).toFixed(2)}</div>
                   </div>
                   
               </div>
@@ -97,10 +97,10 @@ export default function HomePage() {
                   <div className="text-black inline-block px-7">{quoteHistory.address1 || "N/A"}</div>
                 </div>
                 <div className="flex flex-row space-x-10">
-                  <div className="text-black inline-block px-28">{quoteHistory.address2 || ""}</div>
+                  <div className="text-black inline-block px-28 mx-3">{quoteHistory.address2 || ""}</div>
                 </div>
-                <div className="flex flex-row space-x-10">
-                  <div className="text-black inline-block px-28">{(quoteHistory.city || quoteHistory.state || quoteHistory.zipCode) ? (quoteHistory.city + ", " + quoteHistory.state + ", " + quoteHistory.zipCode) : ""}</div>
+                <div className="flex flex-row space-x-14">
+                  <div className="text-black inline-block px-28 mx-3">{(quoteHistory.city || quoteHistory.state || quoteHistory.zipCode) ? (quoteHistory.city + ", " + quoteHistory.state + ", " + quoteHistory.zipCode) : ""}</div>
                 </div>
               </div>
               <div className>
