@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Head from 'next/head';
 import Footer from '../components/Footer'
 import {HandleSignOut} from '../components/SignOut'
 import localFont from "next/font/local"
@@ -38,6 +39,10 @@ export default function HomePage() {
     }
     return (
       <div className={barlow.className}>
+        <Head>
+          <title>Fuel Quoter: Get Your Fuel Fast</title>
+          <link rel="icon" href="/gasPump.ico" />
+        </Head>
         <div className= "flex flex-col h-screen justify-between bg-gray-100">
         {/* TOP BAR */}
         <header>
@@ -105,7 +110,7 @@ export default function HomePage() {
           </div>
 
           <div className="flex flex-row">
-            <div className="pl-8 py-6 text-left w-1/4 bg-white shadow-lg mx-auto">
+            <div className="px-8 py-6 text-left w-1/4 bg-white shadow-lg mx-auto">
               <h3 className="text-2xl font-bold">PROFILE OVERVIEW</h3>
                 <div className="mt-4 flex flex-row space-x-12">
                   <div className="text-light_blue">Name:</div>

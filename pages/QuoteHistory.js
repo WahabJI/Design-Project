@@ -1,5 +1,6 @@
 // need to fix sticky navbar and footer (make not sticky)
 import Link from "next/link";
+import Head from "next/head";
 import Footer from "../components/Footer";
 import {HandleSignOut} from '../components/SignOut'
 import localFont from "next/font/local";
@@ -29,6 +30,10 @@ export default function quote_history() {
   }
   return (
     <div className={barlow.className}>
+      <Head>
+        <title>Fuel Quoter: Quote History</title>
+        <link rel="icon" href="/history.ico" />
+      </Head>
       <div className="flex flex-col min-h-screen justify-between">
         <header>
           {/* TOP BAR */}

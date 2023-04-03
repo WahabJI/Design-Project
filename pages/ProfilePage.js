@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Head from 'next/head';
 import Footer from '../components/Footer'
 import {HandleSignOut} from '../components/SignOut'
 import localFont from "next/font/local"
@@ -77,6 +78,10 @@ export default function profile_page() {
 
     return (
         <div className={barlow.className}>
+          <Head>
+            <title>Fuel Quoter: Profile</title>
+            <link rel="icon" href="/profile.ico" />
+          </Head>
             <div className="flex flex-col h-screen justify-between bg-gray-100">
                 <header>
                     {/* TOP BAR */}
