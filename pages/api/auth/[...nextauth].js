@@ -26,7 +26,6 @@ export default NextAuth({
           throw new Error('User does not exist')
         }
         const passwordMatch = await compare(credentials.password, result.password);
-        console.log(passwordMatch)
         if(!passwordMatch){
           throw new Error('Invalid password')
         }

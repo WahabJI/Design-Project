@@ -9,7 +9,7 @@ export default async function getQuoteHistory(req, res) {
     if(!session){
         return res.status(401).json({message: "Unauthorized"})
     }
-    await connectMongo().catch(err => console.log(err));
+    connectMongo().catch((err) => console.error(err));
     //find user data
     const result = await History.findOne({
         email: session.user.email,
