@@ -7,7 +7,7 @@ const connectMongo = async () => {
             return Promise.resolve(true);
         }
     }catch(err){
-        console.log(err);
+        console.error(err);
         return Promise.reject(err);
     }
 }

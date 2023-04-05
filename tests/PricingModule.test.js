@@ -280,11 +280,11 @@ describe("POST request", () => {
         const exec = jest.fn();
         History.findOneAndUpdate.mockReturnValueOnce({ exec });
         exec.mockRejectedValueOnce(new Error("Server error"));
-
+        const error = jest.spyOn(console, "error").mockImplementation(() => {});
         await PricingModule(req, res);
 
+        expect(error).toHaveBeenCalledWith(new Error("Server error"));
         expect(res._getStatusCode()).toBe(500);
-
         expect(res._getJSONData()).toEqual({
             message: "Server error",
         });

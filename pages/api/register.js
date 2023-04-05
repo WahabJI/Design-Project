@@ -3,11 +3,12 @@ import userSchema from "../../model/schema.js";
 import { hash } from "bcryptjs";
 
 export default async function handler(req, res) {
-    connectMongo().catch(err => console.log(err));
+    
 
     //add the POST to create a new user in the databse
     if (req.method == "POST") {
-        if(!req.body){
+        connectMongo().catch(err => console.error(err));
+        if(Object.keys(req.body).length === 0){
             return res.status(404).json({message: "No data sent"})
         }
         const {email, password, confirmedPassword} = req.body;
@@ -30,6 +31,6 @@ export default async function handler(req, res) {
         res.status(200).json({message: "User created", user: add})
     }   
     else{
-        return res.status(405).json({message: "Method not allowed"})
+        return res.status(405).json({message: "Method Not Allowed"})
     }
 }
