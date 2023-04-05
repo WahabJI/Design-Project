@@ -28,7 +28,8 @@ export default function HomePage() {
             })
             .then(res => res.json())
             .then(data => {
-                setUserData(data);
+                if(data !== null)
+                  setUserData(data);
             })
     }, [])
     
@@ -114,17 +115,17 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold">PROFILE OVERVIEW</h3>
                 <div className="mt-4 flex flex-row space-x-12">
                   <div className="text-light_blue">Name:</div>
-                  <div className="text-black inline-block px-1">{userData.firstName + " " + userData.lastName}</div>
+                  <div className="text-black inline-block px-1">{userData === null ? (userData.firstName + " " + userData.lastName) : "N/A"}</div>
                 </div>
                 <div className="flex flex-row space-x-9">
                   <div className="text-light_blue">Address:</div>
-                  <div className="text-black inline-block">{userData.address1}</div>
+                  <div className="text-black inline-block">{userData.address1 || "N/A"}</div>
                 </div>
                 <div className="flex flex-row space-x-10">
-                  <div className="text-black inline-block pl-24">{userData.address2}</div>
+                  <div className="text-black inline-block pl-24">{userData.address2 || ""}</div>
                 </div>
                 <div className="flex flex-row space-x-10">
-                  <div className="text-black inline-block pl-24">{userData.city + ", " + userData.state + ", " + userData.zipCode}</div>
+                  <div className="text-black inline-block pl-24">{userData === null ? (userData.city + ", " + userData.state + ", " + userData.zipCode) : "N/A"}</div>
                 </div>
                 <div className="flex-grow flex justify-center items-center">
                   <Link href="/ProfilePage"><button className="px-6 py-2 mt-4 text-beige bg-light_blue rounded-lg hover:bg-light_blue/75 hover:text-beige">View / Edit Profile</button></Link>
