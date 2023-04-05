@@ -2,15 +2,56 @@ import connectMongo from "../../database/conn.js";
 import History from "../../model/historySchema";
 import userSchema from "../../model/schema";
 import Profile from "../../model/profileSchema.js";
+import { SessionContext, getSession } from "next-auth/react";
 
 export default async function handler(req, res) {
     if(req.method === "GET"){
+        //get session
+        const session = await getSession({ req });
+
         //grab data that was passed as query parameters in the url
         const { deliveryDate, gallonsRequested } = req.query;
 
         //calculate the price based on some data from the database later but for now just hardcode it
         //randomized price for now until last assignment
-        const pricePerGallon = (Math.random()*7 + 1);
+        const basePricePerGallon = 1.5;
+        let loc_factor; //2% for inside texas and 4% for outside texas(EX; .02*1.50 applies to these three variables below)
+        let hist_factor; //1%if client requested fuel before, 0% if no history
+        let gallons_req_factor; //2% of price if more than 1000 galllons, 3% for less than a thousand
+        const comp_prof_factor = .10;
+        const result = await History.findOne({
+            email: session.user.email
+        })
+
+        const user = await Profile.findOne({
+            email: session.user.email
+        })
+        if (user.state === 'TX'){
+            loc_factor = .02;
+        }
+        else{
+            loc_factor = .04;
+        }
+        if (result.quoteHistory.length > 0){
+            hist_factor = .01;
+        }
+        else{
+            hist_factor = 0;
+        }
+        if (gallonsRequested > 1000){
+            gallons_req_factor=.02;
+        }
+        else{
+            gallons_req_factor=.03;
+        }
+
+        let Margin= basePricePerGallon * (loc_factor - hist_factor + gallons_req_factor + comp_prof_factor);
+        let pricePerGallon = basePricePerGallon + Margin;
+
+
+        // console.log(result.quoteHistory.length)
+        // console.log(user)
+        // const pricePerGallon = some math
         const totalAmountDue = pricePerGallon * gallonsRequested;
 
         //send the data back to the frontend
