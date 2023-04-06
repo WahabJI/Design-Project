@@ -146,13 +146,13 @@ export default function fuel_quote_form() {
         <main className="flex-grow flex items-center justify-center">
           {/* QUOTE FORM */}
           <div className="flex justify-center items-center">
-            <div className="flex bg-white shadow-lg overflow-hidden mx-auto max-w-sm py-4 px-4 lg:max-w-[80%] flex-col">
+            <div className="flex bg-white shadow-lg overflow-hidden mx-auto py-4 px-4 lg:max-w-[80%] flex-col">
               {/* Title */}
               <div className="flex-col flex w-full py-2.5 px-4 justify-center items-center">
                 <div>
                   <h1 className="font-bold text-2xl mt-4 mb-2 text-center"> Get a Fuel Quote! </h1>
                 </div>
-                <div>
+                <div className="items-center justify-center">
                   <span className="text-center"> To get a quote, review your info, complete the rest of the form, then click
                     <span className="text-light_blue text-center"> Get Quote </span> below to see your suggested quote on the right.{" "}
                   </span>
