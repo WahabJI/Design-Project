@@ -122,21 +122,21 @@ export default function fuel_quote_form() {
       <div className="flex flex-col min-h-screen bg-gray-100">
         <header>
           {/* TOP BAR */}
-          <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-14">
-            <div className="ml-6">
+          <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-16">
+            <div className="ml-8">
               <Link href="/">FUEL QUOTER</Link>
             </div>
             <ul className="ml-auto left-0 right-0 top-full inline-flex">
-              <li className="flex mr-6 items-center hover:underline">
+              <li className="flex mr-8 items-center hover:underline">
                 <Link href="/"> HOME </Link>
               </li>
-              <li className="flex mr-6 items-center hover:underline">
+              <li className="flex mr-8 items-center hover:underline">
                 <Link href="/QuoteHistory"> HISTORY </Link>
               </li>
-              <li className="flex mr-6 items-center hover:underline">
+              <li className="flex mr-8 items-center hover:underline">
                 <Link href="/ProfilePage"> PROFILE </Link>
               </li>
-              <li className="flex mr-6 items-center hover:underline">
+              <li className="flex mr-8 items-center hover:underline">
                 <button onClick={signOut}> LOGOUT </button>
               </li>
             </ul>

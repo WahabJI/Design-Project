@@ -36,21 +36,21 @@ export default function quote_history() {
       <div className="flex flex-col min-h-screen justify-between">
         <header>
           {/* TOP BAR */}
-          <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-14">
-            <div className="ml-6">
+          <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-16">
+            <div className="ml-8">
               <Link href="/"> FUEL QUOTER </Link>
             </div>
             <ul className="ml-auto left-0 right-0 top-full inline-flex">
-              <li className="flex mr-6 items-center hover:underline">
+              <li className="flex mr-8 items-center hover:underline">
                 <Link href="/"> HOME </Link>
               </li>
-              <li className="flex mr-6 items-center hover:underline">
+              <li className="flex mr-8 items-center hover:underline">
                 <Link href="/QuoteForm"> QUOTE </Link>
               </li>
-              <li className="flex mr-6 items-center hover:underline">
+              <li className="flex mr-8 items-center hover:underline">
                 <Link href="/ProfilePage"> PROFILE </Link>
               </li>
-              <li className="flex mr-6 items-center hover:underline">
+              <li className="flex mr-8 items-center hover:underline">
                 <button onClick={signOut}>LOGOUT</button>
               </li>
             </ul>
@@ -63,7 +63,7 @@ export default function quote_history() {
             <h3 className="text-2xl font-bold text-center"> Fuel Quote History </h3>
             <div className="relative max-w-5xl overflow-x-auto mt-4 px-4">
               <table className="table-auto w-full text-center mb-4">
-                <thead className="text uppercase bg-dark_grey">
+                <thead className="text bg-dark_grey">
                   <tr className="border border-dark_grey">
                     <th scope="col" className="px-4 py-2">
                       <div className="flex items-center">
@@ -72,7 +72,8 @@ export default function quote_history() {
                           <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                             <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z"/>
                           </svg>
-                        </a>                      </div>
+                        </a>                      
+                      </div>
                     </th>
                     <th scope="col" className=" px-4 py-2"> Address 1 </th>
                     <th scope="col" className=" px-4 py-2"> Address 2 </th>

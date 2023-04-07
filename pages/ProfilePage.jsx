@@ -51,6 +51,10 @@ export default function profile_page() {
         //ADD VALIDATION
         console.log("submitting")
         e.preventDefault();
+        if (!state) {
+          console.log('Please select a state');
+          return;
+        }
         const data = await fetch('http://localhost:3000/api/getProfilePage', {
             method: "POST",
             headers: {
@@ -82,21 +86,21 @@ export default function profile_page() {
           <div className="flex flex-col min-h-screen bg-gray-100">
               <header>
                   {/* TOP BAR */}
-                  <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-14">
-                      <div className="ml-6">
+                  <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-16">
+                      <div className="ml-8">
                         <Link href="/">FUEL QUOTER</Link>
                       </div>
                       <ul className="ml-auto left-0 right-0 top-full inline-flex">
-                          <li className="flex mr-6 items-center hover:underline">
+                          <li className="flex mr-8 items-center hover:underline">
                               <Link href="/">HOME</Link>
                           </li>
-                          <li className="flex mr-6 items-center hover:underline">
+                          <li className="flex mr-8 items-center hover:underline">
                               <Link href="/QuoteForm">QUOTE</Link>
                           </li>
-                          <li className="flex mr-6 items-center hover:underline">
+                          <li className="flex mr-8 items-center hover:underline">
                               <Link href="/QuoteHistory">HISTORY</Link>
                           </li>
-                          <li className="flex mr-6 items-center hover:underline">
+                          <li className="flex mr-8 items-center hover:underline">
                             <button onClick={signOut}>LOGOUT</button>
                           </li>
                       </ul>
@@ -144,11 +148,12 @@ export default function profile_page() {
                                 {/* add state in database portion to include dropdown with 2 STATE code that is stored in database */}
                                 <div className="w-2/5 pr-4">
                                     <label className="block font-bold">State</label>
-                                    <select required placeholder="State" className="w-full pl-4 pr-2 py-2.5 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" 
+                                    <select required value={state} className="w-full pl-4 pr-2 py-2.5 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" 
                                       onChange={(e) => setState(e.target.value)}>
+                                      <option value="" disabled selected>Select a State</option>
                                       {states.map((state, index) => 
                                         // show both state and abbreviation
-                                        <option key={index} value={statesAbbrev[index]} selected={statesAbbrev[index] === {state}}>{statesAbbrev[index]} - {state} </option>
+                                        <option key={index} value={statesAbbrev[index]}>{statesAbbrev[index]} - {state} </option>
                                       )}
                                     </select>
                                 </div>
