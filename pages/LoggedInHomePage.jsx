@@ -77,14 +77,14 @@ export default function HomePage() {
           <div className="flex flex-col justify-center items-center w-2/5 mx-6 my-6 h-full">
             {/* top right */}
             <div className="flex flex-col w-full justify-center items-center bg-white px-6 py-6 mb-6 mx-6 h-full shadow-lg">
-              <h1 className="text-xl font-bold"> Profile Overview</h1>
+              <h1 className="text-xl font-bold mb-3"> Profile Overview</h1>
               <div className="w-full text-left">
-                <div className="mt-2 flex flex-row w-full">
+                <div className="flex flex-row w-full">
                   <div className="w-1/5"></div>
                   <div className="text-light_blue w-1/5">Name:</div>
                   <div className="text-black items-center justify-center px-2 w-3/5"> {userData.firstName + " " + userData.lastName} </div>
                 </div>
-                <div className="flex flex-row w-full mt-1">
+                <div className="flex flex-row w-full">
                   <div className="w-1/5"></div>
                   <div className="text-light_blue w-1/5">Address:</div>
                   <div className=" flex-col flex w-3/5">
@@ -107,31 +107,31 @@ export default function HomePage() {
 
             {/* bottom right */}
             <div className="flex flex-col w-full justify-center items-center bg-white px-6 py-4 mt-6 mx-6 h-full shadow-lg">
-              <h1 className="text-xl font-bold mt-4"> Your Last Quote </h1>
+              <h1 className="text-xl font-bold mt-4 mb-3"> Your Last Quote </h1>
               <div className="w-full text-left">
-                <div className="mt-2 flex flex-row w-full items-center justify-center">
+                <div className="flex flex-row w-full items-center justify-center">
                   <div className="w-[5%]"></div>
                   <span className="text-light_blue w-[35%] px-2">Delivery Date:</span>
                   <span className="text-black items-center justify-center px-2 w-[60%]"> {quoteHistory.deliveryDate} </span>
                 </div>
-                <div className="flex flex-row w-full items-center justify-center mt-1">
+                <div className="flex flex-row w-full items-center justify-center">
                   <div className="w-[5%]"></div>
                   <span className="text-light_blue w-[35%] px-2"> Address:</span>
                   <span className="text-black items-center justify-center px-2 w-[60%]">
-                      {userData.city + ", " + userData.state + ", " + userData.zipCode}
+                      {quoteHistory.city + ", " + quoteHistory.state + ", " + quoteHistory.zipCode}
                   </span>
                 </div>
-                <div className="flex flex-row w-full items-center justify-center mt-1">
+                <div className="flex flex-row w-full items-center justify-center">
                   <div className="w-[5%]"></div>
                   <span className="text-light_blue w-[35%] px-2"> Gallons Requested:</span>
                   <div className="text-black items-center justify-center px-2 w-[60%]"> {quoteHistory.gallonsRequested} </div>
                 </div>
-                <div className="flex flex-row w-full items-center justify-center mt-1">
+                <div className="flex flex-row w-full items-center justify-center">
                   <div className="w-[5%]"></div>
                   <span className="text-light_blue w-[35%] px-2"> Price / Gallon:</span>
                   <div className="text-black items-center justify-center px-2 w-[60%]"> ${quoteHistory.pricePerGallon} </div>
                 </div>
-                <div className="flex flex-row w-full items-center justify-center mt-1">
+                <div className="flex flex-row w-full items-center justify-center">
                   <div className="w-[5%]"></div>
                   <span className="text-light_blue w-[35%] px-2"> Total Cost: </span>
                   <div className="text-black items-center justify-center px-2 w-[60%]"> ${quoteHistory.totalAmountDue} </div>
