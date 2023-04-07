@@ -16,7 +16,7 @@ export default function HomePage() {
         <title>Fuel Quoter: Get Your Fuel Fast</title>
         <link rel="icon" href="/gasPump.ico" />
       </Head>
-      <div className= "flex flex-col min-h-screen justify-between bg-gray-100">
+      <div className= "flex flex-col min-h-screen h-screen justify-between bg-gray-100 overflow-auto">
       {/* TOP BAR */}
       <header >
         <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-16">

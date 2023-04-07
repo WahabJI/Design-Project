@@ -42,7 +42,7 @@ export default function HomePage() {
         <title>Fuel Quoter: Get Your Fuel Fast</title>
         <link rel="icon" href="/gasPump.ico" />
       </Head>
-      <div className="flex flex-col h-screen justify-between bg-gray-100">
+      <div className="flex flex-col min-h-screen h-screen justify-between bg-gray-100 overflow-auto">
         {/* TOP BAR */}
         <header>
           <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-16">
@@ -66,7 +66,7 @@ export default function HomePage() {
           </nav>
         </header>
 
-        <main className="flex flex-row justify-center items-center mx-6">
+        <main className="flex flex-row justify-between items-center mx-6 my-6 bg-gray-100">
           {/* left */}
           <div className="flex justify-center items-center w-3/5 my-6 h-full">
             <div className="flex w-full justify-center items-center bg-white px-6 py-6 mx-6 my-6 h-full shadow-lg">
@@ -76,7 +76,7 @@ export default function HomePage() {
           {/* right half */}
           <div className="flex flex-col justify-center items-center w-2/5 mx-6 my-6 h-full">
             {/* top right */}
-            <div className="flex flex-col w-full justify-center items-center bg-white px-6 py-6 mb-6 mx-6 h-full shadow-lg">
+            <div className="flex flex-col w-full justify-center items-center bg-white px-6 py-6 mb-6 mx-6 h-full space-x-2 shadow-lg">
               <h1 className="text-xl font-bold mb-3"> Profile Overview</h1>
               <div className="w-full text-left">
                 <div className="flex flex-row w-full">
@@ -106,7 +106,7 @@ export default function HomePage() {
             </div>
 
             {/* bottom right */}
-            <div className="flex flex-col w-full justify-center items-center bg-white px-6 py-4 mt-6 mx-6 h-full shadow-lg">
+            <div className="flex flex-col w-full justify-center items-center bg-white px-6 py-4 mt-6 mx-6 h-full space-x-2 shadow-lg">
               <h1 className="text-xl font-bold mt-4 mb-3"> Your Last Quote </h1>
               <div className="w-full text-left">
                 <div className="flex flex-row w-full items-center justify-center">

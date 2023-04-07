@@ -33,7 +33,7 @@ export default function quote_history() {
         <title>Fuel Quoter: Quote History</title>
         <link rel="icon" href="/history.ico" />
       </Head>
-      <div className="flex flex-col min-h-screen justify-between">
+      <div className="flex flex-col min-h-screen h-screen justify-between bg-gray-100 overflow-auto">
         <header>
           {/* TOP BAR */}
           <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-16">
