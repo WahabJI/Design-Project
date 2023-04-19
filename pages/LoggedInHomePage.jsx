@@ -42,7 +42,7 @@ export default function HomePage() {
         <title>Fuel Quoter: Get Your Fuel Fast</title>
         <link rel="icon" href="/gasPump.ico" />
       </Head>
-      <div className="flex flex-col min-h-screen h-screen justify-between bg-gray-100 overflow-auto">
+      <div className="flex flex-col h-screen justify-between bg-gray-100 overflow-auto">
         {/* TOP BAR */}
         <header>
           <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-16">
@@ -66,18 +66,30 @@ export default function HomePage() {
           </nav>
         </header>
 
-        <main className="flex flex-row justify-between items-center mx-6 my-6 bg-gray-100">
+        <main className="flex flex-row justify-between items-center mx-6 my-8 bg-gray-100 ">
           {/* left */}
           <div className="flex justify-center items-center w-3/5 my-6 h-full">
-            <div className="flex w-full justify-center items-center bg-white px-6 py-6 mx-6 my-6 h-full shadow-lg">
+            <div className="flex flex-col w-full justify-center items-center bg-white px-16 py-6 mx-6 my-6 h-full shadow-lg">
               <h1 className="text-2xl font-bold"> What is the Fuel Quoter?</h1>
+              <hr className="border-gray-400 my-4 w-4/5 text-center"></hr>
+              <span className="text-justify"> 
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde accusantium rem ipsum exercitationem ipsam totam hic voluptatibus quis magnam, earum reiciendis tenetur temporibus ea aperiam tempora aspernatur fuga alias facilis.
+              </span>
+              <div className="w-1/2">
+                  <Link href="/QuoteForm">
+                    <button className="w-full py-4 mt-8 text-2xl font-bold text-beige bg-light_blue rounded-md hover:bg-light_blue/75 hover:text-beige">
+                     Make a Quote!
+                    </button>
+                  </Link>
+                </div>
             </div>
           </div>
           {/* right half */}
-          <div className="flex flex-col justify-center items-center w-2/5 mx-6 my-6 h-full">
+          <div className="flex flex-col justify-between items-center w-2/5 mx-6">
             {/* top right */}
-            <div className="flex flex-col w-full justify-center items-center bg-white px-6 py-6 mb-6 mx-6 h-full space-x-2 shadow-lg">
-              <h1 className="text-xl font-bold mb-3"> Profile Overview</h1>
+            <div className="flex flex-col w-full justify-center items-center bg-white px-6 py-4 mb-4 mx-6 space-x-2 shadow-lg">
+              <h1 className="text-xl font-bold mt-4 text-center"> Profile Overview</h1>
+              <hr className="border-gray-400 my-2.5 w-4/5 text-center"></hr>
               <div className="w-full text-left">
                 <div className="flex flex-row w-full">
                   <div className="w-1/5"></div>
@@ -97,7 +109,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex-grow flex justify-center items-center">
                   <Link href="/ProfilePage">
-                    <button className="px-6 py-2 mt-4 text-beige bg-light_blue rounded-md hover:bg-light_blue/75 hover:text-beige">
+                    <button className="px-6 py-2 mt-4 mb-4 font-semibold text-light_blue border border-light_blue rounded-md hover:ring-1 hover:ring-light_blue">
                       View / Edit Profile
                     </button>
                   </Link>
@@ -106,8 +118,10 @@ export default function HomePage() {
             </div>
 
             {/* bottom right */}
-            <div className="flex flex-col w-full justify-center items-center bg-white px-6 py-4 mt-6 mx-6 h-full space-x-2 shadow-lg">
-              <h1 className="text-xl font-bold mt-4 mb-3"> Your Last Quote </h1>
+            <div className="flex flex-col w-full justify-center items-center bg-white px-6 py-4 mt-4 mx-6 space-x-2 shadow-lg">
+              <h1 className="text-xl font-bold mt-4 text-center"> Your Last Quote </h1>
+              <hr className="border-gray-400 my-2.5 w-4/5 text-center"></hr>
+              {quoteHistory.length != 0 ? (
               <div className="w-full text-left">
                 <div className="flex flex-row w-full items-center justify-center">
                   <div className="w-[5%]"></div>
@@ -139,12 +153,19 @@ export default function HomePage() {
 
                 <div className="flex-grow flex justify-center items-center">
                   <Link href="/QuoteHistory">
-                    <button className="px-6 py-2 mt-4 mb-4 text-beige bg-light_blue rounded-md hover:bg-light_blue/75 hover:text-beige">
+                    <button className="px-6 py-2 mt-4 mb-4 font-semibold text-light_blue border border-light_blue rounded-md hover:ring-1 hov er:ring-light_blue">
                       View Quote History
                     </button>
                   </Link>
                 </div>
               </div>
+              ) : (
+                <div className="flex-grow flex justify-center items-center">
+                  <span className="text-gray-400 items-center justify-center px-2 mb-4">
+                    <i>You have not made any quotes</i>
+                  </span>
+                </div>
+              )}
             </div>
           </div>
           

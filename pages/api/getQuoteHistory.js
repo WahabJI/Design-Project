@@ -16,7 +16,8 @@ export default async function getQuoteHistory(req, res) {
     })
     // console.log(result.quoteHistory)
     // sort quote history by delivery date
-    result.quoteHistory.sort((a, b) => (a.deliveryDate < b.deliveryDate) ? 1 : -1)
+    if(result)  
+      result.quoteHistory.sort((a, b) => (a.deliveryDate < b.deliveryDate) ? 1 : -1)
     //respond sending data to frontend
     res.status(200).json(result.quoteHistory)
 }

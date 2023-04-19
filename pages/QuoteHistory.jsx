@@ -113,7 +113,9 @@ export default function quote_history() {
                   </tr>
                 </thead>
                 <tbody>
-                  {quoteHistory.map((quote) => (
+                {quoteHistory.length != 0 ? (  
+                  <>              
+                 {quoteHistory.map((quote) => (
                     <tr className="flex-grow bg-white">
                       <td className="border px-4 py-2">{quote.deliveryDate}</td>
                       <td className="border px-4 py-2">{quote.address1}</td>
@@ -126,6 +128,13 @@ export default function quote_history() {
                       <td className="border px-4 py-2">${quote.totalAmountDue.toFixed(2)}</td>
                     </tr>
                   ))}
+                  </>
+                ) : (
+                  <tr className="flex-grow bg-white">
+                    <td className="border px-4 py-2 h-20 text-gray-400" colSpan={9}><i>No Quotes Found</i></td>
+                  </tr>
+                )}
+
                 </tbody>
               </table>
             </div>
