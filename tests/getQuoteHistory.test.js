@@ -3,31 +3,50 @@ import getQuoteHistory from '../pages/api/getQuoteHistory';
 import { createMocks } from 'node-mocks-http';
 import History from '../model/historySchema';
 import { getSession } from 'next-auth/react';
-jest.mock('../database/conn.js');
+jest.mock('../database/conn');
 jest.mock('../model/historySchema');
 jest.mock('next-auth/react', () => ({
   getSession: jest.fn(),
 }));
-describe('GET /api/getProfilePage', () => {
-    beforeEach(() => {
-      // Clear all mock implementations before each test
-      jest.clearAllMocks();
+describe("Request is not a GET request", () => {
+  it("Should return 405 if not a GET request", async () => {
+    const { req, res } = createMocks({
+      method: "POST",
     });
-    // it("should return 500 if database connection fails", async () => {
-    //   const session = {
-    //     user: {
-    //       email: 'test@example.com',
-    //     },
-    //   };
-    //   getSession.mockResolvedValue(session);
-    //   connectMongo.mockRejectedValueOnce(new Error('Database connection failed'));
-    //   const { req, res } = createMocks({
-    //     method: "GET",
-    //   });
-    //   await getQuoteHistory(req, res);
-    //   expect(res._getStatusCode()).toBe(500);
-    //   expect(res._getJSONData()).toStrictEqual({ message: "Unable to connect to database" });
-    // });
+    await getQuoteHistory(req, res);
+    expect(res._getStatusCode()).toBe(405);
+    expect(res._getData()).toBe('{"message":"Method Not Allowed"}');
+  });
+});
+
+describe('GET /api/getProfilePage', () => {
+    it("Should throw an error if database connection fails", async () => {
+      const session = {
+        user: {
+          email: 'test@test.com',
+        },
+      };
+
+      const { req, res } = createMocks({
+          method: "GET",
+      });
+
+      getSession.mockResolvedValue(session);
+
+      connectMongo.mockRejectedValue(new Error("Database connection failed"));
+
+      History.findOne.mockResolvedValue({
+        quoteHistory: [{
+            MockData: "test"
+          }],
+      });
+
+      const error = jest.spyOn(console, "error").mockImplementation(() => {});
+
+      await getQuoteHistory(req, res);
+
+      expect(error).toHaveBeenCalledWith(new Error("Database connection failed"));
+  });
     it("should return 401 if user is not logged in", async () => {
       getSession.mockReturnValue(null);
       const { req, res } = createMocks({

@@ -210,7 +210,9 @@ describe('when user is logged in', () => {
             const exec = jest.fn();
             Profile.findOneAndUpdate.mockReturnValueOnce({ exec });
             exec.mockRejectedValueOnce(new Error("Server error"));
+            const error = jest.spyOn(console, "error").mockImplementation(() => {});
             await getProfilePage(req, res);
+            expect(error).toHaveBeenCalledWith(new Error("Server error"))
             expect(res._getStatusCode()).toBe(500);
             expect(res._getJSONData()).toEqual({
                 message: "Server error",
@@ -237,7 +239,9 @@ describe('when user is logged in', () => {
             };
             Profile.findOne.mockResolvedValueOnce(null);
             Profile.create.mockRejectedValueOnce(new Error("Server error"));
+            const error = jest.spyOn(console, "error").mockImplementation(() => {});
             await getProfilePage(req, res);
+            expect(error).toHaveBeenCalledWith(new Error("Server error"));
             expect(res._getStatusCode()).toBe(500);
             expect(res._getJSONData()).toEqual({
                 message: "Server error",

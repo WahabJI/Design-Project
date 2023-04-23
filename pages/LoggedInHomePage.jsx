@@ -28,7 +28,8 @@ export default function HomePage() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setUserData(data);
+                if(data !== null)
+                  setUserData(data);
       });
   }, []);
 
@@ -66,89 +67,62 @@ export default function HomePage() {
           </nav>
         </header>
 
-        <main className="flex flex-row justify-between items-center mx-6 my-8 bg-gray-100 ">
-          {/* left */}
-          <div className="flex justify-center items-center w-3/5 my-6 h-full">
-            <div className="flex flex-col w-full justify-center items-center bg-white px-16 py-6 mx-6 my-6 h-full shadow-lg">
-              <h1 className="text-2xl font-bold"> What is the Fuel Quoter?</h1>
-              <hr className="border-gray-400 my-4 w-4/5 text-center"></hr>
-              <span className="text-justify"> 
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde accusantium rem ipsum exercitationem ipsam totam hic voluptatibus quis magnam, earum reiciendis tenetur temporibus ea aperiam tempora aspernatur fuga alias facilis.
-              </span>
-              <div className="w-1/2">
-                  <Link href="/QuoteForm">
-                    <button className="w-full py-4 mt-8 text-2xl font-bold text-beige bg-light_blue rounded-md hover:bg-light_blue/75 hover:text-beige">
-                     Make a Quote!
-                    </button>
-                  </Link>
-                </div>
-            </div>
-          </div>
-          {/* right half */}
-          <div className="flex flex-col justify-between items-center w-2/5 mx-6">
-            {/* top right */}
-            <div className="flex flex-col w-full justify-center items-center bg-white px-6 py-4 mb-4 mx-6 space-x-2 shadow-lg">
-              <h1 className="text-xl font-bold mt-4 text-center"> Profile Overview</h1>
-              <hr className="border-gray-400 my-2.5 w-4/5 text-center"></hr>
-              <div className="w-full text-left">
-                <div className="flex flex-row w-full">
-                  <div className="w-1/5"></div>
-                  <div className="text-light_blue w-1/5">Name:</div>
-                  <div className="text-black items-center justify-center px-2 w-3/5"> {userData.firstName + " " + userData.lastName} </div>
-                </div>
-                <div className="flex flex-row w-full">
-                  <div className="w-1/5"></div>
-                  <div className="text-light_blue w-1/5">Address:</div>
-                  <div className=" flex-col flex w-3/5">
-                    <div className="text-black items-center justify-center px-2"> {userData.address1} </div>
-                    <div className="text-black items-center justify-center px-2"> {userData.address2} </div>
-                    <div className="text-black items-center justify-center px-2">
-                      {userData.city + ", " + userData.state + ", " + userData.zipCode}
-                    </div>
+
+        {/* LOGIN FORM */}
+        <div className="flex flex-col py-16 justify-between h-screen bg-gray-100">
+          <div className="px-8 py-6 text-left w-5/6 bg-white shadow-lg m-auto">
+            <h3 className="text-2xl font-bold">YOUR LAST QUOTE</h3>
+            <div className="flex flex-row">
+              <div>
+                <div className="mt-4 flex flex-row space-x-2">
+                    <div className="text-light_blue">Gallons Requested:</div>
+                    <div className="text-black inline-block">{"$ " + quoteHistory.gallonsRequested || "$ "+(0).toFixed(2)}</div>
                   </div>
+                  <div className="flex flex-row space-x-11">
+                  <div className="text-light_blue">Price / Gallon:</div>
+                  <div className="text-black inline-block">{"$ " + quoteHistory.pricePerGallon || "$ "+(0).toFixed(2)}</div>
                 </div>
-                <div className="flex-grow flex justify-center items-center">
-                  <Link href="/ProfilePage">
-                    <button className="px-6 py-2 mt-4 mb-4 font-semibold text-light_blue border border-light_blue rounded-md hover:ring-1 hover:ring-light_blue">
-                      View / Edit Profile
-                    </button>
-                  </Link>
+                  <div className="flex flex-row space-x-12">
+                    <div className="text-light_blue">Amount Paid:</div>
+                    <div className="text-black inline-block">{"$ " + quoteHistory.totalAmountDue || "$ "+(0).toFixed(2)}</div>
+                  </div>
+                  
+              </div>
+              <div className="pl-24 pr-10">
+                <div className="mt-4 flex flex-row space-x-4">
+                  <div className="text-light_blue">Date Delivered:</div>
+                  <div className="text-black inline-block">{quoteHistory.deliveryDate || "N/A"}</div>
+                </div>
+                <div className="flex flex-row space-x-8">
+                  <div className="text-light_blue">Address:</div>
+                  <div className="text-black inline-block px-7">{quoteHistory.address1 || "N/A"}</div>
+                </div>
+                <div className="flex flex-row space-x-10">
+                  <div className="text-black inline-block px-28 mx-3">{quoteHistory.address2 || ""}</div>
+                </div>
+                <div className="flex flex-row space-x-14">
+                  <div className="text-black inline-block px-28 mx-3">{(quoteHistory.city || quoteHistory.state || quoteHistory.zipCode) ? (quoteHistory.city + ", " + quoteHistory.state + ", " + quoteHistory.zipCode) : ""}</div>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* bottom right */}
-            <div className="flex flex-col w-full justify-center items-center bg-white px-6 py-4 mt-4 mx-6 space-x-2 shadow-lg">
-              <h1 className="text-xl font-bold mt-4 text-center"> Your Last Quote </h1>
-              <hr className="border-gray-400 my-2.5 w-4/5 text-center"></hr>
-              {quoteHistory.length != 0 ? (
-              <div className="w-full text-left">
-                <div className="flex flex-row w-full items-center justify-center">
-                  <div className="w-[5%]"></div>
-                  <span className="text-light_blue w-[35%] px-2">Delivery Date:</span>
-                  <span className="text-black items-center justify-center px-2 w-[60%]"> {quoteHistory.deliveryDate} </span>
+          <div className="flex flex-row">
+            <div className="px-8 py-6 text-left w-1/4 bg-white shadow-lg mx-auto">
+              <h3 className="text-2xl font-bold">PROFILE OVERVIEW</h3>
+                <div className="mt-4 flex flex-row space-x-12">
+                  <div className="text-light_blue">Name:</div>
+                  <div className="text-black inline-block px-1">{userData === null ? (userData.firstName + " " + userData.lastName) : "N/A"}</div>
                 </div>
-                <div className="flex flex-row w-full items-center justify-center">
-                  <div className="w-[5%]"></div>
-                  <span className="text-light_blue w-[35%] px-2"> Address:</span>
-                  <span className="text-black items-center justify-center px-2 w-[60%]">
-                      {quoteHistory.city + ", " + quoteHistory.state + ", " + quoteHistory.zipCode}
-                  </span>
+                <div className="flex flex-row space-x-9">
+                  <div className="text-light_blue">Address:</div>
+                  <div className="text-black inline-block">{userData.address1 || "N/A"}</div>
                 </div>
-                <div className="flex flex-row w-full items-center justify-center">
-                  <div className="w-[5%]"></div>
-                  <span className="text-light_blue w-[35%] px-2"> Gallons Requested:</span>
-                  <div className="text-black items-center justify-center px-2 w-[60%]"> {quoteHistory.gallonsRequested} </div>
+                <div className="flex flex-row space-x-10">
+                  <div className="text-black inline-block pl-24">{userData.address2 || ""}</div>
                 </div>
-                <div className="flex flex-row w-full items-center justify-center">
-                  <div className="w-[5%]"></div>
-                  <span className="text-light_blue w-[35%] px-2"> Price / Gallon:</span>
-                  <div className="text-black items-center justify-center px-2 w-[60%]"> ${quoteHistory.pricePerGallon} </div>
-                </div>
-                <div className="flex flex-row w-full items-center justify-center">
-                  <div className="w-[5%]"></div>
-                  <span className="text-light_blue w-[35%] px-2"> Total Cost: </span>
-                  <div className="text-black items-center justify-center px-2 w-[60%]"> ${quoteHistory.totalAmountDue} </div>
+                <div className="flex flex-row space-x-10">
+                  <div className="text-black inline-block pl-24">{userData === null ? (userData.city + ", " + userData.state + ", " + userData.zipCode) : "N/A"}</div>
                 </div>
 
                 <div className="flex-grow flex justify-center items-center">

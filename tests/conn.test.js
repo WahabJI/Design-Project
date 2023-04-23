@@ -19,8 +19,10 @@ describe('connectMongo', () => {
     it('should reject if connection fails', async () => {
         const mockError = new Error('Connection Failed');
         mongoose.connect.mockRejectedValue(mockError);
-
+        const error = jest.spyOn(console, "error").mockImplementation(() => {});
+        
         await expect(connectMongo()).rejects.toThrow(mockError);
+        await expect(error).toHaveBeenCalledWith(new Error("Connection Failed"));
     });
 });
 
