@@ -119,24 +119,24 @@ export default function fuel_quote_form() {
         <title>Fuel Quoter: Get a Quote</title>
         <link rel="icon" href="/quote.ico" />
       </Head>
-      <div className="flex flex-col min-h-screen bg-gray-100">
+      <div className="flex flex-col min-h-screen h-screen justify-between bg-gray-100 overflow-auto">
         <header>
           {/* TOP BAR */}
-          <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-14">
-            <div className="ml-6">
+          <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-16">
+            <div className="ml-8">
               <Link href="/">FUEL QUOTER</Link>
             </div>
             <ul className="ml-auto left-0 right-0 top-full inline-flex">
-              <li className="flex mr-6 items-center hover:underline">
+              <li className="flex mr-8 items-center hover:underline">
                 <Link href="/"> HOME </Link>
               </li>
-              <li className="flex mr-6 items-center hover:underline">
+              <li className="flex mr-8 items-center hover:underline">
                 <Link href="/QuoteHistory"> HISTORY </Link>
               </li>
-              <li className="flex mr-6 items-center hover:underline">
+              <li className="flex mr-8 items-center hover:underline">
                 <Link href="/ProfilePage"> PROFILE </Link>
               </li>
-              <li className="flex mr-6 items-center hover:underline">
+              <li className="flex mr-8 items-center hover:underline">
                 <button onClick={signOut}> LOGOUT </button>
               </li>
             </ul>
@@ -146,13 +146,13 @@ export default function fuel_quote_form() {
         <main className="flex-grow flex items-center justify-center">
           {/* QUOTE FORM */}
           <div className="flex justify-center items-center">
-            <div className="flex bg-white shadow-lg overflow-hidden mx-auto max-w-sm py-4 px-4 lg:max-w-[80%] flex-col">
+            <div className="flex bg-white shadow-lg overflow-hidden mx-auto py-4 px-4 lg:max-w-[80%] flex-col">
               {/* Title */}
               <div className="flex-col flex w-full py-2.5 px-4 justify-center items-center">
                 <div>
                   <h1 className="font-bold text-2xl mt-4 mb-2 text-center"> Get a Fuel Quote! </h1>
                 </div>
-                <div>
+                <div className="items-center justify-center">
                   <span className="text-center"> To get a quote, review your info, complete the rest of the form, then click
                     <span className="text-light_blue text-center"> Get Quote </span> below to see your suggested quote on the right.{" "}
                   </span>

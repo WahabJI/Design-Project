@@ -16,18 +16,18 @@ export default function HomePage() {
         <title>Fuel Quoter: Get Your Fuel Fast</title>
         <link rel="icon" href="/gasPump.ico" />
       </Head>
-      <div className= "flex flex-col min-h-screen justify-between bg-gray-100">
+      <div className= "flex flex-col min-h-screen h-screen justify-between bg-gray-100 overflow-auto">
       {/* TOP BAR */}
       <header >
-        <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-14">
-          <div className="ml-6">
+        <nav className="relative flex w-full items-center font-bold text-4xl text-beige bg-light_blue shadow-md h-16">
+          <div className="ml-8">
             <Link href="/"> FUEL QUOTER </Link>
           </div>
           <ul className="ml-auto left-0 right-0 top-full inline-flex">
-            <li className="flex mr-6 items-center hover:underline">
+            <li className="flex mr-8 items-center hover:underline">
               <Link href="/LoginPage"> LOGIN </Link>
             </li>
-            <li className="flex mr-6 items-center hover:underline">
+            <li className="flex mr-8 items-center hover:underline">
                 <Link href="/RegisterPage"> REGISTER </Link>
             </li>
           </ul>
