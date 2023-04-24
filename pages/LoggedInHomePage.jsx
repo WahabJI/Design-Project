@@ -136,7 +136,9 @@ export default function HomePage() {
             ) : (
               <div className="flex-grow flex justify-center items-center">
                   <span className="text-gray-400 items-center justify-center px-2 mb-4">
-                    <i>You have not finished setting up your profile!</i>
+                    <i>You have not finished setting up your profile!</i><br></br>
+                    Click <Link href="/ProfilePage" className="text-light_blue underline hover:font-bold" > here</Link>
+                    to finish setting up your profile.
                   </span>
                 </div>
             )}
@@ -187,7 +189,7 @@ export default function HomePage() {
               ) : (
                 <div className="flex-grow flex justify-center items-center">
                   <span className="text-gray-400 items-center justify-center px-2 mb-4">
-                    <i>You have not made any quotes</i>
+                    <i>You have not made any quotes!</i>
                   </span>
                 </div>
               )}

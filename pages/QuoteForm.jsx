@@ -190,7 +190,7 @@ export default function fuel_quote_form() {
                     <span className="text-light_blue text-center"> Get Quote </span> below to see your suggested quote on the right.{" "}
                   </p>
                   <p className="text-sm text-center mt-1">
-                    *Our Location Policy: Clients in the state of Texas have a 2% location factor, while those outside of Texas have a location factor 4%.
+                    *Our Location Policy: Clients in the state of Texas have a 2% location factor, while those outside of Texas have a location factor of 4%.
                   </p>
                 </div>
               </div>
