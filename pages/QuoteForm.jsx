@@ -42,7 +42,21 @@ export default function fuel_quote_form() {
     router.push("/LoginPage");
     return;
   }
-
+  
+  // disables button if profile is not set
+  if(!profileSet && typeof window !== "undefined"){
+    const button1 = document.getElementById("getQuoteButton").disabled = true;
+    const button2 = document.getElementById("quotePriceButton").disabled = true;
+    // document.getElementById("getQuoteButton").addEventListener("click", function(){
+    //   alert("Please fill out your profile before getting a quote");
+    // });
+    // document.getElementById("quotePriceButton").addEventListener("click", function(){
+    //   alert("Please fill out your profile before getting a quote");
+    // });
+  }
+  else if(profileSet && typeof window !== "undefined"){
+    const button2 = document.getElementById("getQuoteButton").disabled = false;
+  }
   const handleSubmitQuote = async (e) => {
     e.preventDefault();
     const currentDate = new Date();
@@ -240,7 +254,7 @@ export default function fuel_quote_form() {
                     <div>
                       <span id="errorMiddle" className="text-red"></span>
                     </div>
-                    <button type="submit"
+                    <button id="getQuoteButton" type="submit"
                       className="block w-1/2 py-2 mt-4 mx-auto text-center text-light_blue border border-light_blue rounded-md hover:ring-1 hover:ring-light_blue" 
                     >
                       Get Quote
