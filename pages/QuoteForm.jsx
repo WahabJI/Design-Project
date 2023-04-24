@@ -45,8 +45,16 @@ export default function fuel_quote_form() {
   
   // disables button if profile is not set
   if(!profileSet && typeof window !== "undefined"){
-    const button1 = document.getElementById("getQuoteButton").disabled = true;
-    const button2 = document.getElementById("quotePriceButton").disabled = true;
+    const button1 = document.getElementById("getQuoteButton");
+    if (button1) {
+      button1.disabled = true;
+    }
+
+  const button2 = document.getElementById("quotePriceButton");
+    if (button2) {
+      button2.disabled = true;
+    }
+
     // document.getElementById("getQuoteButton").addEventListener("click", function(){
     //   alert("Please fill out your profile before getting a quote");
     // });
