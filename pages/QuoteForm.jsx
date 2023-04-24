@@ -15,6 +15,7 @@ const barlow = localFont({
 export default function fuel_quote_form() {
   const { data: session, status } = useSession();
   const [userData, setUserData] = useState([]);
+  const [profileSet, setProfileSet] = useState(false);
   const [gallonsRequested, setGallonsRequested] = useState("");
   const [deliveryDate, setDeliveryDate] = useState("");
 
@@ -27,11 +28,43 @@ export default function fuel_quote_form() {
         setUserData(data);
       });
   }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/UserCredentials", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setProfileSet(data.profileSet);
+      });
+  }, []);
   if (typeof window !== "undefined" && status === "unauthenticated") {
     router.push("/LoginPage");
     return;
   }
+  
+  // disables button if profile is not set
+  if(!profileSet && typeof window !== "undefined"){
+    const button1 = document.getElementById("getQuoteButton");
+    if (button1) {
+      button1.disabled = true;
+    }
 
+  const button2 = document.getElementById("quotePriceButton");
+    if (button2) {
+      button2.disabled = true;
+    }
+
+    // document.getElementById("getQuoteButton").addEventListener("click", function(){
+    //   alert("Please fill out your profile before getting a quote");
+    // });
+    // document.getElementById("quotePriceButton").addEventListener("click", function(){
+    //   alert("Please fill out your profile before getting a quote");
+    // });
+  }
+  else if(profileSet && typeof window !== "undefined"){
+    const button2 = document.getElementById("getQuoteButton").disabled = false;
+  }
   const handleSubmitQuote = async (e) => {
     e.preventDefault();
     const currentDate = new Date();
@@ -153,9 +186,12 @@ export default function fuel_quote_form() {
                   <h1 className="font-bold text-2xl mt-4 mb-2 text-center"> Get a Fuel Quote! </h1>
                 </div>
                 <div className="items-center justify-center">
-                  <span className="text-center"> To get a quote, review your info, complete the rest of the form, then click
+                  <p className="text-center"> To get a quote, review your info, complete the rest of the form, then click
                     <span className="text-light_blue text-center"> Get Quote </span> below to see your suggested quote on the right.{" "}
-                  </span>
+                  </p>
+                  <p className="text-sm text-center mt-1">
+                    *Our Location Policy: Clients in the state of Texas have a 2% location factor, while those outside of Texas have a location factor of 4%.
+                  </p>
                 </div>
               </div>
               <hr className="border-black mt-2 mx-16"></hr>
@@ -229,7 +265,7 @@ export default function fuel_quote_form() {
                     <div>
                       <span id="errorMiddle" className="text-red"></span>
                     </div>
-                    <button type="submit"
+                    <button id="getQuoteButton" type="submit"
                       className="block w-1/2 py-2 mt-4 mx-auto text-center text-light_blue border border-light_blue rounded-md hover:ring-1 hover:ring-light_blue" 
                     >
                       Get Quote

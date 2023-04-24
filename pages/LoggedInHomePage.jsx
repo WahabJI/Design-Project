@@ -14,6 +14,8 @@ export default function HomePage() {
   const { data: session, status } = useSession();
   const [quoteHistory, setQuoteHistory] = useState([]);
   const [userData, setUserData] = useState([]);
+  const [profileSet, setProfileSet] = useState(false);
+
   useEffect(() => {
     fetch("http://localhost:3000/api/getQuoteHistory")
       .then((res) => res.json())
@@ -29,6 +31,16 @@ export default function HomePage() {
       .then((res) => res.json())
       .then((data) => {
         setUserData(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/UserCredentials", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setProfileSet(data.profileSet);
       });
   }, []);
 
@@ -67,15 +79,19 @@ export default function HomePage() {
         </header>
 
 
-        <main className="flex flex-row justify-between items-center mx-6 my-8 bg-gray-100 ">
+        <main className="flex flex-row justify-between items-center mx-6 my-6 bg-gray-100">
           {/* left */}
           <div className="flex justify-center items-center w-3/5 my-6 h-full">
             <div className="flex flex-col w-full justify-center items-center bg-white px-16 py-6 mx-6 my-6 h-full shadow-lg">
               <h1 className="text-2xl font-bold"> What is the Fuel Quoter?</h1>
               <hr className="border-gray-400 my-4 w-4/5 text-center"></hr>
-              <span className="text-justify"> 
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde accusantium rem ipsum exercitationem ipsam totam hic voluptatibus quis magnam, earum reiciendis tenetur temporibus ea aperiam tempora aspernatur fuga alias facilis.
-              </span>
+              <p className="text-left leading-6"> 
+              Fuel Quoter is a user-friendly software application designed to provide clients with reliable, accurate, and timely predictions of fuel rates.
+              Using a client's location, the amount of fuel they are requesting, and company profit margin, we generate a personalized quote for each client.
+              </p>
+              <p className="text-left leading-6 mt-2">
+              Whether you are a new customer looking to establish a relationship or an existing customer seeking competitive pricing, Fuel Quoter is an essential tool for all your fuel rate prediction needs.
+              </p>
               <div className="w-1/2">
                   <Link href="/QuoteForm">
                     <button className="w-full py-4 mt-8 text-2xl font-bold text-beige bg-light_blue rounded-md hover:bg-light_blue/75 hover:text-beige">
@@ -86,11 +102,12 @@ export default function HomePage() {
             </div>
           </div>
           {/* right half */}
-          <div className="flex flex-col justify-between items-center w-2/5 mx-6">
+          <div className="flex flex-col justify-between items-center w-2/5 mx-6 h-full">
             {/* top right */}
-            <div className="flex flex-col w-full justify-center items-center bg-white px-6 py-4 mb-4 mx-6 space-x-2 shadow-lg">
+            <div className="flex flex-col w-full justify-center items-center bg-white h-60 px-6 py-4 mb-4 mx-6 space-x-2 shadow-lg">
               <h1 className="text-xl font-bold mt-4 text-center"> Profile Overview</h1>
               <hr className="border-gray-400 my-2.5 w-4/5 text-center"></hr>
+              {profileSet ? (
               <div className="w-full text-left">
                 <div className="flex flex-row w-full">
                   <div className="w-1/5"></div>
@@ -116,10 +133,19 @@ export default function HomePage() {
                   </Link>
                 </div>
               </div>
+            ) : (
+              <div className="flex-grow flex justify-center items-center">
+                  <span className="text-gray-400 items-center justify-center px-2 mb-4">
+                    <i>You have not finished setting up your profile!</i><br></br>
+                    Click <Link href="/ProfilePage" className="text-light_blue underline hover:font-bold" > here</Link>
+                    to finish setting up your profile.
+                  </span>
+                </div>
+            )}
             </div>
 
             {/* bottom right */}
-            <div className="flex flex-col w-full justify-center items-center bg-white px-6 py-4 mt-4 mx-6 space-x-2 shadow-lg">
+            <div className="flex-grow flex flex-col w-full justify-center items-center bg-white h-72 px-6 py-4 mt-4 mx-6 space-x-2 shadow-lg">
               <h1 className="text-xl font-bold mt-4 text-center"> Your Last Quote </h1>
               <hr className="border-gray-400 my-2.5 w-4/5 text-center"></hr>
               {quoteHistory.length != 0 ? (
@@ -163,7 +189,7 @@ export default function HomePage() {
               ) : (
                 <div className="flex-grow flex justify-center items-center">
                   <span className="text-gray-400 items-center justify-center px-2 mb-4">
-                    <i>You have not made any quotes</i>
+                    <i>You have not made any quotes!</i>
                   </span>
                 </div>
               )}

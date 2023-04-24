@@ -59,57 +59,21 @@ export default function quote_history() {
 
         {/* QUOTE FORM */}
         <main className="flex-grow flex justify-center py-10 bg-gray-100">
-          <div className="px-4 py-6 bg-white max-w-[90%] shadow-lg mx-auto my-auto sm:rounded-sm">
+          <div className="px-4 py-6 bg-white w-[80%] shadow-lg mx-auto my-auto sm:rounded-sm">
             <h3 className="text-2xl font-bold text-center"> Fuel Quote History </h3>
-            <div className="relative max-w-5xl overflow-x-auto mt-4 px-4">
+            <div className="relative w-full overflow-x-auto mt-4 px-4">
               <table className="table-auto w-full text-center mb-4">
                 <thead className="text bg-dark_grey">
                   <tr className="border border-dark_grey">
-                    <th scope="col" className="px-4 py-2">
-                      <div className="flex items-center">
-                        Delivery Date 
-                        <a href="#">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
-                            <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z"/>
-                          </svg>
-                        </a>                      
-                      </div>
-                    </th>
-                    <th scope="col" className=" px-4 py-2"> Address 1 </th>
-                    <th scope="col" className=" px-4 py-2"> Address 2 </th>
-                    <th scope="col" className=" px-4 py-2"> City </th>
-                    <th scope="col" className=" px-4 py-2"> State </th>
-                    <th scope="col" className=" px-4 py-2"> Zip </th>
-                    <th scope="col" className=" px-4 py-2"> 
-                      <div className="flex items-center">
-                        Gallons 
-                        <a href="#">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
-                            <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z"/>
-                          </svg>
-                        </a>
-                      </div>
-                    </th>
-                    <th scope="col" className=" px-4 py-2"> 
-                      <div className="flex items-center">
-                        Price/Gal
-                        <a href="#">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
-                            <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z"/>
-                          </svg>
-                        </a> 
-                      </div>
-                    </th>
-                    <th scope="col" className="px-4 py-2"> 
-                      <div className="flex justify-center items-center">
-                        Total Cost 
-                        <a href="#">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
-                            <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z"/>
-                          </svg>
-                        </a> 
-                      </div>
-                    </th>
+                    <th scope="col" className="px-4 py-2.5"> Delivery Date</th>
+                    <th scope="col" className="px-4 py-2.5"> Address 1 </th>
+                    <th scope="col" className="px-4 py-2.5"> Address 2 </th>
+                    <th scope="col" className="px-4 py-2.5"> City </th>
+                    <th scope="col" className="px-4 py-2.5"> State </th>
+                    <th scope="col" className="px-4 py-2.5"> Zip </th>
+                    <th scope="col" className="px-4 py-2.5"> Gallons</th>
+                    <th scope="col" className="px-4 py-2.5"> Price/Gal </th>
+                    <th scope="col" className="px-4 py-2.5"> Total Cost </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -117,21 +81,21 @@ export default function quote_history() {
                   <>              
                  {quoteHistory.map((quote) => (
                     <tr className="flex-grow bg-white">
-                      <td className="border px-4 py-2">{quote.deliveryDate}</td>
-                      <td className="border px-4 py-2">{quote.address1}</td>
-                      <td className="border px-4 py-2">{quote.address2}</td>
-                      <td className="border px-4 py-2">{quote.city}</td>
-                      <td className="border px-4 py-2">{quote.state}</td>
-                      <td className="border px-4 py-2">{quote.zipCode}</td>
-                      <td className="border px-4 py-2">{quote.gallonsRequested.toFixed(2)}</td>
-                      <td className="border px-4 py-2">${quote.pricePerGallon.toFixed(2)}</td>
-                      <td className="border px-4 py-2">${quote.totalAmountDue.toFixed(2)}</td>
+                      <td className="border px-4 py-2.5">{quote.deliveryDate}</td>
+                      <td className="border px-4 py-2.5">{quote.address1}</td>
+                      <td className="border px-4 py-2.5">{quote.address2}</td>
+                      <td className="border px-4 py-2.5">{quote.city}</td>
+                      <td className="border px-4 py-2.5">{quote.state}</td>
+                      <td className="border px-4 py-2.5">{quote.zipCode}</td>
+                      <td className="border px-4 py-2.5">{quote.gallonsRequested.toFixed(2)}</td>
+                      <td className="border px-4 py-2.5">${quote.pricePerGallon.toFixed(2)}</td>
+                      <td className="border px-4 py-2.5">${quote.totalAmountDue.toFixed(2)}</td>
                     </tr>
                   ))}
                   </>
                 ) : (
                   <tr className="flex-grow bg-white">
-                    <td className="border px-4 py-2 h-20 text-gray-400" colSpan={9}><i>No Quotes Found</i></td>
+                    <td className="border px-4 py-2 h-60 text-lg text-gray-400" colSpan={9}><i>No Quotes Found</i></td>
                   </tr>
                 )}
 

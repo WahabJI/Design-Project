@@ -55,6 +55,11 @@ export default function profile_page() {
           console.log('Please select a state');
           return;
         }
+        const updateProfile = await fetch('http://localhost:3000/api/UserCredentials', {
+            method: "POST",
+        })
+        const message = await updateProfile.json();
+        console.log(message);
         const data = await fetch('http://localhost:3000/api/getProfilePage', {
             method: "POST",
             headers: {
