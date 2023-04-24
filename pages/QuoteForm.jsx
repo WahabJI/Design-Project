@@ -15,6 +15,7 @@ const barlow = localFont({
 export default function fuel_quote_form() {
   const { data: session, status } = useSession();
   const [userData, setUserData] = useState([]);
+  const [profileSet, setProfileSet] = useState(false);
   const [gallonsRequested, setGallonsRequested] = useState("");
   const [deliveryDate, setDeliveryDate] = useState("");
 
@@ -25,6 +26,16 @@ export default function fuel_quote_form() {
       .then((res) => res.json())
       .then((data) => {
         setUserData(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/UserCredentials", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setProfileSet(data.profileSet);
       });
   }, []);
   if (typeof window !== "undefined" && status === "unauthenticated") {

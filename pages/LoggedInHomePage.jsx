@@ -14,6 +14,8 @@ export default function HomePage() {
   const { data: session, status } = useSession();
   const [quoteHistory, setQuoteHistory] = useState([]);
   const [userData, setUserData] = useState([]);
+  const [profileSet, setProfileSet] = useState(false);
+
   useEffect(() => {
     fetch("http://localhost:3000/api/getQuoteHistory")
       .then((res) => res.json())
@@ -29,6 +31,16 @@ export default function HomePage() {
       .then((res) => res.json())
       .then((data) => {
         setUserData(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/UserCredentials", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setProfileSet(data.profileSet);
       });
   }, []);
 
@@ -67,7 +79,7 @@ export default function HomePage() {
         </header>
 
 
-        <main className="flex flex-row justify-between items-center mx-6 my-8 bg-gray-100">
+        <main className="flex flex-row justify-between items-center mx-6 my-6 bg-gray-100">
           {/* left */}
           <div className="flex justify-center items-center w-3/5 my-6 h-full">
             <div className="flex flex-col w-full justify-center items-center bg-white px-16 py-6 mx-6 my-6 h-full shadow-lg">
@@ -88,9 +100,10 @@ export default function HomePage() {
           {/* right half */}
           <div className="flex flex-col justify-between items-center w-2/5 mx-6 h-full">
             {/* top right */}
-            <div className="flex flex-col w-full justify-center items-center bg-white h-60 px-6 py-4 mb-4 mx-6 space-x-2 shadow-lg">
+            <div className="flex flex-col w-full justify-center items-center bg-white h-68 px-6 py-4 mb-4 mx-6 space-x-2 shadow-lg">
               <h1 className="text-xl font-bold mt-4 text-center"> Profile Overview</h1>
               <hr className="border-gray-400 my-2.5 w-4/5 text-center"></hr>
+              {profileSet ? (
               <div className="w-full text-left">
                 <div className="flex flex-row w-full">
                   <div className="w-1/5"></div>
@@ -116,10 +129,17 @@ export default function HomePage() {
                   </Link>
                 </div>
               </div>
+            ) : (
+              <div className="flex-grow flex justify-center items-center">
+                  <span className="text-gray-400 items-center justify-center px-2 mb-4">
+                    <i>You have not finished setting up your profile!</i>
+                  </span>
+                </div>
+            )}
             </div>
 
             {/* bottom right */}
-            <div className="flex flex-col w-full justify-center items-center bg-white h-60 px-6 py-4 mt-4 mx-6 space-x-2 shadow-lg">
+            <div className="flex flex-col w-full justify-center items-center bg-white h-68 px-6 py-4 mt-4 mx-6 space-x-2 shadow-lg">
               <h1 className="text-xl font-bold mt-4 text-center"> Your Last Quote </h1>
               <hr className="border-gray-400 my-2.5 w-4/5 text-center"></hr>
               {quoteHistory.length != 0 ? (
