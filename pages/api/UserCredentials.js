@@ -30,14 +30,14 @@ export default async function handler(req, res) {
             res.status(200).json({message: "Profile Updated"})
         })
         .catch((err) => {
-            consoloe.error(err);
-            res.status(500).json({message: "Internal Server Error"})
+            console.error(err);
+            res.status(500).json({message: "Server error"})
         })
     }
     else if(req.method === "GET"){
         const session = await getSession({ req });
         if(!session){
-            res.status(401).json({message: "Unauthorized"})
+            res.status(401).json({message: "Unauthorized, No Session"})
             return;
         }
 

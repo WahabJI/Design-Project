@@ -5,7 +5,7 @@ import { getSession } from "next-auth/react";
 export default async function getProfilePage(req, res) {
     const session = await getSession({ req });
     //conn to database
-    await connectMongo().catch(err => console.log(err));
+    await connectMongo().catch(err => console.error(err));
 
     // If the user is not logged in, we send an unauthorized response
     if(!session){

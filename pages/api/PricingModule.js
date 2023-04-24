@@ -96,7 +96,7 @@ export default async function handler(req, res) {
         }
 
         //connect to the database
-        connectMongo().catch(err => console.log(err));
+        connectMongo().catch(err => console.error(err));
 
         //find the user in the user database and retrieve the user's address and other information
         //replace this later with the profile page schema
