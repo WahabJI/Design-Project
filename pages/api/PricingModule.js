@@ -33,7 +33,7 @@ export default async function handler(req, res) {
             loc_factor = .04;
         }
         // if (!result), lets swap over to something like this to account for when a user is first making their quote
-        if (!result){
+        if (result){
             hist_factor = .01;
         }
         else{
@@ -46,7 +46,7 @@ export default async function handler(req, res) {
         else{
             gallons_req_factor=.03;
         }
-
+        
         let Margin= basePricePerGallon * (loc_factor - hist_factor + gallons_req_factor + comp_prof_factor);
         let pricePerGallon = basePricePerGallon + Margin;
 
@@ -96,7 +96,7 @@ export default async function handler(req, res) {
         }
 
         //connect to the database
-        connectMongo().catch(err => console.log(err));
+        connectMongo().catch(err => console.error(err));
 
         //find the user in the user database and retrieve the user's address and other information
         //replace this later with the profile page schema

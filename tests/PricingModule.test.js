@@ -129,7 +129,7 @@ describe("GET /api/PricingModule", () => {
 });
 
 describe("POST /api/PricingModule", () => {
-    it("should return a 404 error if the user is not found", async () => {
+    it("Should return a 404 error if the user is not found", async () => {
 
         // Create a mock request and response
         const { req, res } = createMocks({
