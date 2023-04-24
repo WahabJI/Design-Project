@@ -9,16 +9,29 @@ jest.mock('next-auth/react', () => ({
     getSession: jest.fn(),
     useSession: jest.fn(),
   }));
-describe('when user is not logged in', () => {
-it('should return 401 Unauthorized', async () => {
-    connectMongo.mockResolvedValue(true);
-    getSession.mockResolvedValue(null);
+describe('Checks before method work is done', () => {
+  it('should return 401 Unauthorized if the user does not have a valid session', async () => {
+      connectMongo.mockResolvedValue(true);
+      getSession.mockResolvedValue(null);
+      const { req, res } = createMocks({
+      method: 'GET',
+      });
+      await getProfilePage(req, res);
+      expect(res._getStatusCode()).toBe(401);
+      expect(res._getData()).toBe('{"message":"Unauthorized"}');
+  });
+  it("Should throw an error if database connection (connectMongo) fails", async () => {
     const { req, res } = createMocks({
-    method: 'GET',
+        method: "POST",
     });
+    
+    connectMongo.mockRejectedValue(new Error("Database connection failed"));
+
+    const error = jest.spyOn(console, "error").mockImplementation(() => {});
+
     await getProfilePage(req, res);
-    expect(res._getStatusCode()).toBe(401);
-    expect(res._getData()).toBe('{"message":"Unauthorized"}');
+
+    expect(error).toHaveBeenCalledWith(new Error("Database connection failed"));
 });
 });
 describe('when user is logged in', () => {
