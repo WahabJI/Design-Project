@@ -78,8 +78,8 @@ describe("GET /api/PricingModule", () => {
 
         expect(res._getStatusCode()).toBe(200);
         expect(res._getJSONData()).toEqual({
-            pricePerGallon: 1.71,
-            totalAmountDue: 1.71 * req.query.gallonsRequested,
+            pricePerGallon: 1.695,
+            totalAmountDue: 1.695 * req.query.gallonsRequested,
         });
         expect(History.findOne).toHaveBeenCalledWith({ email: session.user.email });
         expect(Profile.findOne).toHaveBeenCalledWith({ email: session.user.email });
@@ -119,8 +119,8 @@ describe("GET /api/PricingModule", () => {
 
         expect(res._getStatusCode()).toBe(200);
         expect(res._getJSONData()).toEqual({
-            pricePerGallon: 1.74,
-            totalAmountDue: 1.74 * req.query.gallonsRequested,
+            pricePerGallon: 1.755,
+            totalAmountDue: 1.755 * req.query.gallonsRequested,
         });
         expect(History.findOne).toHaveBeenCalledWith({ email: session.user.email });
         expect(Profile.findOne).toHaveBeenCalledWith({ email: session.user.email });
