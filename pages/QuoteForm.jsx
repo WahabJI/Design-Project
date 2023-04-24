@@ -164,9 +164,12 @@ export default function fuel_quote_form() {
                   <h1 className="font-bold text-2xl mt-4 mb-2 text-center"> Get a Fuel Quote! </h1>
                 </div>
                 <div className="items-center justify-center">
-                  <span className="text-center"> To get a quote, review your info, complete the rest of the form, then click
+                  <p className="text-center"> To get a quote, review your info, complete the rest of the form, then click
                     <span className="text-light_blue text-center"> Get Quote </span> below to see your suggested quote on the right.{" "}
-                  </span>
+                  </p>
+                  <p className="text-sm text-center mt-1">
+                    *Our Location Policy: Clients in the state of Texas have a 2% location factor, while those outside of Texas have a location factor 4%.
+                  </p>
                 </div>
               </div>
               <hr className="border-black mt-2 mx-16"></hr>

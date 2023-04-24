@@ -59,21 +59,21 @@ export default function quote_history() {
 
         {/* QUOTE FORM */}
         <main className="flex-grow flex justify-center py-10 bg-gray-100">
-          <div className="px-4 py-6 bg-white max-w-[90%] shadow-lg mx-auto my-auto sm:rounded-sm">
+          <div className="px-4 py-6 bg-white w-[80%] shadow-lg mx-auto my-auto sm:rounded-sm">
             <h3 className="text-2xl font-bold text-center"> Fuel Quote History </h3>
-            <div className="relative max-w-5xl overflow-x-auto mt-4 px-4">
+            <div className="relative w-full overflow-x-auto mt-4 px-4">
               <table className="table-auto w-full text-center mb-4">
                 <thead className="text bg-dark_grey">
                   <tr className="border border-dark_grey">
-                    <th scope="col" className="px-6 py-2"> Delivery Date </th>
-                    <th scope="col" className=" px-6 py-2"> Address 1 </th>
-                    <th scope="col" className=" px-6 py-2"> Address 2 </th>
-                    <th scope="col" className=" px-6 py-2"> City </th>
-                    <th scope="col" className=" px-6 py-2"> State </th>
-                    <th scope="col" className=" px-6 py-2"> Zip </th>
-                    <th scope="col" className=" px-6 py-2"> Gallons</th>
-                    <th scope="col" className=" px-6 py-2"> Price/Gal </th>
-                    <th scope="col" className="px-6 py-2"> Total Cost </th>
+                    <th scope="col" className="px-4 py-2.5"> Delivery Date</th>
+                    <th scope="col" className="px-4 py-2.5"> Address 1 </th>
+                    <th scope="col" className="px-4 py-2.5"> Address 2 </th>
+                    <th scope="col" className="px-4 py-2.5"> City </th>
+                    <th scope="col" className="px-4 py-2.5"> State </th>
+                    <th scope="col" className="px-4 py-2.5"> Zip </th>
+                    <th scope="col" className="px-4 py-2.5"> Gallons</th>
+                    <th scope="col" className="px-4 py-2.5"> Price/Gal </th>
+                    <th scope="col" className="px-4 py-2.5"> Total Cost </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -81,21 +81,21 @@ export default function quote_history() {
                   <>              
                  {quoteHistory.map((quote) => (
                     <tr className="flex-grow bg-white">
-                      <td className="border px-6 py-2">{quote.deliveryDate}</td>
-                      <td className="border px-6 py-2">{quote.address1}</td>
-                      <td className="border px-6 py-2">{quote.address2}</td>
-                      <td className="border px-6 py-2">{quote.city}</td>
-                      <td className="border px-6 py-2">{quote.state}</td>
-                      <td className="border px-6 py-2">{quote.zipCode}</td>
-                      <td className="border px-6 py-2">{quote.gallonsRequested.toFixed(2)}</td>
-                      <td className="border px-6 py-2">${quote.pricePerGallon.toFixed(2)}</td>
-                      <td className="border px-6 py-2">${quote.totalAmountDue.toFixed(2)}</td>
+                      <td className="border px-4 py-2.5">{quote.deliveryDate}</td>
+                      <td className="border px-4 py-2.5">{quote.address1}</td>
+                      <td className="border px-4 py-2.5">{quote.address2}</td>
+                      <td className="border px-4 py-2.5">{quote.city}</td>
+                      <td className="border px-4 py-2.5">{quote.state}</td>
+                      <td className="border px-4 py-2.5">{quote.zipCode}</td>
+                      <td className="border px-4 py-2.5">{quote.gallonsRequested.toFixed(2)}</td>
+                      <td className="border px-4 py-2.5">${quote.pricePerGallon.toFixed(2)}</td>
+                      <td className="border px-4 py-2.5">${quote.totalAmountDue.toFixed(2)}</td>
                     </tr>
                   ))}
                   </>
                 ) : (
                   <tr className="flex-grow bg-white">
-                    <td className="border px-6 py-2 h-60 text-lg text-gray-400" colSpan={9}><i>No Quotes Found</i></td>
+                    <td className="border px-4 py-2 h-60 text-lg text-gray-400" colSpan={9}><i>No Quotes Found</i></td>
                   </tr>
                 )}
 
@@ -114,3 +114,133 @@ export default function quote_history() {
   );
 }
 
+/* <tr className="bg-white border-b border-dark_grey">
+                            <td scope="row" className=" px-4 py-2 whitespace-nowrap">
+                               mm/dd/yyyy
+                            </td>
+                            <td className=" px-4 py-2">
+                                5098 Jacksonville Rd
+                            </td>
+                            <td className=" px-4 py-2">
+                                Apt 1960
+                            </td>
+                            <td className=" px-4 py-2">
+                                Houston
+                            </td>
+                            <td className=" px-4 py-2">
+                                TX
+                            </td>
+                            <td className=" px-4 py-2">
+                                77034
+                            </td>
+                            <td className=" px-4 py-2">
+                                $2.80
+                            </td>
+                            <td className=" px-4 py-2">
+                                $280.00
+                            </td>
+                        </tr>
+                        <tr className="bg-white border-b border-dark_grey">
+                            <td scope="row" className=" px-4 py-2 whitespace-nowrap">
+                               mm/dd/yyyy
+                            </td>
+                            <td className=" px-4 py-2">
+                                5098 Jacksonville Rd
+                            </td>
+                            <td className=" px-4 py-2">
+                                Apt 1960
+                            </td>
+                            <td className=" px-4 py-2">
+                                Houston
+                            </td>
+                            <td className=" px-4 py-2">
+                                TX
+                            </td>
+                            <td className=" px-4 py-2">
+                                77034
+                            </td>
+                            <td className=" px-4 py-2">
+                                $2.80
+                            </td>
+                            <td className=" px-4 py-2">
+                                $280.00
+                            </td>
+                        </tr>
+                        <tr className="bg-white border-b border-dark_grey">
+                            <td scope="row" className=" px-4 py-2 whitespace-nowrap">
+                               mm/dd/yyyy
+                            </td>
+                            <td className=" px-4 py-2">
+                                5098 Jacksonville Rd
+                            </td>
+                            <td className=" px-4 py-2">
+                                Apt 1960
+                            </td>
+                            <td className=" px-4 py-2">
+                                Houston
+                            </td>
+                            <td className=" px-4 py-2">
+                                TX
+                            </td>
+                            <td className=" px-4 py-2">
+                                77034
+                            </td>
+                            <td className=" px-4 py-2">
+                                $2.80
+                            </td>
+                            <td className=" px-4 py-2">
+                                $280.00
+                            </td>
+                        </tr>
+                        <tr className="bg-white border-b border-dark_grey">
+                            <td scope="row" className=" px-4 py-2 whitespace-nowrap">
+                               mm/dd/yyyy
+                            </td>
+                            <td className=" px-4 py-2">
+                                5098 Jacksonville Rd
+                            </td>
+                            <td className=" px-4 py-2">
+                                Apt 1960
+                            </td>
+                            <td className=" px-4 py-2">
+                                Houston
+                            </td>
+                            <td className=" px-4 py-2">
+                                TX
+                            </td>
+                            <td className=" px-4 py-2">
+                                77034
+                            </td>
+                            <td className=" px-4 py-2">
+                                $2.80
+                            </td>
+                            <td className=" px-4 py-2">
+                                $280.00
+                            </td>
+                        </tr>
+                        <tr className="bg-white border-b border-dark_grey">
+                            <td scope="row" className=" px-4 py-2 whitespace-nowrap">
+                               mm/dd/yyyy
+                            </td>
+                            <td className=" px-4 py-2">
+                                5098 Jacksonville Rd
+                            </td>
+                            <td className=" px-4 py-2">
+                                Apt 1960
+                            </td>
+                            <td className=" px-4 py-2">
+                                Houston
+                            </td>
+                            <td className=" px-4 py-2">
+                                TX
+                            </td>
+                            <td className=" px-4 py-2">
+                                77034
+                            </td>
+                            <td className=" px-4 py-2">
+                                $2.80
+                            </td>
+                            <td className=" px-4 py-2">
+                                $280.00
+                            </td>
+                        </tr> */

@@ -85,9 +85,13 @@ export default function HomePage() {
             <div className="flex flex-col w-full justify-center items-center bg-white px-16 py-6 mx-6 my-6 h-full shadow-lg">
               <h1 className="text-2xl font-bold"> What is the Fuel Quoter?</h1>
               <hr className="border-gray-400 my-4 w-4/5 text-center"></hr>
-              <span className="text-justify"> 
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde accusantium rem ipsum exercitationem ipsam totam hic voluptatibus quis magnam, earum reiciendis tenetur temporibus ea aperiam tempora aspernatur fuga alias facilis.
-              </span>
+              <p className="text-left leading-6"> 
+              Fuel Quoter is a user-friendly software application designed to provide clients with reliable, accurate, and timely predictions of fuel rates.
+              Using a client's location, the amount of fuel they are requesting, and company profit margin, we generate a personalized quote for each client.
+              </p>
+              <p className="text-left leading-6 mt-2">
+              Whether you are a new customer looking to establish a relationship or an existing customer seeking competitive pricing, Fuel Quoter is an essential tool for all your fuel rate prediction needs.
+              </p>
               <div className="w-1/2">
                   <Link href="/QuoteForm">
                     <button className="w-full py-4 mt-8 text-2xl font-bold text-beige bg-light_blue rounded-md hover:bg-light_blue/75 hover:text-beige">
@@ -100,7 +104,7 @@ export default function HomePage() {
           {/* right half */}
           <div className="flex flex-col justify-between items-center w-2/5 mx-6 h-full">
             {/* top right */}
-            <div className="flex flex-col w-full justify-center items-center bg-white h-68 px-6 py-4 mb-4 mx-6 space-x-2 shadow-lg">
+            <div className="flex flex-col w-full justify-center items-center bg-white h-60 px-6 py-4 mb-4 mx-6 space-x-2 shadow-lg">
               <h1 className="text-xl font-bold mt-4 text-center"> Profile Overview</h1>
               <hr className="border-gray-400 my-2.5 w-4/5 text-center"></hr>
               {profileSet ? (
@@ -139,7 +143,7 @@ export default function HomePage() {
             </div>
 
             {/* bottom right */}
-            <div className="flex flex-col w-full justify-center items-center bg-white h-68 px-6 py-4 mt-4 mx-6 space-x-2 shadow-lg">
+            <div className="flex-grow flex flex-col w-full justify-center items-center bg-white h-72 px-6 py-4 mt-4 mx-6 space-x-2 shadow-lg">
               <h1 className="text-xl font-bold mt-4 text-center"> Your Last Quote </h1>
               <hr className="border-gray-400 my-2.5 w-4/5 text-center"></hr>
               {quoteHistory.length != 0 ? (
