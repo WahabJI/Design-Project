@@ -67,7 +67,7 @@ export default function HomePage() {
         </header>
 
 
-        <main className="flex flex-row justify-between items-center mx-6 my-8 bg-gray-100 ">
+        <main className="flex flex-row justify-between items-center mx-6 my-8 bg-gray-100">
           {/* left */}
           <div className="flex justify-center items-center w-3/5 my-6 h-full">
             <div className="flex flex-col w-full justify-center items-center bg-white px-16 py-6 mx-6 my-6 h-full shadow-lg">
@@ -86,9 +86,9 @@ export default function HomePage() {
             </div>
           </div>
           {/* right half */}
-          <div className="flex flex-col justify-between items-center w-2/5 mx-6">
+          <div className="flex flex-col justify-between items-center w-2/5 mx-6 h-full">
             {/* top right */}
-            <div className="flex flex-col w-full justify-center items-center bg-white px-6 py-4 mb-4 mx-6 space-x-2 shadow-lg">
+            <div className="flex flex-col w-full justify-center items-center bg-white h-60 px-6 py-4 mb-4 mx-6 space-x-2 shadow-lg">
               <h1 className="text-xl font-bold mt-4 text-center"> Profile Overview</h1>
               <hr className="border-gray-400 my-2.5 w-4/5 text-center"></hr>
               <div className="w-full text-left">
@@ -119,7 +119,7 @@ export default function HomePage() {
             </div>
 
             {/* bottom right */}
-            <div className="flex flex-col w-full justify-center items-center bg-white px-6 py-4 mt-4 mx-6 space-x-2 shadow-lg">
+            <div className="flex flex-col w-full justify-center items-center bg-white h-60 px-6 py-4 mt-4 mx-6 space-x-2 shadow-lg">
               <h1 className="text-xl font-bold mt-4 text-center"> Your Last Quote </h1>
               <hr className="border-gray-400 my-2.5 w-4/5 text-center"></hr>
               {quoteHistory.length != 0 ? (
