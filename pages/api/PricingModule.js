@@ -33,7 +33,7 @@ export default async function handler(req, res) {
             loc_factor = .04;
         }
         // if (!result), lets swap over to something like this to account for when a user is first making their quote
-        if (result.quoteHistory.length > 0){
+        if (!result){
             hist_factor = .01;
         }
         else{
