@@ -69,6 +69,8 @@ export default function fuel_quote_form() {
     e.preventDefault();
     const currentDate = new Date();
     const deliveryDateConverted = new Date(deliveryDate);
+    deliveryDateConverted.setDate(deliveryDateConverted.getDate() + 1);
+    deliveryDateConverted.setHours(0, 0, 0, 0);
 
     //make sure to remove any old borders and error messages
     const errorMsg = document.getElementById("errorMiddle");
@@ -115,9 +117,9 @@ export default function fuel_quote_form() {
     console.log(data);
     //set the pricePerGallon and totalAmountDue to the data that was returned from the backend
     document.getElementById("pricePerGallon").value =
-      data.pricePerGallon.toFixed(2);
+      data.pricePerGallon;
     document.getElementById("totalPrice").value =
-      data.totalAmountDue.toFixed(2);
+      data.totalAmountDue;
 
     //remove the disabled attribute from the order now button
     document.getElementById("quotePriceButton").disabled = false;

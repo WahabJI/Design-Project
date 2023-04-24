@@ -26,14 +26,14 @@ export default async function handler(req, res) {
         const user = await Profile.findOne({
             email: session.user.email
         })
-        if (user.state === 'TX'){
+        if (user.state === 'TX' || user.state.toUpperCase() === 'TEXAS'){
             loc_factor = .02;
         }
         else{
             loc_factor = .04;
         }
         // if (!result), lets swap over to something like this to account for when a user is first making their quote
-        if (!result){
+        if (result){
             hist_factor = .01;
         }
         else{
@@ -46,7 +46,7 @@ export default async function handler(req, res) {
         else{
             gallons_req_factor=.03;
         }
-
+        
         let Margin= basePricePerGallon * (loc_factor - hist_factor + gallons_req_factor + comp_prof_factor);
         let pricePerGallon = basePricePerGallon + Margin;
 
