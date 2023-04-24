@@ -35,6 +35,17 @@ export default async function handler(req, res) {
             res.status(500).json({message: "Internal Server Error"})
         })
     }
+    else if(req.method === "GET"){
+        const session = await getSession({ req });
+        if(!session){
+            res.status(401).json({message: "Unauthorized"})
+            return;
+        }
+
+        const result = await userSchema.findOne({email: session.user.email})
+        
+        res.status(200).json({result})
+    }
     else{
         res.status(405).json({message: "Method Not Allowed"})
     }
