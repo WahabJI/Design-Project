@@ -10,7 +10,6 @@ export default async function handler(req, res) {
         }
 
         const check = await userSchema.findOne({email: session.user.email})
-        console.log(check)
         if(check.profileSet){
             res.status(500).json({message: "Profile Already Set"})
             return;
@@ -44,7 +43,7 @@ export default async function handler(req, res) {
 
         const result = await userSchema.findOne({email: session.user.email})
         
-        res.status(200).json({result})
+        res.status(200).json(result)
     }
     else{
         res.status(405).json({message: "Method Not Allowed"})

@@ -14,6 +14,8 @@ export default function HomePage() {
   const { data: session, status } = useSession();
   const [quoteHistory, setQuoteHistory] = useState([]);
   const [userData, setUserData] = useState([]);
+  const [profileSet, setProfileSet] = useState(false);
+
   useEffect(() => {
     fetch("http://localhost:3000/api/getQuoteHistory")
       .then((res) => res.json())
@@ -29,6 +31,16 @@ export default function HomePage() {
       .then((res) => res.json())
       .then((data) => {
         setUserData(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/UserCredentials", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setProfileSet(data.profileSet);
       });
   }, []);
 
@@ -88,6 +100,7 @@ export default function HomePage() {
           {/* right half */}
           <div className="flex flex-col justify-between items-center w-2/5 mx-6">
             {/* top right */}
+            {profileSet ? (
             <div className="flex flex-col w-full justify-center items-center bg-white px-6 py-4 mb-4 mx-6 space-x-2 shadow-lg">
               <h1 className="text-xl font-bold mt-4 text-center"> Profile Overview</h1>
               <hr className="border-gray-400 my-2.5 w-4/5 text-center"></hr>
@@ -117,6 +130,13 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+            ) : (
+              <div className="flex-grow flex justify-center items-center">
+                  <span className="text-gray-400 items-center justify-center px-2 mb-4">
+                    <i>You have not finished setting up your profile!</i>
+                  </span>
+                </div>
+            )}
 
             {/* bottom right */}
             <div className="flex flex-col w-full justify-center items-center bg-white px-6 py-4 mt-4 mx-6 space-x-2 shadow-lg">
