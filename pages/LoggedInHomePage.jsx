@@ -85,7 +85,7 @@ export default function HomePage() {
             <div className="flex flex-col w-full justify-center items-center bg-white px-16 py-6 mx-6 my-6 h-full shadow-lg">
               <h1 className="text-2xl font-bold"> What is the Fuel Quoter?</h1>
               <hr className="border-gray-400 my-4 w-4/5 text-center"></hr>
-              <p className="text-left leading-6"> 
+              <p className="text-justify leading-6"> 
               Fuel Quoter is a user-friendly software application designed to provide clients with reliable, accurate, and timely predictions of fuel rates.
               Using a client's location, the amount of fuel they are requesting, and company profit margin, we generate a personalized quote for each client.
               </p>

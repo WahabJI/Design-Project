@@ -49,14 +49,13 @@ export default function HomePage() {
         </div>
         <div className="px-8 py-6 text-left w-5/6 bg-white shadow-lg m-auto">
           <h3 className="text-2xl font-bold">WHAT IS THE FUEL QUOTER?</h3>
-              <div className="mt-4">
-                  <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <div className="text-light_blue inline-block">eiusmod</div> tempor incididunt 
-                      ut labore et dolore magna aliqua. Ut enim ad minim quis nostrud exercitation <div className="text-light_blue inline-block">ullamco</div> laboris 
-                      nisi ut aliquip ex ea commodo consequat. Duis aute <div className="text-light_blue inline-block">irure</div> dolor in reprehenderit in voluptate 
-                      velit <div className="text-light_blue inline-block">esse</div> dolore eu fugiat nulla pariatur. Excepteur sint occaecat <div className="text-light_blue inline-block">cupidatat</div> non 
-                      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                  </div>
-              </div>  
+            <p className="text-justify leading-6 mt-2"> 
+              <div className="inline-block text-light_blue">Fuel Quoter</div> is a user-friendly software application designed to provide clients with reliable, accurate, and timely predictions of fuel rates.
+              Using a client's location, the amount of fuel they are requesting, and company profit margin, we generate a personalized quote for each client.
+            </p>
+            <p className="text-left leading-6 mt-2">
+              Whether you are a new customer looking to establish a relationship or an existing customer seeking competitive pricing, Fuel Quoter is an essential tool for all your fuel rate prediction needs.
+            </p>  
         </div>
       </div>
 
