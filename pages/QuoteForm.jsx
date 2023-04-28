@@ -201,6 +201,8 @@ export default function fuel_quote_form() {
               <div className="flex w-full justify-center px-4 py-6">
                 {/* left */}
                 <div className="w-full px-6 lg:w-1/2 border-r border-dark_grey">
+                  {profileSet ? (
+                    <>
                   <div>
                     <label className="block font-bold">Address 1</label>
                     <input 
@@ -244,6 +246,17 @@ export default function fuel_quote_form() {
                       <Link href="/ProfilePage" className="text-light_blue underline hover:font-bold" > here</Link>!
                     </span>
                   </div>
+                  </>
+                  ) : 
+                  (
+                    <div className="flex-grow flex justify-center items-center">
+                    <span className="text-gray-400 items-center justify-center px-2 mb-4">
+                      <i>You have not finished setting up your profile!</i><br></br>
+                      Click <Link href="/ProfilePage" className="text-light_blue underline hover:font-bold" > here</Link>
+                      &nbsp;to finish setting up your profile.
+                    </span>
+                  </div>
+                  )}
                 </div>
 
                 {/* middle */}
