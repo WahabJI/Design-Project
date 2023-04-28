@@ -181,7 +181,7 @@ export default function fuel_quote_form() {
         <main className="flex-grow flex items-center justify-center">
           {/* QUOTE FORM */}
           <div className="flex justify-center items-center">
-            <div className="flex bg-white shadow-lg overflow-hidden mx-auto py-4 px-4 lg:max-w-[80%] flex-col">
+            <div className="flex bg-white shadow-lg overflow-hidden mx-auto py-4 px-4 w-[90%] flex-col">
               {/* Title */}
               <div className="flex-col flex w-full py-2.5 px-4 justify-center items-center">
                 <div>
@@ -249,13 +249,13 @@ export default function fuel_quote_form() {
                   </>
                   ) : 
                   (
-                    <div className="flex-grow flex justify-center items-center">
-                    <span className="text-gray-400 items-center justify-center px-2 mb-4">
-                      <i>You have not finished setting up your profile!</i><br></br>
-                      Click <Link href="/ProfilePage" className="text-light_blue underline hover:font-bold" > here</Link>
-                      &nbsp;to finish setting up your profile.
-                    </span>
-                  </div>
+                    <div className="flex-grow flex justify-center items-center h-full">
+                      <span className="text-gray-400 items-center justify-center px-4 text-center">
+                        <i>You must finish setting up your profile before making a quote!</i><br></br>
+                        Click <Link href="/ProfilePage" className="text-light_blue underline hover:font-bold" > here</Link>
+                        &nbsp;to finish setting up your profile.
+                      </span>
+                    </div>
                   )}
                 </div>
 

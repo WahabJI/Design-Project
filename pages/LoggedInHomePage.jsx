@@ -135,7 +135,7 @@ export default function HomePage() {
               </div>
             ) : (
               <div className="flex-grow flex justify-center items-center">
-                <span className="text-gray-400 items-center justify-center px-2 mb-4">
+                <span className="text-gray-400 text-center items-center justify-center px-2 mb-4">
                   <i>You have not finished setting up your profile!</i><br></br>
                   Click <Link href="/ProfilePage" className="text-light_blue underline hover:font-bold" > here</Link>
                   &nbsp;to finish setting up your profile.
