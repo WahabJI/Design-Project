@@ -42,7 +42,7 @@ export default function register_page() {
     }
 
     if (email.length != 0) {
-      if (/^\S+@\S+$/i.test(email) == false) {
+      if (/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i.test(email) == false) {
         const emailBox = document.getElementById("email");
         const msg = document.getElementById("errorMessage");
         emailBox.style.border = "2px solid red";
@@ -140,7 +140,7 @@ export default function register_page() {
             <div className="mt-4">
               <div>
                 <label className="block" htmlFor="email"> Email </label>
-                <input value={email} onChange={(e) => setEmail(e.target.value)} id="email" type="text" placeholder="Email" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                <input value={email} onChange={(e) => setEmail(e.target.value)} id="email" type="email" placeholder="Email" className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
               </div>
 
               <div className="mt-4">
