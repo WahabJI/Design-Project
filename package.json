@@ -50,6 +50,7 @@
   },
   "jest": {
     "testEnvironment": "jsdom",
+    "setupFiles": ["<rootDir>/setup.jest.js"],
     "transform": {
       "^.+\\.(js|jsx)$": [
         "@swc/jest"
